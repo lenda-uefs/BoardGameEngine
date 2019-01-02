@@ -70,6 +70,7 @@
             pawnSprite.x = backgroundWidth*pos.location[0]-(pawnWidth/2);
             pawnSprite.y = backgroundHeight*pos.location[1]-(pawnHeight/2);
             console.log("clicou: " + pawnSprite.x + " " + pawnSprite.y + " " + pos.positionType + " " + pos.positionId);
+            console.log(boardGameAdapter.getGameConfig("gameData").board.positions);
           }
 
           function preload() {

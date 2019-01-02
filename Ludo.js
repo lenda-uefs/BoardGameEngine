@@ -87,6 +87,29 @@ exports.boardGame = {
 
         {capacity:1, location:[0.453, 0.938], positionId:72, positionType:"normal", prev: [50], next: [0]},
 
+        // Vermelho Inicio
+        {capacity:1, location:[0.289, 0.845], positionId:73, positionType:"normal", prev: [], next: [0]},
+        {capacity:1, location:[0.289, 0.720], positionId:74, positionType:"normal", prev: [], next: [0]},
+        {capacity:1, location:[0.335, 0.781], positionId:75, positionType:"normal", prev: [], next: [0]},
+        {capacity:1, location:[0.241, 0.781], positionId:76, positionType:"normal", prev: [], next: [0]},
+
+        // Verde
+        {capacity:1, location:[0.289, 0.280], positionId:77, positionType:"normal", prev: [], next: [13]},
+        {capacity:1, location:[0.289, 0.155], positionId:78, positionType:"normal", prev: [], next: [13]},
+        {capacity:1, location:[0.335, 0.218], positionId:79, positionType:"normal", prev: [], next: [13]},
+        {capacity:1, location:[0.241, 0.218], positionId:80, positionType:"normal", prev: [], next: [13]},
+
+        // Amarelo
+        {capacity:1, location:[0.711, 0.280], positionId:81, positionType:"normal", prev: [], next: [26]},
+        {capacity:1, location:[0.711, 0.155], positionId:82, positionType:"normal", prev: [], next: [26]},
+        {capacity:1, location:[0.759, 0.218], positionId:83, positionType:"normal", prev: [], next: [26]},
+        {capacity:1, location:[0.664, 0.218], positionId:84, positionType:"normal", prev: [], next: [26]},
+
+        {capacity:1, location:[0.711, 0.845], positionId:85, positionType:"normal", prev: [], next: [39]},
+        {capacity:1, location:[0.711, 0.720], positionId:86, positionType:"normal", prev: [], next: [39]},
+        {capacity:1, location:[0.759, 0.782], positionId:87, positionType:"normal", prev: [], next: [39]},
+        {capacity:1, location:[0.664, 0.782], positionId:88, positionType:"normal", prev: [], next: [39]},
+
       ]
     },
     component: {
@@ -94,7 +117,7 @@ exports.boardGame = {
         {dieType:"nSidedDie", numberOfSides:6}
       ],
       tokens: [
-        {positionId: 51, tokenType: "pawn", tokenImg: "assets/imgs/pokerchip1.png", ownerId:"Red"}
+        {positionId: 88, tokenType: "pawn", tokenImg: "assets/imgs/pokerchip1.png", ownerId:"Red"}
       ]
     }
   },
