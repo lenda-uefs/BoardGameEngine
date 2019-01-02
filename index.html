@@ -53,7 +53,7 @@
           var pawnSprite = {};
 
           var boardGameAdapter = require('./boardGameAdapter.js');
-          boardGameAdapter.setGameConfig("./TestGame.js");
+          boardGameAdapter.setGameConfig("./Ludo.js");
 
           // console.log(boardGameAdapter.getGameConfig("gameData").component.tokens[0].tokenImg);
           // console.log(boardGameAdapter.getGameConfig("gameData").board.background);
@@ -61,7 +61,15 @@
           var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
 
           function button1OnClick () {
-            pawnSprite.x += pawnWidth;
+            var pawn = boardGameAdapter.getGameConfig("gameData").component.tokens[0];
+            var posId = pawn.positionId
+            var pos = boardGameAdapter.getGameConfig("gameData").board.positions[posId];
+            pos = boardGameAdapter.getGameConfig("gameData").board.positions[pos.next[0]];
+            pawn.positionId = pos.positionId;
+
+            pawnSprite.x = backgroundWidth*pos.location[0]-(pawnWidth/2);
+            pawnSprite.y = backgroundHeight*pos.location[1]-(pawnHeight/2);
+            console.log("clicou: " + pawnSprite.x + " " + pawnSprite.y + " " + pos.positionType + " " + pos.positionId);
           }
 
           function preload() {
