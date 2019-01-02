@@ -33,7 +33,7 @@ exports.boardGame = {
         {capacity:1, location:[0.453, 0.187], positionId:21, positionType:"normal", prev: [20], next: [22]},
         {capacity:1, location:[0.453, 0.125], positionId:22, positionType:"normal", prev: [21], next: [23]},
         {capacity:1, location:[0.453, 0.062], positionId:23, positionType:"normal", prev: [22], next: [24]},
-        {capacity:1, location:[0.500, 0.062], positionId:24, positionType:"yellow", prev: [23], next: [25]},
+        {capacity:1, location:[0.500, 0.062], positionId:24, positionType:"yellow", prev: [23], next: [25, 62]},
         {capacity:1, location:[0.546, 0.062], positionId:25, positionType:"normal", prev: [24], next: [26]},
         {capacity:1, location:[0.546, 0.123], positionId:26, positionType:"normal", prev: [25], next: [27]},
         {capacity:1, location:[0.546, 0.187], positionId:27, positionType:"normal", prev: [26], next: [28]},
@@ -46,7 +46,7 @@ exports.boardGame = {
         {capacity:1, location:[0.735, 0.438], positionId:34, positionType:"normal", prev: [33], next: [35]},
         {capacity:1, location:[0.781, 0.438], positionId:35, positionType:"normal", prev: [34], next: [36]},
         {capacity:1, location:[0.829, 0.438], positionId:36, positionType:"normal", prev: [35], next: [37]},
-        {capacity:1, location:[0.829, 0.500], positionId:37, positionType:"blue", prev: [36], next: [38]},
+        {capacity:1, location:[0.829, 0.500], positionId:37, positionType:"blue", prev: [36], next: [38, 67]},
         {capacity:1, location:[0.829, 0.563], positionId:38, positionType:"normal", prev: [37], next: [39]},
         {capacity:1, location:[0.781, 0.563], positionId:39, positionType:"normal", prev: [38], next: [40]},
         {capacity:1, location:[0.735, 0.563], positionId:40, positionType:"normal", prev: [39], next: [41]},
@@ -59,7 +59,7 @@ exports.boardGame = {
         {capacity:1, location:[0.548, 0.813], positionId:47, positionType:"normal", prev: [46], next: [48]},
         {capacity:1, location:[0.548, 0.875], positionId:48, positionType:"normal", prev: [47], next: [49]},
         {capacity:1, location:[0.548, 0.938], positionId:49, positionType:"normal", prev: [48], next: [50]},
-        {capacity:1, location:[0.500, 0.938], positionId:50, positionType:"red",    prev: [49], next: [51]},
+        {capacity:1, location:[0.500, 0.938], positionId:50, positionType:"red",    prev: [49], next: [72, 51]},
         {capacity:1, location:[0.500, 0.877], positionId:51, positionType:"normal", prev: [50], next: [52]},
         {capacity:1, location:[0.500, 0.813], positionId:52, positionType:"normal", prev: [51], next: [53]},
         {capacity:1, location:[0.500, 0.750], positionId:53, positionType:"normal", prev: [52], next: [54]},
@@ -85,6 +85,8 @@ exports.boardGame = {
         {capacity:1, location:[0.641, 0.500], positionId:70, positionType:"normal", prev: [69], next: [71]},
         {capacity:1, location:[0.594, 0.500], positionId:71, positionType:"normal", prev: [70], next: [56]},
 
+        {capacity:1, location:[0.453, 0.938], positionId:72, positionType:"normal", prev: [50], next: [0]},
+
       ]
     },
     component: {
@@ -92,7 +94,7 @@ exports.boardGame = {
         {dieType:"nSidedDie", numberOfSides:6}
       ],
       tokens: [
-        {positionId: 0, tokenType: "pawn", tokenImg: "assets/imgs/pokerchip1.png", ownerId:"Red"}
+        {positionId: 51, tokenType: "pawn", tokenImg: "assets/imgs/pokerchip1.png", ownerId:"Red"}
       ]
     }
   },
