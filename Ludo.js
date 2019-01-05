@@ -65,7 +65,7 @@ exports.boardGame = {
         {capacity:1, location:[0.500, 0.750], positionId:53, positionType:"normal", prev: [52], next: [54]},
         {capacity:1, location:[0.500, 0.688], positionId:54, positionType:"normal", prev: [53], next: [55]},
         {capacity:1, location:[0.500, 0.625], positionId:55, positionType:"normal", prev: [54], next: [56]},
-        {capacity:1, location:[0.500, 0.498], positionId:56, positionType:"finish", prev: [55], next: []},
+        {capacity:1, location:[0.500, 0.498], positionId:56, positionType:"finish", prev: [55], next: [50, 36, 23, 10]},
 
         {capacity:1, location:[0.218, 0.500], positionId:57, positionType:"normal", prev: [11], next: [58]},
         {capacity:1, location:[0.265, 0.500], positionId:58, positionType:"normal", prev: [57], next: [59]},
@@ -88,27 +88,27 @@ exports.boardGame = {
         {capacity:1, location:[0.453, 0.938], positionId:72, positionType:"normal", prev: [50], next: [0]},
 
         // Vermelho Inicio
-        {capacity:1, location:[0.289, 0.845], positionId:73, positionType:"normal", prev: [], next: [0]},
-        {capacity:1, location:[0.289, 0.720], positionId:74, positionType:"normal", prev: [], next: [0]},
-        {capacity:1, location:[0.335, 0.781], positionId:75, positionType:"normal", prev: [], next: [0]},
-        {capacity:1, location:[0.241, 0.781], positionId:76, positionType:"normal", prev: [], next: [0]},
+        {capacity:1, location:[0.289, 0.845], positionId:73, positionType:"redBase", prev: [], next: [0, 74]},
+        {capacity:1, location:[0.289, 0.720], positionId:74, positionType:"redBase", prev: [], next: [0, 75]},
+        {capacity:1, location:[0.335, 0.781], positionId:75, positionType:"redBase", prev: [], next: [0, 76]},
+        {capacity:1, location:[0.241, 0.781], positionId:76, positionType:"redBase", prev: [], next: [0, 73]},
 
         // Verde
-        {capacity:1, location:[0.289, 0.280], positionId:77, positionType:"normal", prev: [], next: [13]},
-        {capacity:1, location:[0.289, 0.155], positionId:78, positionType:"normal", prev: [], next: [13]},
-        {capacity:1, location:[0.335, 0.218], positionId:79, positionType:"normal", prev: [], next: [13]},
-        {capacity:1, location:[0.241, 0.218], positionId:80, positionType:"normal", prev: [], next: [13]},
+        {capacity:1, location:[0.289, 0.280], positionId:77, positionType:"greenBase", prev: [], next: [13, 78]},
+        {capacity:1, location:[0.289, 0.155], positionId:78, positionType:"greenBase", prev: [], next: [13, 79]},
+        {capacity:1, location:[0.335, 0.218], positionId:79, positionType:"greenBase", prev: [], next: [13, 80]},
+        {capacity:1, location:[0.241, 0.218], positionId:80, positionType:"greenBase", prev: [], next: [13, 77]},
 
         // Amarelo
-        {capacity:1, location:[0.711, 0.280], positionId:81, positionType:"normal", prev: [], next: [26]},
-        {capacity:1, location:[0.711, 0.155], positionId:82, positionType:"normal", prev: [], next: [26]},
-        {capacity:1, location:[0.759, 0.218], positionId:83, positionType:"normal", prev: [], next: [26]},
-        {capacity:1, location:[0.664, 0.218], positionId:84, positionType:"normal", prev: [], next: [26]},
+        {capacity:1, location:[0.711, 0.280], positionId:81, positionType:"yellowBase", prev: [], next: [26, 82]},
+        {capacity:1, location:[0.711, 0.155], positionId:82, positionType:"yellowBase", prev: [], next: [26, 83]},
+        {capacity:1, location:[0.759, 0.218], positionId:83, positionType:"yellowBase", prev: [], next: [26, 84]},
+        {capacity:1, location:[0.664, 0.218], positionId:84, positionType:"yellowBase", prev: [], next: [26, 81]},
 
-        {capacity:1, location:[0.711, 0.845], positionId:85, positionType:"normal", prev: [], next: [39]},
-        {capacity:1, location:[0.711, 0.720], positionId:86, positionType:"normal", prev: [], next: [39]},
-        {capacity:1, location:[0.759, 0.782], positionId:87, positionType:"normal", prev: [], next: [39]},
-        {capacity:1, location:[0.664, 0.782], positionId:88, positionType:"normal", prev: [], next: [39]},
+        {capacity:1, location:[0.711, 0.845], positionId:85, positionType:"blueBase", prev: [], next: [39, 86]},
+        {capacity:1, location:[0.711, 0.720], positionId:86, positionType:"blueBase", prev: [], next: [39, 87]},
+        {capacity:1, location:[0.759, 0.782], positionId:87, positionType:"blueBase", prev: [], next: [39, 88]},
+        {capacity:1, location:[0.664, 0.782], positionId:88, positionType:"blueBase", prev: [], next: [39, 85]},
 
       ]
     },
@@ -117,7 +117,26 @@ exports.boardGame = {
         {dieType:"nSidedDie", numberOfSides:6}
       ],
       tokens: [
-        {positionId: 88, tokenType: "pawn", tokenImg: "assets/imgs/pokerchip1.png", ownerId:"Red"}
+        {positionId: 73, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
+        {positionId: 74, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
+        {positionId: 75, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
+        {positionId: 76, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
+
+        {positionId: 77, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip2.png", ownerId:"Green"},
+        {positionId: 78, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip2.png", ownerId:"Green"},
+        {positionId: 79, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip2.png", ownerId:"Green"},
+        {positionId: 80, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip2.png", ownerId:"Green"},
+
+        {positionId: 81, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip4.png", ownerId:"Yellow"},
+        {positionId: 82, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip4.png", ownerId:"Yellow"},
+        {positionId: 83, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip4.png", ownerId:"Yellow"},
+        {positionId: 84, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip4.png", ownerId:"Yellow"},
+
+        {positionId: 85, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip3.png", ownerId:"Blue"},
+        {positionId: 86, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip3.png", ownerId:"Blue"},
+        {positionId: 87, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip3.png", ownerId:"Blue"},
+        {positionId: 88, tokenType: "pawn", tokenImage: "assets/imgs/pokerchip3.png", ownerId:"Blue"}
+
       ]
     }
   },
