@@ -1,18 +1,39 @@
 var GameConfig = {};
-var GameStatus = {message:"", endMessage:""};
+var GameStatus = {};
+var GameJson = {};
+
+// TODO: povoar o GameConfig com o arquivo js do jogo
 
 exports.setGameConfig = function (gamePath) {
-  GameConfig = require(gamePath);
+  GameJson = require(gamePath);
+
+  GameConfig.gameId = GameJson.id;
+  GameConfig.playerCount = GameJson.gameData.playerOptions.playerCount;
+  GameConfig.playerIdList = GameJson.gameData.playerOptions.playerId;
+
+  GameConfig.boardBackground = GameJson.gameData.board.background;
+  GameConfig.boardType = GameJson.gameData.board.boardType;
+  //GameConfig.boardPositionList = GameJson.gameData.board;
+
   console.log(GameConfig);
 }
 
 exports.getGameConfig = function(config){
 	try {
-		return GameConfig.boardGame[config];
+		return GameConfig[config];
 	}
 	catch (err) {
 		console.log(err.message);
 	}
+}
+
+exports.startGameStatus = function(){
+  GameStatus.boardPositionList = GameJson.gameData.board.positions;
+
+  GameStatus.playerStatus = {};
+  for (i = 0; i < GameJson.playerCount; i++) {
+    GameStatus.playerStatus[GameConfig.playerIdList[i]] = {};
+  }
 }
 
 exports.getGameStatus = function(status){
@@ -38,7 +59,7 @@ exports.move = function(token) {
 
     currentPos = positions[nextId];
   }
-  
+
 }
 
 exports.checkGoal = function() {
@@ -53,3 +74,9 @@ function rollDice() {
 }
 
 //exports.startGameStatus = function ()
+
+// Helper functions
+
+exports.getComponentByOwnerId = function (ownerId) {
+  var components = GameConfig.boardGame.gameData.component;
+}
