@@ -5,15 +5,15 @@ var GameJson = {};
 // TODO: povoar o GameConfig com o arquivo js do jogo
 
 exports.setGameConfig = function (gamePath) {
-  GameJson = require(gamePath);
+  GameJson = require(gamePath).boardGame;
 
   GameConfig.gameId = GameJson.id;
 
   // Player config
   GameConfig.playerCount = GameJson.gameData.playerOptions.playerCount;
   GameConfig.playerIdList = GameJson.gameData.playerOptions.playerId;
-  GameConfig.playerAttributeImg = {};
-  GameConfig.playerAttributeDesc = {};
+  GameConfig.playerAttributeImg = [];
+  GameConfig.playerAttributeDesc = [];
   if (GameJson.gameData.playerOptions.playerAttributes !== undefined) { // Feature não mandatoria
     console.log("playerAttributes === undefined");
     GameJson.gameData.playerOptions.playerAttributes.forEach(function(playerAttribute){
@@ -30,13 +30,13 @@ exports.setGameConfig = function (gamePath) {
   GameConfig.boardType = GameJson.gameData.board.boardType;
 
   // Component Config
-  GameConfig.tokenImg = {};
-  GameConfig.tokenDescription = {};
-  GameJson.gameData.component.tokens.forEach(function(token)) {
+  GameConfig.tokenImg = [];
+  GameConfig.tokenDescription = [];
+  GameJson.gameData.component.tokens.forEach(function(token) {
     GameConfig.tokenImg[token.tokenType] = token.tokenImage;
     if (token.tokenDescription !== undefined)
       GameConfig.tokenDescription[token.tokenType] = token.tokenDescription;
-  }
+  });
 
   // Dice config
   GameConfig.dice = (GameJson.gameData.component.dice !== undefined) ? GameJson.gameData.component.dice : {};
