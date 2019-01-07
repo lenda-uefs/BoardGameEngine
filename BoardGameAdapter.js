@@ -2,7 +2,7 @@ var GameConfig = {};
 var GameStatus = {};
 var GameJson = {};
 
-// TODO: povoar o GameConfig com o arquivo js do jogo
+exports.boardGameList = ["Ludo.js"];
 
 exports.setGameConfig = function (gamePath) {
   GameJson = require(gamePath).boardGame;
