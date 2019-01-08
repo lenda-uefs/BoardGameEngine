@@ -58,12 +58,10 @@
           var pawnHeight = 0;
 
           var pawnSprite = {};
-          
+
           var boardGameAdapter = require('./BoardGameAdapter.js');
           boardGameAdapter.setGameConfig("./"+boardGameAdapter.boardGameList[getGameIndex()]);
-
-          // console.log(boardGameAdapter.getGameConfig("gameData").component.tokens[0].tokenImg);
-          // console.log(boardGameAdapter.getGameConfig("gameData").board.background);
+          boardGameAdapter.startGameStatus();
 
           var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
 
@@ -89,20 +87,45 @@
             game.load.image('background', boardGameAdapter.getGameConfig("boardBackground"));
 
             // Carregando icones dos atributos do jogador
-            boardGameAdapter.getGameConfig("playerAttributeImg").forEach(function (playerAttributeImg, attributeName) {
-              game.load.image(attributeName, playerAttributeImg);
-            });
+            let attributeImg = boardGameAdapter.getGameConfig("playerAttributeImg");
+            for (var attributeName in attributeImg) {
+              if (attributeImg.hasOwnProperty(attributeName)) {
+                game.load.image(attributeName +" "+ attributeImg[attributeName]);
+              }
+            }
 
             // Carregando icones dos tokens
-            boardGameAdapter.getGameConfig("tokenImg").forEach(function (tokenImg, tokenType) {
-              game.load.image(tokenType, tokenImg);
-            });
+            let tokenImg = boardGameAdapter.getGameConfig("tokenImg");
+            for (var tokenType in tokenImg) {
+              if (tokenImg.hasOwnProperty(tokenType)) {
+                game.load.image(tokenType, tokenImg[tokenType]);
+              }
+            }
           }
-
 
           // Insere os componentes do jogo no mundo
           function create() {
-            game.add.sprite(0, 0, 'background');
+            var backgroundImg = game.add.sprite(0, 0, 'background');
+            backgroundWidth = backgroundImg.width;
+            backgroundHeight = backgroundImg.height;
+
+            let boardPositionList = boardGameAdapter.getGameStatus("boardPositionList");
+            let playerStatus = boardGameAdapter.getGameStatus('playerStatus');
+
+            for (var id in playerStatus) {
+              if (playerStatus.hasOwnProperty(id)) {
+                let tokens = playerStatus[id].tokens;
+
+                for (var i = 0; i < tokens.length; i++) {
+                  let position = boardPositionList[tokens[i].positionId];
+                  game.add.sprite(
+                    backgroundWidth*position.location[0],
+                    backgroundHeight*position.location[1],
+                    tokens[i].tokenType
+                  ).anchor.set(0.5); // TODO: remover ancora (?)
+                }
+              }
+            }
 
             // var posId = boardGameAdapter.getGameConfig("gameData").component.tokens[0].positionId
             // var pos = boardGameAdapter.getGameConfig("gameData").board.positions[posId];

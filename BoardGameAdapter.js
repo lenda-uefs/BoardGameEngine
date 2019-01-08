@@ -41,7 +41,7 @@ exports.setGameConfig = function (gamePath) {
   // Dice config
   GameConfig.dice = (GameJson.gameData.component.dice !== undefined) ? GameJson.gameData.component.dice : {};
 
-  console.log(GameConfig);
+  //console.log(GameConfig);
 }
 
 exports.getGameConfig = function(config){
@@ -56,10 +56,25 @@ exports.getGameConfig = function(config){
 exports.startGameStatus = function(){
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
 
-  GameStatus.playerStatus = {};
-  for (i = 0; i < GameJson.playerCount; i++) {
-    GameStatus.playerStatus[GameConfig.playerIdList[i]] = {};
+  GameStatus.playerStatus = [];
+  // Player Attributes
+  for (i = 0; i < GameConfig.playerCount; i++) {
+    var player = {};
+    player.id = GameConfig.playerIdList[i];
+    player.tokens = [];
+
+    if (GameJson.gameData.playerOptions.playerAttributes !== undefined) {
+      GameJson.gameData.playerOptions.playerAttributes.forEach(function(playerAttribute){
+        player[playerAttribute.name] = playerAttribute.value;
+      });
+    }
+
+    GameStatus.playerStatus[GameConfig.playerIdList[i]] = player;
   }
+
+  GameJson.gameData.component.tokens.forEach(function(token){
+    GameStatus.playerStatus[token.ownerId].tokens.push(token);
+  });
 }
 
 exports.getGameStatus = function(status){
