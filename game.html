@@ -87,8 +87,6 @@
 
           // Carregando as imagens do jogo
           function preload() {
-            // TODO remover
-            game.load.image('button1', 'button1.png');
 
             // Carregando tabuleiro
             game.load.image('background', boardGameAdapter.getGameConfig("boardBackground"));
@@ -149,8 +147,6 @@
             //     backgroundWidth*pos.location[0]-(pawnWidth/2),
             //     backgroundHeight*pos.location[1]-(pawnHeight/2), 'pawn'
             // );
-
-            game.add.button(50, 50, 'button1', button1OnClick);
           }
 
           function perform() {
