@@ -47,11 +47,11 @@
       <script type="text/javascript">
         window.onload = function () {
           var gameList = document.getElementById('gameList');
-          require('./BoardGameAdapter.js').boardGameList.forEach(function(game, index){
+          require('js/BoardGameAdapter.js').boardGameList.forEach(function(game, index){
             var a = document.createElement("a");
             var newItem = document.createElement("li");
 
-            a.textContent = require('./'+game).boardGame.id;
+            a.textContent = require('js/'+game).boardGame.id;
             a.setAttribute('href', "game.html?select="+index);
             newItem.appendChild(a);
             gameList.appendChild(newItem);

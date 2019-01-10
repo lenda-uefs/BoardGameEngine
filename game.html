@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Board Game</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style/bootstrap.min.css">
@@ -66,8 +66,8 @@
 
           var pawnSprite = {};
 
-          var boardGameAdapter = require('./BoardGameAdapter.js');
-          boardGameAdapter.setGameConfig("./"+boardGameAdapter.boardGameList[getGameIndex()]);
+          var boardGameAdapter = require('js/BoardGameAdapter.js');
+          boardGameAdapter.setGameConfig("js/"+boardGameAdapter.boardGameList[getGameIndex()]);
           boardGameAdapter.startGameStatus();
 
           var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-game', { preload: preload, create: create });
@@ -165,8 +165,8 @@
 
         }
       </script>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+      <!-- <h3>Test</h3>
+      <p>Lorem ipsum...</p> -->
     </div>
 
     <!-- Right sidenav -->
