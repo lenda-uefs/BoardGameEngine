@@ -1,61 +1,76 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Board Game</title>
-  </head>
-  <body>
-    <h1>Lista de Jogos</h1> <br>
-    <ul id="gameList">
+<html lang="en">
+<head>
+  <title>Board Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="style/index.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/phaser.min.js"></script>
+  <script src="js/require.js"></script>
+</head>
+<body>
 
-    </ul>
-    <script type="text/javascript">
-      function require(url){
-        if (url.toLowerCase().substr(-3)!=='.js') url+='.js'; // to allow loading without js suffix;
-        if (!require.cache) require.cache=[]; //init cache
-        var exports=require.cache[url]; //get from cache
-        if (!exports) { //not cached
-          try {
-            exports={};
-            var X=new XMLHttpRequest();
-            X.open("GET", url, 0); // sync
-            X.send();
-            if (X.status && X.status !== 200)  throw new Error(X.statusText);
-            var source = X.responseText;
-            // fix (if saved form for Chrome Dev Tools)
-            if (source.substr(0,10)==="(function("){
-              var moduleStart = source.indexOf('{');
-              var moduleEnd = source.lastIndexOf('})');
-              var CDTcomment = source.indexOf('//@ ');
-              if (CDTcomment>-1 && CDTcomment<moduleStart+6) moduleStart = source.indexOf('\n',CDTcomment);
-              source = source.slice(moduleStart+1,moduleEnd-1);
-            }
-            // fix, add comment to show source on Chrome Dev Tools
-            source="//@ sourceURL="+window.location.origin+url+"\n" + source;
-            //------
-            var module = { id: url, uri: url, exports:exports }; //according to node.js modules
-            var anonFn = new Function("require", "exports", "module", source); //create a Fn with module code, and 3 params: require, exports & module
-            anonFn(require, exports, module); // call the Fn, Execute the module
-            require.cache[url]  = exports = module.exports; //cache obj exported by module
-          } catch (err) {
-            throw new Error("Error loading module "+url+": "+err);
-          }
-        }
-        return exports; //require returns object exported by module
-      }
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>
 
-      window.onload = function () {
-        var gameList = document.getElementById('gameList');
-        require('./BoardGameAdapter.js').boardGameList.forEach(function(game, index){
-          var a = document.createElement("a");
-          var newItem = document.createElement("li");
+<div class="container-fluid text-center">
+  <div class="row content">
 
-          a.textContent = require('./'+game).boardGame.id;
-          a.setAttribute('href', "game.html?select="+index);
-          newItem.appendChild(a);
-          gameList.appendChild(newItem);
-        });
-      };
-    </script>
-  </body>
+    <!-- Left sidenav -->
+    <div class="col-sm-2 sidenav">
+    </div>
+
+    <div class="col-sm-8 text-left">
+      <h1>Lista de Jogos</h1> <br>
+      <ul id="gameList">
+
+      </ul>
+      <script type="text/javascript">
+        window.onload = function () {
+          var gameList = document.getElementById('gameList');
+          require('./BoardGameAdapter.js').boardGameList.forEach(function(game, index){
+            var a = document.createElement("a");
+            var newItem = document.createElement("li");
+
+            a.textContent = require('./'+game).boardGame.id;
+            a.setAttribute('href', "game.html?select="+index);
+            newItem.appendChild(a);
+            gameList.appendChild(newItem);
+          });
+        };
+      </script>
+    </div>
+
+    <!-- Right sidenav -->
+    <div class="col-sm-2 sidenav">
+      <div id="actions">
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+</body>
 </html>
