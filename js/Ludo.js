@@ -3,7 +3,10 @@ exports.boardGame = {
   gameData: {
     playerOptions: {
       playerCount: 4,
-      playerId: ["Red", "Green", "Blue", "Yellow"]
+      playerId: ["Red", "Green", "Blue", "Yellow"],
+      playerAttributes: [
+        {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg"}
+      ]
     },
     board: {
       background:"assets/imgs/LudoBoard2.png",
@@ -142,8 +145,23 @@ exports.boardGame = {
   },
 
   gameFlow: {
-    actions: ["move", "rollDice"],
-    rules: {movement: "point-to-point", turn: "fixedOrder"},
-    goal: [{goalType: "areaControl", positionType: "finish"}]
+    actions: ["rollDice", "selectToken", "selectPosition"],
+    rules: {
+      movement: "point-to-point",
+      turnOptions: {maxTurnCount: 50, playerOrder: "staticOrder", actionQueue:["rollDice", "selectPosition"]},
+      conditionsToWin: {playerScore: null, numRemainingTokens: 0, numPositionsHeld: null, numRemainingPlayers: null},
+      conditionsToLose: {playerScore: null, numRemainingTokens: null, numPositionsHeld: null, numRemainingPlayers: null}
+    },
+    gameEvents: {
+      diceEvent: function (gameStatus, diceValue) {},
+      passingEvent: function (gameStatus, positionType) {},
+      stopingEvent: function (gameStatus, positionType) {},
+      endTurn: function(gameStatus) {},
+      endGame: function(gameStatus) {},
+      playerWin: function(gameStatus) {},
+      playerEliminated: function(gameStatus) {},
+      tokenGained: function(gameStatus) {},
+      tokenEliminated: function(gameStatus) {}
+    }
   }
 }

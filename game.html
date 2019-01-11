@@ -39,9 +39,6 @@
     <div class="col-sm-2 sidenav">
       <div id="playerAttribute">
         <h4>Player Attributes</h4>
-        <p>Prop1 = 0</p>
-        <p>Prop2 = 0</p>
-        <p>Prop3 = 0</p>
       </div>
     </div>
 
@@ -70,6 +67,23 @@
           boardGameAdapter.setGameConfig("js/"+boardGameAdapter.boardGameList[getGameIndex()]);
           boardGameAdapter.startGameStatus();
 
+          var updatePlayerAttributes = function (){
+            console.log("here");
+            let playerId = boardGameAdapter.getGameStatus("currentPlayerId");
+            let playerAttributes = boardGameAdapter.getGameStatus("playerStatus")[playerId].attributes;
+            let attributeElem = null;
+            let innerHTML = null;
+
+            for (var attributeName in playerAttributes) {
+              if (playerAttributes.hasOwnProperty(attributeName)) {
+                attributeElem = document.getElementById(attributeName);
+                innerHTML = attributeElem.innerHTML;
+                attributeElem.innerHTML = innerHTML.slice(0, innerHTML.lastIndexOf('=')+1)
+                  + " " + playerAttributes[attributeName];
+              }
+            }
+          }
+
           var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-game', { preload: preload, create: create });
 
           function button1OnClick () {
@@ -93,9 +107,30 @@
 
             // Carregando icones dos atributos do jogador
             let attributeImg = boardGameAdapter.getGameConfig("playerAttributeImg");
+            let attributeDesc = boardGameAdapter.getGameConfig("playerAttributeDesc");
             for (var attributeName in attributeImg) {
               if (attributeImg.hasOwnProperty(attributeName)) {
-                game.load.image(attributeName +" "+ attributeImg[attributeName]);
+                let playerAttributeDiv = document.getElementById('playerAttribute');
+                // <img src="assets/imgs/tokenpile.svg" alt="Player Attribute"
+                // width="42" height="42" style="vertical-align:middle"> Prop1 = 0
+
+                let icon = document.createElement("IMG");
+                icon.id = "teste";
+                icon.src = attributeImg[attributeName];
+                icon.alt = attributeName;
+                icon.width = 42;
+                icon.height = 42;
+                icon.style.verticalAlign = 'middle';
+
+                let p = document.createElement("p");
+                let text = document.createTextNode(" " + attributeName + " = ");
+                p.id = attributeName;
+                p.title = (attributeDesc[attributeName] === undefined)?
+                  attributeName : attributeDesc[attributeName];
+                p.appendChild(icon);
+                p.appendChild(text);
+
+                playerAttributeDiv.appendChild(p);
               }
             }
 
@@ -131,6 +166,8 @@
                 }
               }
             }
+
+            updatePlayerAttributes();
 
             // var posId = boardGameAdapter.getGameConfig("gameData").component.tokens[0].positionId
             // var pos = boardGameAdapter.getGameConfig("gameData").board.positions[posId];
