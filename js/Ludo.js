@@ -145,7 +145,10 @@ exports.boardGame = {
   },
 
   gameFlow: {
-    actions: ["rollDice", "selectToken", "selectPosition"],
+    actions: [
+      {actionType: "rollDice", actionLabel: "Roll Dice"},
+      {actionType: "selectToken", actionLabel: "Select Token to move"}
+    ],
     rules: {
       movement: "point-to-point",
       turnOptions: {maxTurnCount: 50, playerOrder: "staticOrder", actionQueue:["rollDice", "selectPosition"]},

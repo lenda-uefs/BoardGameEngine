@@ -3,7 +3,14 @@ var GameStatus = {};
 var GameJson = {};
 
 var currentPlayerIndex = -1;
+var currentActionIndex = -1;
 var elapsedTurns = 0;
+var defaultActionLabels = {
+  rollDice:"Roll Dice",
+  selectPosition:"Select Position",
+  selectToken:"Select Token",
+  endTurn: "End Turn"
+};
 
 exports.boardGameList = ["Ludo.js"];
 
@@ -48,11 +55,20 @@ exports.setGameConfig = function (gamePath) {
   GameConfig.nextPlayerIndex =
     (GameJson.gameFlow.rules.turnOptions.playerOrder == "staticOrder") ?
       nextPlayerIndex : GameJson.gameFlow.rules.turnOptions.nextPlayerFcn;
-  GameConfig.actionQueue = GameJson.gameFlow.rules.turnOptions.actionQueue;
+  GameConfig.defaultActionQueue = GameJson.gameFlow.rules.turnOptions.actionQueue;
 
   // Conditions to win/lose
   GameConfig.conditionsToWin = GameJson.gameFlow.rules.conditionsToWin;
   GameConfig.conditionsToLose = GameJson.gameFlow.rules.conditionsToLose;
+
+  // Actions config
+  let actions = GameJson.gameFlow.actions;
+  actions.forEach(function (action){
+    if (action.actionLabel === undefined)
+      action.actionLabel = defaultActionLabels[action.actionType];
+  });
+
+  GameConfig.actions = actions;
 }
 
 exports.getGameConfig = function(config){
@@ -66,7 +82,12 @@ exports.getGameConfig = function(config){
 
 exports.startGameStatus = function(){
   clearGameStatus();
+
+  // Board Related status
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
+
+  // Actions
+  GameStatus.actionQueue = GameJson.gameFlow.rules.turnOptions.actionQueue;
 
   // Player Attributes
   GameStatus.playerStatus = [];
@@ -74,9 +95,9 @@ exports.startGameStatus = function(){
     var player = {};
     player.id = GameConfig.playerIdList[i];
     player.tokens = [];
-    player.attributes = {};
 
     if (GameJson.gameData.playerOptions.playerAttributes !== undefined) {
+      player.attributes = {};
       GameJson.gameData.playerOptions.playerAttributes.forEach(function(playerAttribute){
         player.attributes[playerAttribute.name] = playerAttribute.value;
       });
@@ -92,6 +113,12 @@ exports.startGameStatus = function(){
   // Set current player
   GameStatus.currentPlayerId = GameConfig.playerIdList[
     GameConfig.nextPlayerIndex(currentPlayerIndex, GameConfig)];
+
+  // Set current action set
+  GameStatus.currentAction = GameConfig.actions[
+    nextActionIndex(currentActionIndex, GameConfig)];
+
+  console.log(GameStatus.currentAction);
 }
 
 exports.getGameStatus = function(status){
@@ -134,6 +161,11 @@ function rollDice() {
 function nextPlayerIndex(currentPlayerIndex, GameConfig) {
   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
   return currentPlayerIndex;
+}
+
+function nextActionIndex(currentActionIndex, GameConfig) {
+  currentActionIndex = (currentActionIndex == GameConfig.actions.lenght - 1)? 0 : currentActionIndex+1;
+  return currentActionIndex;
 }
 
 function clearGameStatus(){
