@@ -108,6 +108,11 @@
             "/" + boardGameAdapter.getGameConfig("maxTurnCount") : "");
           }
 
+          var updateMessage = function() {
+            document.getElementById('message').textContent =
+              boardGameAdapter.getGameStatus("message");
+          }
+
           var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-game', { preload: preload, create: create });
 
           function button1OnClick () {
@@ -211,6 +216,7 @@
             updatePlayerAttributes();
             updateActions();
             updateTurnsDisplay();
+            updateMessage();
 
             // var posId = boardGameAdapter.getGameConfig("gameData").component.tokens[0].positionId
             // var pos = boardGameAdapter.getGameConfig("gameData").board.positions[posId];
@@ -250,6 +256,8 @@
       <h4>Available Actions</h4>
       <div id="actions">
       </div>
+      <hr>
+      <p id="message"></p>
     </div>
   </div>
 </div>
