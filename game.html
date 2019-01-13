@@ -165,20 +165,38 @@
 
             // Criando itens das açoes
             let actions = boardGameAdapter.getGameConfig("actions");
-            actions.forEach(function (action){
-              let actionDiv = document.getElementById('actions');
+            console.log(actions);
+            for (var actionType in actions) {
+              if (actions.hasOwnProperty(actionType)) {
+                let action = actions[actionType];
+                let actionDiv = document.getElementById('actions');
 
-              // <p><a href="#">Link</a></p>
-              let a = document.createElement("a");
-              a.href = "#";
-              a.textContent = action.actionLabel;
+                // <p><a href="#">Link</a></p>
+                let a = document.createElement("a");
+                a.href = "#";
+                a.textContent = action.actionLabel;
 
-              let p = document.createElement("p");
-              p.id = action.actionType;
-              p.style.display = "none";
-              p.appendChild(a);
-              actionDiv.appendChild(p);
-            });
+                let p = document.createElement("p");
+                p.id = action.actionType;
+                p.style.display = "none";
+                p.appendChild(a);
+                actionDiv.appendChild(p);
+              }
+            }
+            // actions.forEach(function (action){
+            //   let actionDiv = document.getElementById('actions');
+            //
+            //   // <p><a href="#">Link</a></p>
+            //   let a = document.createElement("a");
+            //   a.href = "#";
+            //   a.textContent = action.actionLabel;
+            //
+            //   let p = document.createElement("p");
+            //   p.id = action.actionType;
+            //   p.style.display = "none";
+            //   p.appendChild(a);
+            //   actionDiv.appendChild(p);
+            // });
 
             // Carregando icones dos tokens
             let tokenImg = boardGameAdapter.getGameConfig("tokenImg");

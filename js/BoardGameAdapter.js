@@ -62,13 +62,15 @@ exports.setGameConfig = function (gamePath) {
   GameConfig.conditionsToLose = GameJson.gameFlow.rules.conditionsToLose;
 
   // Actions config
+  GameConfig.actions = {};
   let actions = GameJson.gameFlow.actions;
   actions.forEach(function (action){
     if (action.actionLabel === undefined)
       action.actionLabel = defaultActionLabels[action.actionType];
+
+    GameConfig.actions[action.actionType] = action;
   });
 
-  GameConfig.actions = actions;
 }
 
 exports.getGameConfig = function(config){
@@ -83,11 +85,11 @@ exports.getGameConfig = function(config){
 exports.startGameStatus = function(){
   clearGameStatus();
 
-  // Board Related status
+  // Status relacionados ao tabuleiro
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
 
-  // Actions
-  GameStatus.actionQueue = GameJson.gameFlow.rules.turnOptions.actionQueue;
+  // Fila de ações
+  GameStatus.actionQueue = GameConfig.defaultActionQueue;
 
   // Player Attributes
   GameStatus.playerStatus = [];
@@ -110,13 +112,12 @@ exports.startGameStatus = function(){
     GameStatus.playerStatus[token.ownerId].tokens.push(token);
   });
 
-  // Set current player
+  // player atual
   GameStatus.currentPlayerId = GameConfig.playerIdList[
     GameConfig.nextPlayerIndex(currentPlayerIndex, GameConfig)];
 
-  // Set current action set
-  GameStatus.currentAction = GameConfig.actions[
-    nextActionIndex(currentActionIndex, GameConfig)];
+  // Ação atual;
+  GameStatus.currentAction = GameConfig.actions[GameStatus.actionQueue.shift()];
 
   // Turno atual
   GameStatus.currentTurn = elapsedTurns + 1;
