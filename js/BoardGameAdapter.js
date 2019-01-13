@@ -118,7 +118,8 @@ exports.startGameStatus = function(){
   GameStatus.currentAction = GameConfig.actions[
     nextActionIndex(currentActionIndex, GameConfig)];
 
-  console.log(GameStatus.currentAction);
+  // Turno atual
+  GameStatus.currentTurn = elapsedTurns + 1;
 }
 
 exports.getGameStatus = function(status){

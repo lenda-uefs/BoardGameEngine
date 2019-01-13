@@ -44,6 +44,10 @@
 
     <!-- Game Div -->
     <div class="col-sm-8 text-left">
+      <span style="font-size:18px">
+        <span id="turn"></span> &emsp;
+        <span id="playerId"></span>
+      </span>
       <div id="phaser-game"></div>
       <script type="text/javascript">
 
@@ -92,6 +96,16 @@
               elements[i].style.display = (elements[i].id == currentAction.actionType) ?
                 "block" : "none";
             }
+          }
+
+          var updateTurnsDisplay = function() {
+            document.getElementById('playerId').textContent =
+              "Current Player: " + boardGameAdapter.getGameStatus("currentPlayerId");
+
+            document.getElementById('turn').textContent = (
+              "Turn = " + boardGameAdapter.getGameStatus("currentTurn")
+            ) + ((boardGameAdapter.getGameConfig("maxTurnCount") > 0) ?
+            "/" + boardGameAdapter.getGameConfig("maxTurnCount") : "");
           }
 
           var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-game', { preload: preload, create: create });
@@ -196,6 +210,7 @@
 
             updatePlayerAttributes();
             updateActions();
+            updateTurnsDisplay();
 
             // var posId = boardGameAdapter.getGameConfig("gameData").component.tokens[0].positionId
             // var pos = boardGameAdapter.getGameConfig("gameData").board.positions[posId];
