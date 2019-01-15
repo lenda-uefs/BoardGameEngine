@@ -61,12 +61,7 @@
         window.onload = function () {
           var gameState = "";
 
-          var backgroundWidth = 0;
-          var backgroundHeight = 0;
-          var pawnWidth = 0;
-          var pawnHeight = 0;
-
-          var pawnSprite = {};
+          var tokenSprites = {};
 
           var boardGameAdapter = require('js/BoardGameAdapter.js');
           boardGameAdapter.setGameConfig("js/"+boardGameAdapter.boardGameList[getGameIndex()]);
@@ -165,38 +160,32 @@
 
             // Criando itens das açoes
             let actions = boardGameAdapter.getGameConfig("actions");
-            console.log(actions);
             for (var actionType in actions) {
               if (actions.hasOwnProperty(actionType)) {
                 let action = actions[actionType];
                 let actionDiv = document.getElementById('actions');
 
                 // <p><a href="#">Link</a></p>
-                let a = document.createElement("a");
-                a.href = "#";
-                a.textContent = action.actionLabel;
+                let label = {};
+                if (action.actionType == "selectToken" ||
+                  action.actionType == "selectPosition") {
+                  label = document.createElement("SPAN");
+                } else {
+                  label = document.createElement("a");
+                  label.href = "#";
+                  label.onclick = function() {
+                    boardGameAdapter.updateGameStatus(action.actionType);
+                  };
+                }
+                label.textContent = action.actionLabel;
 
                 let p = document.createElement("p");
                 p.id = action.actionType;
                 p.style.display = "none";
-                p.appendChild(a);
+                p.appendChild(label);
                 actionDiv.appendChild(p);
               }
             }
-            // actions.forEach(function (action){
-            //   let actionDiv = document.getElementById('actions');
-            //
-            //   // <p><a href="#">Link</a></p>
-            //   let a = document.createElement("a");
-            //   a.href = "#";
-            //   a.textContent = action.actionLabel;
-            //
-            //   let p = document.createElement("p");
-            //   p.id = action.actionType;
-            //   p.style.display = "none";
-            //   p.appendChild(a);
-            //   actionDiv.appendChild(p);
-            // });
 
             // Carregando icones dos tokens
             let tokenImg = boardGameAdapter.getGameConfig("tokenImg");
@@ -216,17 +205,26 @@
             let boardPositionList = boardGameAdapter.getGameStatus("boardPositionList");
             let playerStatus = boardGameAdapter.getGameStatus('playerStatus');
 
-            for (var id in playerStatus) {
+            for (let id in playerStatus) {
               if (playerStatus.hasOwnProperty(id)) {
                 let tokens = playerStatus[id].tokens;
+                tokenSprites[id] = [];
 
-                for (var i = 0; i < tokens.length; i++) {
+                for (let i = 0; i < tokens.length; i++) {
                   let position = boardPositionList[tokens[i].positionId];
-                  game.add.sprite(
+                  let sprite = game.add.sprite(
                     backgroundWidth*position.location[0],
                     backgroundHeight*position.location[1],
                     tokens[i].tokenType
-                  ).anchor.set(0.5); // TODO: remover ancora (?)
+                  );
+                  sprite.anchor.set(0.5); // TODO: remover ancora (?)
+                  sprite.inputEnabled = true;
+                  sprite.events.onInputDown.add(
+                    function(){
+                      boardGameAdapter.updateGameStatus(i+"&"+id);
+                    }, this);
+
+                  tokenSprites[id][i] = sprite;
                 }
               }
             }

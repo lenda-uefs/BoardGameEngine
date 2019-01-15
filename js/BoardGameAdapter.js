@@ -96,6 +96,7 @@ exports.startGameStatus = function(){
   for (i = 0; i < GameConfig.playerCount; i++) {
     var player = {};
     player.id = GameConfig.playerIdList[i];
+    player.diceValue = 0;
     player.tokens = [];
 
     if (GameJson.gameData.playerOptions.playerAttributes !== undefined) {
@@ -109,6 +110,7 @@ exports.startGameStatus = function(){
   }
 
   GameJson.gameData.component.tokens.forEach(function(token){
+    token.isSelected = false;
     GameStatus.playerStatus[token.ownerId].tokens.push(token);
   });
 
@@ -121,6 +123,10 @@ exports.startGameStatus = function(){
 
   // Turno atual
   GameStatus.currentTurn = elapsedTurns + 1;
+
+  GameStatus.statusId =
+    (GameStatus.currentAction.actionType == "selectToken")? "select-token":(
+    (GameStatus.currentAction.actionType == "selectPosition")? "select-position": "standby");
 }
 
 exports.getGameStatus = function(status){
@@ -130,6 +136,27 @@ exports.getGameStatus = function(status){
 	catch (err) {
 		console.log(err.message);
 	}
+}
+
+exports.updateGameStatus = function (command) {
+  console.log(GameStatus.statusId + " " + command);
+  switch (GameStatus.statusId) {
+    case "select-token":
+      let ownerId = command.slice(command.indexOf('&')+1);
+      let tokenId = parseInt(command.slice(0, command.indexOf('&')));
+      let selectedToken = GameStatus.playerStatus[ownerId].tokens[tokenId];
+      alert(ownerId + " " + selectedToken.positionId);
+      break;
+    case "select-position":
+      break;
+    case "standby":
+      if (command.includes("rollDice")) {
+        alert("You got a " + rollDice());
+      }
+      break;
+    default:
+
+  }
 }
 
 exports.move = function(token) {
@@ -154,7 +181,7 @@ exports.checkGoal = function() {
 }
 
 function rollDice() {
-  var dice = GameConfig.gameData.component.dice[0];
+  var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie") {
     return 1 + Math.floor(Math.random() * (dice.numberOfSides - 1));
   }
