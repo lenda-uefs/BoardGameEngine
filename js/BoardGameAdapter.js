@@ -183,7 +183,7 @@ exports.checkGoal = function() {
 function rollDice() {
   var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie") {
-    return 1 + Math.floor(Math.random() * (dice.numberOfSides - 1));
+    return 1 + Math.floor(Math.random() * dice.numberOfSides);
   }
 }
 
