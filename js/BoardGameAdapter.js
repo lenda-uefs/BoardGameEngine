@@ -182,9 +182,10 @@ exports.checkGoal = function() {
 
 function rollDice() {
   var dice = GameConfig.dice[0];
-  if (dice.dieType == "nSidedDie") {
+  if (dice.dieType == "nSidedDie")
     return 1 + Math.floor(Math.random() * dice.numberOfSides);
-  }
+  else
+    return dice.valueSet[Math.floor(Math.random() * dice.valueSet.length)];
 }
 
 function nextPlayerIndex(currentPlayerIndex, GameConfig) {
