@@ -4,7 +4,7 @@ var GameJson = {};
 
 var currentPlayerIndex = -1;
 var currentActionIndex = -1;
-var elapsedTurns = 0;
+var steps = 0;
 var defaultActionLabels = {
   rollDice:"Roll Dice",
   selectPosition:"Select Position",
@@ -55,22 +55,10 @@ exports.setGameConfig = function (gamePath) {
   GameConfig.nextPlayerIndex =
     (GameJson.gameFlow.rules.turnOptions.playerOrder == "staticOrder") ?
       nextPlayerIndex : GameJson.gameFlow.rules.turnOptions.nextPlayerFcn;
-  GameConfig.defaultActionQueue = GameJson.gameFlow.rules.turnOptions.actionQueue;
 
   // Conditions to win/lose
   GameConfig.conditionsToWin = GameJson.gameFlow.rules.conditionsToWin;
   GameConfig.conditionsToLose = GameJson.gameFlow.rules.conditionsToLose;
-
-  // Actions config
-  GameConfig.actions = {};
-  let actions = GameJson.gameFlow.actions;
-  actions.forEach(function (action){
-    if (action.actionLabel === undefined)
-      action.actionLabel = defaultActionLabels[action.actionType];
-
-    GameConfig.actions[action.actionType] = action;
-  });
-
 }
 
 exports.getGameConfig = function(config){
@@ -85,11 +73,22 @@ exports.getGameConfig = function(config){
 exports.startGameStatus = function(){
   clearGameStatus();
 
+  // Ações
+  GameStatus.actions = {};
+  GameStatus.defaultActionQueue = GameJson.gameFlow.rules.turnOptions.actionQueue;
+  let actions = GameJson.gameFlow.actions;
+  actions.forEach(function (action){
+    if (action.actionLabel === undefined)
+      action.actionLabel = defaultActionLabels[action.actionType];
+
+    GameStatus.actions[action.actionType] = action;
+  });
+
   // Status relacionados ao tabuleiro
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
 
-  // Fila de ações
-  GameStatus.actionQueue = GameConfig.defaultActionQueue;
+  // Eventos do jogo
+  GameStatus.gameEvents = GameJson.gameFlow.gameEvents;
 
   // Player Attributes
   GameStatus.playerStatus = [];
@@ -114,19 +113,7 @@ exports.startGameStatus = function(){
     GameStatus.playerStatus[token.ownerId].tokens.push(token);
   });
 
-  // player atual
-  GameStatus.currentPlayerId = GameConfig.playerIdList[
-    GameConfig.nextPlayerIndex(currentPlayerIndex, GameConfig)];
-
-  // Ação atual;
-  GameStatus.currentAction = GameConfig.actions[GameStatus.actionQueue.shift()];
-
-  // Turno atual
-  GameStatus.currentTurn = elapsedTurns + 1;
-
-  GameStatus.statusId =
-    (GameStatus.currentAction.actionType == "selectToken")? "select-token":(
-    (GameStatus.currentAction.actionType == "selectPosition")? "select-position": "standby");
+  nextAction(GameStatus);
 }
 
 exports.getGameStatus = function(status){
@@ -139,45 +126,25 @@ exports.getGameStatus = function(status){
 }
 
 exports.updateGameStatus = function (command) {
-  console.log(GameStatus.statusId + " " + command);
   switch (GameStatus.statusId) {
     case "select-token":
       let ownerId = command.slice(command.indexOf('&')+1);
       let tokenId = parseInt(command.slice(0, command.indexOf('&')));
       let selectedToken = GameStatus.playerStatus[ownerId].tokens[tokenId];
+      nextAction(GameStatus);
       alert(ownerId + " " + selectedToken.positionId);
       break;
     case "select-position":
       break;
     case "standby":
       if (command.includes("rollDice")) {
-        alert("You got a " + rollDice());
+        var player = GameStatus.playerStatus[GameStatus.currentPlayerId];
+        player.diceValue = rollDice();
+        GameStatus.gameEvents.diceEvent(GameStatus, player.diceValue);
+        nextAction(GameStatus);
       }
       break;
-    default:
-
   }
-}
-
-exports.move = function(token) {
-  var res = rollDice();
-  GameStatus.message = "You rolled a " + res + '!';
-  var positions = GameConfig.gameData.board.positions;
-  var currentPosId = token.positionId;
-  var currentPos = positions[currentPosId];
-
-  var nextId;
-  for (var i = 0; i < res; i++) {
-    nextId = currentPos.next[0];
-    if (positions[nextId].next[0] === undefined) break;
-
-    currentPos = positions[nextId];
-  }
-
-}
-
-exports.checkGoal = function() {
-
 }
 
 function rollDice() {
@@ -188,13 +155,48 @@ function rollDice() {
     return dice.valueSet[Math.floor(Math.random() * dice.valueSet.length)];
 }
 
+function nextAction(GameStatus) {
+  GameStatus.currentAction = GameStatus.actions[GameStatus.actionQueue.shift()];
+
+  // Acabou o turno
+  if (GameStatus.currentAction === undefined) {
+    // Incrementa o contador de turnos
+    GameStatus.elapsedTurns++;
+
+    // Incrementa o turno atual
+    GameStatus.currentTurn = GameStatus.elapsedTurns + 1;
+
+    // Pega a fila de ações default
+    GameStatus.actionQueue = GameStatus.defaultActionQueue.slice();
+
+    // Atualiza o player atual
+    GameStatus.previousPlayerId = GameStatus.currentPlayerId;
+    GameStatus.currentPlayerId = GameConfig.playerIdList[
+      currentPlayerIndex = GameConfig.nextPlayerIndex(currentPlayerIndex, GameConfig)];
+
+    nextAction(GameStatus);
+
+    // Chama o evento de fim de turno
+    GameStatus.gameEvents.endTurn(GameStatus);
+
+    console.log(GameStatus.currentPlayerId + " " +GameStatus.currentAction.actionType + " "
+      + currentPlayerIndex);
+  } else {
+    GameStatus.statusId =
+      (GameStatus.currentAction.actionType == "selectToken")? "select-token":(
+      (GameStatus.currentAction.actionType == "selectPosition")? "select-position": "standby");
+  }
+
+  return GameStatus.currentAction;
+}
+
 function nextPlayerIndex(currentPlayerIndex, GameConfig) {
   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
   return currentPlayerIndex;
 }
 
 function nextActionIndex(currentActionIndex, GameConfig) {
-  currentActionIndex = (currentActionIndex == GameConfig.actions.lenght - 1)? 0 : currentActionIndex+1;
+  currentActionIndex = (currentActionIndex == GameStatus.actions.lenght - 1)? 0 : currentActionIndex+1;
   return currentActionIndex;
 }
 
@@ -203,4 +205,7 @@ function clearGameStatus(){
 	GameStatus.message = "";  // mensagem atual
 	GameStatus.actions = [];  // ação/ações atual
   GameStatus.currentPlayerId = "";//GameConfig.playerIdList[nextPlayerIndex()];
+  GameStatus.previousPlayerId = "";
+  GameStatus.elapsedTurns = 0;
+  GameStatus.actionQueue = [];
 }

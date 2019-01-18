@@ -159,7 +159,7 @@
             }
 
             // Criando itens das açoes
-            let actions = boardGameAdapter.getGameConfig("actions");
+            let actions = boardGameAdapter.getGameStatus("actions");
             for (var actionType in actions) {
               if (actions.hasOwnProperty(actionType)) {
                 let action = actions[actionType];

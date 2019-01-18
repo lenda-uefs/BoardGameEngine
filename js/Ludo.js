@@ -147,24 +147,48 @@ exports.boardGame = {
   gameFlow: {
     actions: [
       {actionType: "rollDice", actionLabel: "Roll Dice"},
-      {actionType: "selectToken", actionLabel: "Select Token to move"}
+      {actionType: "selectToken", actionLabel: "Select Token to move"},
+      {actionType: "selectToken", actionLabel: ""}
     ],
     rules: {
-      movement: "point-to-point",
+      movement: {
+        rollAndMove: function(){}
+      },
       turnOptions: {maxTurnCount: 50, playerOrder: "staticOrder", actionQueue:["rollDice", "selectToken"]},
       conditionsToWin: {playerScore: null, numRemainingTokens: 0, numPositionsHeld: null, numRemainingPlayers: null},
       conditionsToLose: {playerScore: null, numRemainingTokens: null, numPositionsHeld: null, numRemainingPlayers: null}
     },
     gameEvents: {
-      diceEvent: function (gameStatus, diceValue) {},
-      passingEvent: function (gameStatus, positionType) {},
-      stopingEvent: function (gameStatus, positionType) {},
-      endTurn: function(gameStatus) {},
-      endGame: function(gameStatus) {},
-      playerWin: function(gameStatus) {},
-      playerEliminated: function(gameStatus) {},
-      tokenGained: function(gameStatus) {},
-      tokenEliminated: function(gameStatus) {}
+      diceEvent: function (GameStatus, diceValue) {
+        switch (diceValue) {
+          case 6:
+            GameStatus.message = "You got a 6! You can move a token from " +
+              "your base into the game AND you get to play another turn!";
+            break;
+          case 1:
+            GameStatus.message = "You got a 1! You can move a token from " +
+              "your base into the game!";
+            break;
+          default:
+            GameStatus.message = `You got a ${diceValue}!`;
+        }
+        alert(GameStatus.message);
+      },
+      passingEvent: function (GameStatus, positionType) {},
+      stopingEvent: function (GameStatus, positionType) {},
+      endTurn: function(GameStatus) {
+        if (GameStatus.previousPlayerId != "" &&
+          GameStatus.playerStatus[GameStatus.previousPlayerId].diceValue == 6) {
+          GameStatus.currentPlayerId = GameStatus.previousPlayerId;
+          GameStatus.elapsedTurns--;
+          GameStatus.currentTurn--;
+        }
+      },
+      endGame: function(GameStatus) {},
+      playerWin: function(GameStatus) {},
+      playerEliminated: function(GameStatus) {},
+      tokenGained: function(GameStatus) {},
+      tokenEliminated: function(GameStatus) {}
     }
   }
 }
