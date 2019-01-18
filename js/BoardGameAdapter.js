@@ -206,6 +206,6 @@ function clearGameStatus(){
 	GameStatus.actions = [];  // ação/ações atual
   GameStatus.currentPlayerId = "";//GameConfig.playerIdList[nextPlayerIndex()];
   GameStatus.previousPlayerId = "";
-  GameStatus.elapsedTurns = 0;
+  GameStatus.elapsedTurns = -1;
   GameStatus.actionQueue = [];
 }
