@@ -3,7 +3,7 @@ exports.boardGame = {
   gameData: {
     playerOptions: {
       playerCount: 4,
-      playerId: ["Red", "Green", "Blue", "Yellow"],
+      playerId: ["Red", "Green", "Yellow", "Blue"],
       playerAttributes: [
         {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg"}
       ]

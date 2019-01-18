@@ -52,9 +52,9 @@ exports.setGameConfig = function (gamePath) {
 
   // Turn Config
   GameConfig.maxTurnCount = GameJson.gameFlow.rules.turnOptions.maxTurnCount;
-  GameConfig.nextPlayerIndex =
+  GameConfig.nextPlayerId =
     (GameJson.gameFlow.rules.turnOptions.playerOrder == "staticOrder") ?
-      nextPlayerIndex : GameJson.gameFlow.rules.turnOptions.nextPlayerFcn;
+      nextPlayerId : GameJson.gameFlow.rules.turnOptions.playerOrder.dynamicOrder;
 
   // Conditions to win/lose
   GameConfig.conditionsToWin = GameJson.gameFlow.rules.conditionsToWin;
@@ -171,8 +171,7 @@ function nextAction(GameStatus) {
 
     // Atualiza o player atual
     GameStatus.previousPlayerId = GameStatus.currentPlayerId;
-    GameStatus.currentPlayerId = GameConfig.playerIdList[
-      currentPlayerIndex = GameConfig.nextPlayerIndex(currentPlayerIndex, GameConfig)];
+    GameStatus.currentPlayerId = GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayerId);
 
     nextAction(GameStatus);
 
@@ -190,9 +189,15 @@ function nextAction(GameStatus) {
   return GameStatus.currentAction;
 }
 
-function nextPlayerIndex(currentPlayerIndex, GameConfig) {
+// function nextPlayerIndex(currentPlayerIndex, GameConfig) {
+//   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
+//   return currentPlayerIndex;
+// }
+
+function nextPlayerId(GameConfig, currentPlayerId) {
+  let currentPlayerIndex = GameConfig.playerIdList.indexOf(currentPlayerId);
   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
-  return currentPlayerIndex;
+  return GameConfig.playerIdList[currentPlayerIndex];
 }
 
 function nextActionIndex(currentActionIndex, GameConfig) {
