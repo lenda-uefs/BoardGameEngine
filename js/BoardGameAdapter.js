@@ -2,8 +2,6 @@ var GameConfig = {};
 var GameStatus = {};
 var GameJson = {};
 
-var currentPlayerIndex = -1;
-var currentActionIndex = -1;
 var steps = 0;
 var defaultActionLabels = {
   rollDice:"Roll Dice",
@@ -97,6 +95,7 @@ exports.startGameStatus = function(){
     player.id = GameConfig.playerIdList[i];
     player.diceValue = 0;
     player.tokens = [];
+    player.selectedTokens = [];
 
     if (GameJson.gameData.playerOptions.playerAttributes !== undefined) {
       player.attributes = {};
@@ -129,10 +128,13 @@ exports.updateGameStatus = function (command) {
   switch (GameStatus.statusId) {
     case "select-token":
       let ownerId = command.slice(command.indexOf('&')+1);
+      if (ownerId != GameStatus.currentPlayerId) break;
       let tokenId = parseInt(command.slice(0, command.indexOf('&')));
       let selectedToken = GameStatus.playerStatus[ownerId].tokens[tokenId];
+      GameStatus.playerStatus[ownerId].selectedTokens.push(selectedToken);
+
+      console.log(ownerId + " " + selectedToken.positionId);
       nextAction(GameStatus);
-      alert(ownerId + " " + selectedToken.positionId);
       break;
     case "select-position":
       break;
@@ -179,7 +181,7 @@ function nextAction(GameStatus) {
     GameStatus.gameEvents.endTurn(GameStatus);
 
     console.log(GameStatus.currentPlayerId + " " +GameStatus.currentAction.actionType + " "
-      + currentPlayerIndex);
+      + GameStatus.elapsedTurns + " " + GameStatus.currentTurn);
   } else {
     GameStatus.statusId =
       (GameStatus.currentAction.actionType == "selectToken")? "select-token":(
@@ -189,20 +191,10 @@ function nextAction(GameStatus) {
   return GameStatus.currentAction;
 }
 
-// function nextPlayerIndex(currentPlayerIndex, GameConfig) {
-//   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
-//   return currentPlayerIndex;
-// }
-
 function nextPlayerId(GameConfig, currentPlayerId) {
   let currentPlayerIndex = GameConfig.playerIdList.indexOf(currentPlayerId);
   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
   return GameConfig.playerIdList[currentPlayerIndex];
-}
-
-function nextActionIndex(currentActionIndex, GameConfig) {
-  currentActionIndex = (currentActionIndex == GameStatus.actions.lenght - 1)? 0 : currentActionIndex+1;
-  return currentActionIndex;
 }
 
 function clearGameStatus(){
