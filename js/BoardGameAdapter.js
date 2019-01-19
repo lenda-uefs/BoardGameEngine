@@ -131,7 +131,7 @@ exports.updateGameStatus = function (command) {
   switch (GameStatus.statusId) {
     case "select-token":
       let ownerId = command.slice(command.indexOf('&')+1);
-      if (ownerId != GameStatus.currentPlayerId) break;
+      if (ownerId != GameStatus.currentPlayer.id) break;
       let tokenId = parseInt(command.slice(0, command.indexOf('&')));
       let selectedToken = GameStatus.playerStatus[ownerId].tokens[tokenId];
       GameStatus.playerStatus[ownerId].selectedTokens.push(selectedToken);
@@ -143,14 +143,14 @@ exports.updateGameStatus = function (command) {
       break;
     case "standby":
       if (command.includes("rollDice")) {
-        var player = GameStatus.playerStatus[GameStatus.currentPlayerId];
+        var player = GameStatus.playerStatus[GameStatus.currentPlayer.id];
         player.diceValue = rollDice();
         GameStatus.gameEvents.diceEvent(GameStatus, player.diceValue);
         nextAction(GameStatus);
       }
       break;
     case "moving":
-      let selectedTokens = GameStatus.playerStatus[GameStatus.currentPlayerId].selectedTokens;
+      let selectedTokens = GameStatus.currentPlayer.selectedTokens;
 
       if (GameConfig.movementRule) {
 
@@ -183,12 +183,13 @@ function nextAction(GameStatus) {
     GameStatus.actionQueue = GameStatus.defaultActionQueue.slice();
 
     // Atualiza o player atual
-    GameStatus.previousPlayerId = GameStatus.currentPlayerId;
-    GameStatus.currentPlayerId = GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayerId);
+    GameStatus.previousPlayer = GameStatus.currentPlayer;
+    GameStatus.currentPlayer = GameStatus.playerStatus[
+      GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayer)];
 
     // Limpando estados relevantes
-    if (GameStatus.previousPlayerId != "")
-      GameStatus.playerStatus[GameStatus.previousPlayerId].selectedTokens = [];
+    if (GameStatus.previousPlayer != "")
+      GameStatus.previousPlayer.selectedTokens = [];
     GameStatus.message = "";
 
     nextAction(GameStatus);
@@ -196,7 +197,7 @@ function nextAction(GameStatus) {
     // Chama o evento de fim de turno
     GameStatus.gameEvents.endTurn(GameStatus);
 
-    console.log(GameStatus.currentPlayerId + " " +GameStatus.currentAction.actionType + " "
+    console.log(GameStatus.currentPlayer.id + " " +GameStatus.currentAction.actionType + " "
       + GameStatus.elapsedTurns + " " + GameStatus.currentTurn);
   } else {
     GameStatus.statusId =
@@ -207,9 +208,10 @@ function nextAction(GameStatus) {
   return GameStatus.currentAction;
 }
 
-function nextPlayerId(GameConfig, currentPlayerId) {
-  let currentPlayerIndex = GameConfig.playerIdList.indexOf(currentPlayerId);
+function nextPlayerId(GameConfig, currentPlayer) {
+  let currentPlayerIndex = GameConfig.playerIdList.indexOf(currentPlayer.id);
   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
+  console.log(currentPlayerIndex);
   return GameConfig.playerIdList[currentPlayerIndex];
 }
 
@@ -221,8 +223,8 @@ function clearGameStatus(){
 	GameStatus.statusId = "";	// estado atual
 	GameStatus.message = "";  // mensagem atual
 	GameStatus.actions = [];  // ação/ações atual
-  GameStatus.currentPlayerId = "";//GameConfig.playerIdList[nextPlayerIndex()];
-  GameStatus.previousPlayerId = "";
+  GameStatus.currentPlayer = {id:""};//GameConfig.playerIdList[nextPlayerIndex()];
+  GameStatus.previousPlayer = {id:""};
   GameStatus.elapsedTurns = -1;
   GameStatus.actionQueue = [];
 }

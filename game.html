@@ -68,8 +68,7 @@
           boardGameAdapter.startGameStatus();
 
           function updatePlayerAttributes(boardGameAdapter){
-            let playerId = boardGameAdapter.getGameStatus("currentPlayerId");
-            let playerAttributes = boardGameAdapter.getGameStatus("playerStatus")[playerId].attributes;
+            let playerAttributes = boardGameAdapter.getGameStatus("currentPlayer").attributes;
             let attributeElem = null;
             let innerHTML = null;
 
@@ -95,7 +94,7 @@
 
           function updateTurnsDisplay(boardGameAdapter) {
             document.getElementById('playerId').textContent =
-              "Current Player: " + boardGameAdapter.getGameStatus("currentPlayerId");
+              "Current Player: " + boardGameAdapter.getGameStatus("currentPlayer").id;
 
             document.getElementById('turn').textContent = (
               "Turn = " + boardGameAdapter.getGameStatus("currentTurn")

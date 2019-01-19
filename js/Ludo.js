@@ -180,9 +180,8 @@ exports.boardGame = {
       passingEvent: function (GameStatus, positionType) {},
       stopingEvent: function (GameStatus, positionType) {},
       endTurn: function(GameStatus) {
-        if (GameStatus.previousPlayerId != "" &&
-          GameStatus.playerStatus[GameStatus.previousPlayerId].diceValue == 6) {
-          GameStatus.currentPlayerId = GameStatus.previousPlayerId;
+        if (GameStatus.previousPlayer && GameStatus.previousPlayer.diceValue == 6) {
+          GameStatus.currentPlayer = GameStatus.previousPlayer;
           GameStatus.elapsedTurns--;
           GameStatus.currentTurn--;
         }
