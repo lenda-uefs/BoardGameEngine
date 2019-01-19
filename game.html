@@ -67,7 +67,7 @@
           boardGameAdapter.setGameConfig("js/"+boardGameAdapter.boardGameList[getGameIndex()]);
           boardGameAdapter.startGameStatus();
 
-          var updatePlayerAttributes = function (){
+          function updatePlayerAttributes(boardGameAdapter){
             let playerId = boardGameAdapter.getGameStatus("currentPlayerId");
             let playerAttributes = boardGameAdapter.getGameStatus("playerStatus")[playerId].attributes;
             let attributeElem = null;
@@ -83,7 +83,7 @@
             }
           }
 
-          var updateActions = function() {
+          function updateActions(boardGameAdapter) {
             let currentAction = boardGameAdapter.getGameStatus("currentAction");
             let elements = document.getElementById('actions').children;
 
@@ -93,7 +93,7 @@
             }
           }
 
-          var updateTurnsDisplay = function() {
+          function updateTurnsDisplay(boardGameAdapter) {
             document.getElementById('playerId').textContent =
               "Current Player: " + boardGameAdapter.getGameStatus("currentPlayerId");
 
@@ -103,25 +103,19 @@
             "/" + boardGameAdapter.getGameConfig("maxTurnCount") : "");
           }
 
-          var updateMessage = function() {
+          function updateMessage(boardGameAdapter) {
             document.getElementById('message').textContent =
               boardGameAdapter.getGameStatus("message");
           }
 
-          var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-game', { preload: preload, create: create });
-
-          function button1OnClick () {
-            // var pawn = boardGameAdapter.getGameConfig("gameData").component.tokens[0];
-            // var posId = pawn.positionId
-            // var pos = boardGameAdapter.getGameConfig("gameData").board.positions[posId];
-            // pos = boardGameAdapter.getGameConfig("gameData").board.positions[pos.next[0]];
-            // pawn.positionId = pos.positionId;
-            //
-            // pawnSprite.x = backgroundWidth*pos.location[0]-(pawnWidth/2);
-            // pawnSprite.y = backgroundHeight*pos.location[1]-(pawnHeight/2);
-            // console.log("clicou: " + pawnSprite.x + " " + pawnSprite.y + " " + pos.positionType + " " + pos.positionId);
-            // console.log(boardGameAdapter.getGameConfig("gameData").board.positions);
+          function updateCallback(boardGameAdapter) {
+            updatePlayerAttributes(boardGameAdapter);
+            updateActions(boardGameAdapter);
+            updateTurnsDisplay(boardGameAdapter);
+            updateMessage(boardGameAdapter);
           }
+
+          var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-game', { preload: preload, create: create });
 
           // Carregando as imagens do jogo
           function preload() {
@@ -175,6 +169,7 @@
                   label.href = "#";
                   label.onclick = function() {
                     boardGameAdapter.updateGameStatus(action.actionType);
+                    updateCallback(boardGameAdapter);
                   };
                 }
                 label.textContent = action.actionLabel;
@@ -222,6 +217,7 @@
                   sprite.events.onInputDown.add(
                     function(){
                       boardGameAdapter.updateGameStatus(i+"&"+id);
+                      updateCallback(boardGameAdapter);
                     }, this);
 
                   tokenSprites[id][i] = sprite;
@@ -229,26 +225,7 @@
               }
             }
 
-            updatePlayerAttributes();
-            updateActions();
-            updateTurnsDisplay();
-            updateMessage();
-
-            // var posId = boardGameAdapter.getGameConfig("gameData").component.tokens[0].positionId
-            // var pos = boardGameAdapter.getGameConfig("gameData").board.positions[posId];
-            //
-            // var backgroundImg = game.cache.getImage('background1');
-            // backgroundWidth = backgroundImg.width;
-            // backgroundHeight = backgroundImg.height;
-            //
-            // var pawnImg = game.cache.getImage('pawn');
-            // pawnWidth = pawnImg.width;
-            // pawnHeight = pawnImg.height;
-            //
-            // pawnSprite = game.add.sprite(
-            //     backgroundWidth*pos.location[0]-(pawnWidth/2),
-            //     backgroundHeight*pos.location[1]-(pawnHeight/2), 'pawn'
-            // );
+            updateCallback(boardGameAdapter);
           }
 
           function perform() {

@@ -148,11 +148,15 @@ exports.boardGame = {
     actions: [
       {actionType: "rollDice", actionLabel: "Roll Dice"},
       {actionType: "selectToken", actionLabel: "Select Token to move"},
-      {actionType: "selectToken", actionLabel: ""}
+      {actionType: "moveToken", actionLabel: ""}
     ],
     rules: {
       movement: {
-        rollAndMove: function(){}
+        rollAndMove: {
+          pathSelector: function(GameStatus) {
+
+          }
+        }
       },
       turnOptions: {maxTurnCount: 50, playerOrder: "staticOrder", actionQueue:["rollDice", "selectToken"]},
       conditionsToWin: {playerScore: null, numRemainingTokens: 0, numPositionsHeld: null, numRemainingPlayers: null},
@@ -172,7 +176,6 @@ exports.boardGame = {
           default:
             GameStatus.message = `You got a ${diceValue}!`;
         }
-        alert(GameStatus.message);
       },
       passingEvent: function (GameStatus, positionType) {},
       stopingEvent: function (GameStatus, positionType) {},

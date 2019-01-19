@@ -54,6 +54,9 @@ exports.setGameConfig = function (gamePath) {
     (GameJson.gameFlow.rules.turnOptions.playerOrder == "staticOrder") ?
       nextPlayerId : GameJson.gameFlow.rules.turnOptions.playerOrder.dynamicOrder;
 
+  // Movement Config
+  GameConfig.movementRule = GameJson.gameFlow.rules.movement;
+
   // Conditions to win/lose
   GameConfig.conditionsToWin = GameJson.gameFlow.rules.conditionsToWin;
   GameConfig.conditionsToLose = GameJson.gameFlow.rules.conditionsToLose;
@@ -146,6 +149,14 @@ exports.updateGameStatus = function (command) {
         nextAction(GameStatus);
       }
       break;
+    case "moving":
+      let selectedTokens = GameStatus.playerStatus[GameStatus.currentPlayerId].selectedTokens;
+
+      if (GameConfig.movementRule) {
+
+      }
+
+      break;
   }
 }
 
@@ -175,6 +186,11 @@ function nextAction(GameStatus) {
     GameStatus.previousPlayerId = GameStatus.currentPlayerId;
     GameStatus.currentPlayerId = GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayerId);
 
+    // Limpando estados relevantes
+    if (GameStatus.previousPlayerId != "")
+      GameStatus.playerStatus[GameStatus.previousPlayerId].selectedTokens = [];
+    GameStatus.message = "";
+
     nextAction(GameStatus);
 
     // Chama o evento de fim de turno
@@ -195,6 +211,10 @@ function nextPlayerId(GameConfig, currentPlayerId) {
   let currentPlayerIndex = GameConfig.playerIdList.indexOf(currentPlayerId);
   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
   return GameConfig.playerIdList[currentPlayerIndex];
+}
+
+function pathSelector(GameStatus, selectedToken) {
+
 }
 
 function clearGameStatus(){
