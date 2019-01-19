@@ -158,11 +158,7 @@ exports.updateGameStatus = function (command) {
       }
       break;
     case "moving":
-      let selectedTokens = GameStatus.currentPlayer.selectedTokens;
-
-      // selectedTokens.forEach(function (token, index){
-      //   token.positionId = GameStatus.evaluateMovement(GameStatus, token);
-      // });
+      //let selectedToken = GameStatus.currentPlayer.selectedToken;
 
       break;
   }
@@ -196,13 +192,8 @@ function nextAction(GameStatus) {
       GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayer)];
 
     // Limpando estados relevantes
-<<<<<<< Updated upstream
     if (GameStatus.previousPlayer != "")
-      GameStatus.previousPlayer.selectedTokens = [];
-=======
-    if (GameStatus.previousPlayerId != "")
-      GameStatus.playerStatus[GameStatus.previousPlayerId].selectedToken = null;
->>>>>>> Stashed changes
+      GameStatus.previousPlayer.selectedToken = null;
     GameStatus.message = "";
 
     nextAction(GameStatus);
