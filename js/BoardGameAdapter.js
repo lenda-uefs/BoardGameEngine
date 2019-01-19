@@ -3,12 +3,6 @@ var GameStatus = {};
 var GameJson = {};
 
 var steps = 0;
-var defaultActionLabels = {
-  rollDice:"Roll Dice",
-  selectPosition:"Select Position",
-  selectToken:"Select Token",
-  endTurn: "End Turn"
-};
 
 exports.boardGameList = ["Ludo.js"];
 
@@ -83,14 +77,11 @@ exports.startGameStatus = function(){
   clearGameStatus();
 
   // Ações
-  GameStatus.actions = {};
   GameStatus.defaultActionQueue = GameJson.gameFlow.rules.turnOptions.actionQueue;
   let actions = GameJson.gameFlow.actions;
   actions.forEach(function (action){
-    if (action.actionLabel === undefined)
-      action.actionLabel = defaultActionLabels[action.actionType];
-
-    GameStatus.actions[action.actionType] = action;
+    if (action.actionLabel !== undefined)
+      GameStatus.actions[action.actionType] = action;
   });
 
   // Status relacionados ao tabuleiro
@@ -158,7 +149,7 @@ exports.updateGameStatus = function (command) {
       }
       break;
     case "moving":
-      //let selectedToken = GameStatus.currentPlayer.selectedToken;
+      let token = GameStatus.currentPlayer.selectedToken;
 
       break;
   }
@@ -215,7 +206,6 @@ function nextAction(GameStatus) {
 function nextPlayerId(GameConfig, currentPlayer) {
   let currentPlayerIndex = GameConfig.playerIdList.indexOf(currentPlayer.id);
   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
-  console.log(currentPlayerIndex);
   return GameConfig.playerIdList[currentPlayerIndex];
 }
 
@@ -233,4 +223,17 @@ function clearGameStatus(){
   GameStatus.previousPlayer = {id:""};
   GameStatus.elapsedTurns = -1;
   GameStatus.actionQueue = [];
+
+  GameStatus.endTurn = endTurn;
+  GameStatus.actions = {
+    rollDice: {actionType: "rollDice", actionLabel: "Roll Dice"},
+    selectToken: {actionType: "selectToken", actionLabel: "Select Token"},
+    selectPosition: {actionType: "selectPosition", actionLabel: "Select Position"},
+    moveToken: {actionType: "moveToken", actionLabel: ""},
+    endTurn: {actionType: "endTurn", actionLabel: "End Turn"},
+  }
+}
+
+function endTurn() {
+  GameStatus.actionQueue = ["endTurn"];
 }
