@@ -55,7 +55,15 @@ exports.setGameConfig = function (gamePath) {
       nextPlayerId : GameJson.gameFlow.rules.turnOptions.playerOrder.dynamicOrder;
 
   // Movement Config
-  GameConfig.movementRule = GameJson.gameFlow.rules.movement;
+  let movementRule = GameJson.gameFlow.rules.movement;
+  if (movementRule.rollAndMove){
+    if (!movementRule.rollAndMove.pathSelector)
+      GameConfig.evaluateMovement = pathSelector;
+    else if (movementRule.rollAndMove.pathSelector.playerPrompt) {
+      GameConfig.selectPathMsg = movementRule.rollAndMove.pathSelector.playerPrompt;
+      GameConfig.evaluateMovement = function(GameStatus, selectedToken){console.log("Placeholder");};
+    } else GameConfig.evaluateMovement = movementRule.rollAndMove.pathSelector;
+  } else GameConfig.evaluateMovement = movementRule.gridBased;
 
   // Conditions to win/lose
   GameConfig.conditionsToWin = GameJson.gameFlow.rules.conditionsToWin;
@@ -98,7 +106,7 @@ exports.startGameStatus = function(){
     player.id = GameConfig.playerIdList[i];
     player.diceValue = 0;
     player.tokens = [];
-    player.selectedTokens = [];
+    player.selectedToken = null;
 
     if (GameJson.gameData.playerOptions.playerAttributes !== undefined) {
       player.attributes = {};
@@ -134,7 +142,7 @@ exports.updateGameStatus = function (command) {
       if (ownerId != GameStatus.currentPlayer.id) break;
       let tokenId = parseInt(command.slice(0, command.indexOf('&')));
       let selectedToken = GameStatus.playerStatus[ownerId].tokens[tokenId];
-      GameStatus.playerStatus[ownerId].selectedTokens.push(selectedToken);
+      GameStatus.playerStatus[ownerId].selectedToken = selectedToken;
 
       console.log(ownerId + " " + selectedToken.positionId);
       nextAction(GameStatus);
@@ -152,9 +160,9 @@ exports.updateGameStatus = function (command) {
     case "moving":
       let selectedTokens = GameStatus.currentPlayer.selectedTokens;
 
-      if (GameConfig.movementRule) {
-
-      }
+      // selectedTokens.forEach(function (token, index){
+      //   token.positionId = GameStatus.evaluateMovement(GameStatus, token);
+      // });
 
       break;
   }
@@ -188,8 +196,13 @@ function nextAction(GameStatus) {
       GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayer)];
 
     // Limpando estados relevantes
+<<<<<<< Updated upstream
     if (GameStatus.previousPlayer != "")
       GameStatus.previousPlayer.selectedTokens = [];
+=======
+    if (GameStatus.previousPlayerId != "")
+      GameStatus.playerStatus[GameStatus.previousPlayerId].selectedToken = null;
+>>>>>>> Stashed changes
     GameStatus.message = "";
 
     nextAction(GameStatus);
@@ -215,8 +228,10 @@ function nextPlayerId(GameConfig, currentPlayer) {
   return GameConfig.playerIdList[currentPlayerIndex];
 }
 
+// Path selector default. Retorna a primeira posição
+// adjacente à posição do token atual.
 function pathSelector(GameStatus, selectedToken) {
-
+  return GameStatus.boardPositionList[selectedToken.next[0]];
 }
 
 function clearGameStatus(){
