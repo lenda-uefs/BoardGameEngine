@@ -174,7 +174,11 @@ exports.boardGame = {
               "your base into the game!";
             break;
           default:
-            GameStatus.message = `You got a ${diceValue}!`;
+            if (GameStatus.currentPlayer.attributes["Active Tokens"] == 0){
+              GameStatus.message = `You got a ${diceValue}. You need a 1 or a 6`
+                + " to move a token into the game.";
+              GameStatus.endTurn();
+            } else GameStatus.message = `You got a ${diceValue}!`;
         }
       },
       passingEvent: function (GameStatus, positionType) {},

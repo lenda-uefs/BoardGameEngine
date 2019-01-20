@@ -146,6 +146,8 @@ exports.updateGameStatus = function (command) {
         player.diceValue = rollDice();
         GameStatus.gameEvents.diceEvent(GameStatus, player.diceValue);
         nextAction(GameStatus);
+      } else if (command.includes("endTurn")) {
+        nextAction(GameStatus);
       }
       break;
     case "moving":
