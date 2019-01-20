@@ -86,6 +86,17 @@ exports.startGameStatus = function(){
 
   // Status relacionados ao tabuleiro
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
+  if (GameConfig.boardType == "point-to-point")
+    GameStatus.boardPositionList.forEach(function (position, id){
+      let length = Math.max(position.prev, position.next);
+
+      for (let i = 0; i < length; i++) {
+        if (i < position.prev.length)
+          position.prev[i] = GameStatus.boardPositionList[i];
+        if (i < position.next.length)
+          position.next[i] = GameStatus.boardPositionList[i];
+      }
+    });
 
   // Eventos do jogo
   GameStatus.gameEvents = GameJson.gameFlow.gameEvents;
@@ -98,6 +109,7 @@ exports.startGameStatus = function(){
     player.diceValue = 0;
     player.tokens = [];
     player.selectedToken = null;
+    player.selectedPosition = null;
 
     if (GameJson.gameData.playerOptions.playerAttributes !== undefined) {
       player.attributes = {};
@@ -111,6 +123,7 @@ exports.startGameStatus = function(){
 
   GameJson.gameData.component.tokens.forEach(function(token){
     token.isSelected = false;
+    token.position = GameStatus.boardPositionList[token.positionId];
     GameStatus.playerStatus[token.ownerId].tokens.push(token);
   });
 
@@ -212,9 +225,9 @@ function nextPlayerId(GameConfig, currentPlayer) {
 }
 
 // Path selector default. Retorna a primeira posição
-// adjacente à posição do token atual.
-function pathSelector(GameStatus, selectedToken) {
-  return GameStatus.boardPositionList[selectedToken.next[0]];
+// adjacente à posição do token atual. (point to point boards)
+function pathSelector(GameStatus) {
+  return GameStatus.currentPlayer.selectedToken.next[0];
 }
 
 function clearGameStatus(){

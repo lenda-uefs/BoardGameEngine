@@ -195,8 +195,7 @@
             var backgroundImg = game.add.sprite(0, 0, 'background');
             backgroundWidth = backgroundImg.width;
             backgroundHeight = backgroundImg.height;
-
-            let boardPositionList = boardGameAdapter.getGameStatus("boardPositionList");
+            
             let playerStatus = boardGameAdapter.getGameStatus('playerStatus');
 
             for (let id in playerStatus) {
@@ -205,7 +204,7 @@
                 tokenSprites[id] = [];
 
                 for (let i = 0; i < tokens.length; i++) {
-                  let position = boardPositionList[tokens[i].positionId];
+                  let position = tokens[i].position;
                   let sprite = game.add.sprite(
                     backgroundWidth*position.location[0],
                     backgroundHeight*position.location[1],
