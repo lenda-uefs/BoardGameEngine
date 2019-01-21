@@ -62,6 +62,7 @@
           var gameState = "";
 
           var tokenSprites = {};
+          var group = {};
 
           var boardGameAdapter = require('js/BoardGameAdapter.js');
           boardGameAdapter.setGameConfig("js/"+boardGameAdapter.boardGameList[getGameIndex()]);
@@ -75,6 +76,10 @@
                 for (let i = 0; i < tokens.length; i++) {
                   tokenSprites[playerId][i].x = backgroundWidth*tokens[i].position.location[0];
                   tokenSprites[playerId][i].y = backgroundHeight*tokens[i].position.location[1];
+                  tokenSprites[playerId][i].z =
+                    (playerId != boardGameAdapter.getGameStatus("currentPlayer").id)? 0 : Infinity;
+                  //console.log(tokenSprites[playerId][i].z);
+                  group.sort(Phaser.Group.SORT_ASCENDING);
                 }
               }
             }
@@ -210,6 +215,8 @@
             backgroundWidth = backgroundImg.width;
             backgroundHeight = backgroundImg.height;
 
+            group = game.add.group();
+
             let playerStatus = boardGameAdapter.getGameStatus('playerStatus');
 
             for (let id in playerStatus) {
@@ -218,7 +225,7 @@
                 tokenSprites[id] = [];
 
                 for (let i = 0; i < tokens.length; i++) {
-                  let sprite = game.add.sprite(0, 0, tokens[i].tokenType);
+                  let sprite = group.create(0, 0, tokens[i].tokenType);
                   sprite.anchor.set(0.5); // TODO: remover ancora (?)
                   sprite.inputEnabled = true;
                   sprite.events.onInputDown.add(
