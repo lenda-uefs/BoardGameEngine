@@ -67,6 +67,19 @@
           boardGameAdapter.setGameConfig("js/"+boardGameAdapter.boardGameList[getGameIndex()]);
           boardGameAdapter.startGameStatus();
 
+          function updateTokens(boardGameAdapter) {
+            for (let playerId in tokenSprites) {
+              if (tokenSprites.hasOwnProperty(playerId)) {
+                let tokens = boardGameAdapter.getGameStatus("playerStatus")[playerId].tokens;
+                //console.log(tokens);
+                for (let i = 0; i < tokens.length; i++) {
+                  tokenSprites[playerId][i].x = backgroundWidth*tokens[i].position.location[0];
+                  tokenSprites[playerId][i].y = backgroundHeight*tokens[i].position.location[1];
+                }
+              }
+            }
+          }
+
           function updatePlayerAttributes(boardGameAdapter){
             let playerAttributes = boardGameAdapter.getGameStatus("currentPlayer").attributes;
             let attributeElem = null;
@@ -107,11 +120,12 @@
               boardGameAdapter.getGameStatus("message");
           }
 
-          function updateCallback(boardGameAdapter) {
+          function updateCallback() {
             updatePlayerAttributes(boardGameAdapter);
             updateActions(boardGameAdapter);
             updateTurnsDisplay(boardGameAdapter);
             updateMessage(boardGameAdapter);
+            updateTokens(boardGameAdapter);
           }
 
           var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-game', { preload: preload, create: create });
@@ -195,7 +209,7 @@
             var backgroundImg = game.add.sprite(0, 0, 'background');
             backgroundWidth = backgroundImg.width;
             backgroundHeight = backgroundImg.height;
-            
+
             let playerStatus = boardGameAdapter.getGameStatus('playerStatus');
 
             for (let id in playerStatus) {
@@ -204,12 +218,7 @@
                 tokenSprites[id] = [];
 
                 for (let i = 0; i < tokens.length; i++) {
-                  let position = tokens[i].position;
-                  let sprite = game.add.sprite(
-                    backgroundWidth*position.location[0],
-                    backgroundHeight*position.location[1],
-                    tokens[i].tokenType
-                  );
+                  let sprite = game.add.sprite(0, 0, tokens[i].tokenType);
                   sprite.anchor.set(0.5); // TODO: remover ancora (?)
                   sprite.inputEnabled = true;
                   sprite.events.onInputDown.add(
@@ -223,7 +232,7 @@
               }
             }
 
-            updateCallback(boardGameAdapter);
+            updateCallback();
           }
 
           function perform() {

@@ -50,13 +50,13 @@ exports.setGameConfig = function (gamePath) {
 
   // Movement Config
   let movementRule = GameJson.gameFlow.rules.movement;
-  if (movementRule.rollAndMove){
-    if (!movementRule.rollAndMove.pathSelector)
-      GameConfig.evaluateMovement = pathSelector;
-    else if (movementRule.rollAndMove.pathSelector.playerPrompt) {
-      GameConfig.selectPathMsg = movementRule.rollAndMove.pathSelector.playerPrompt;
-      GameConfig.evaluateMovement = function(GameStatus, selectedToken){console.log("Placeholder");};
-    } else GameConfig.evaluateMovement = movementRule.rollAndMove.pathSelector;
+  if (movementRule == "rollAndMove"){
+    GameConfig.evaluateMovement = pathSelector;
+  } else if (movementRule.rollAndMove.pathSelector.playerPrompt) {
+    GameConfig.selectPathMsg = movementRule.rollAndMove.pathSelector.playerPrompt;
+    GameConfig.evaluateMovement = function(GameStatus, selectedToken){console.log("Placeholder");};
+  } else if (movementRule.rollAndMove.pathSelector) {
+    GameConfig.evaluateMovement = movementRule.rollAndMove.pathSelector;
   } else GameConfig.evaluateMovement = movementRule.gridBased;
 
   // Conditions to win/lose
@@ -88,15 +88,19 @@ exports.startGameStatus = function(){
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
   if (GameConfig.boardType == "point-to-point")
     GameStatus.boardPositionList.forEach(function (position, id){
-      let length = Math.max(position.prev, position.next);
+      for (let i = 0; i < position.prev.length; i++) {
+        position.prev[i] = GameStatus.boardPositionList[position.prev[i]];
+      }
 
-      for (let i = 0; i < length; i++) {
-        if (i < position.prev.length)
-          position.prev[i] = GameStatus.boardPositionList[i];
-        if (i < position.next.length)
-          position.next[i] = GameStatus.boardPositionList[i];
+      for (let i = 0; i < position.next.length; i++) {
+        position.next[i] = GameStatus.boardPositionList[position.next[i]];
       }
     });
+
+  // console.log(GameStatus.boardPositionList[74]);
+  // console.log(JSON.stringify(GameStatus.boardPositionList[74]));
+  // console.log(GameStatus.boardPositionList[0]);
+  // console.log(JSON.stringify(GameStatus.boardPositionList[0]));
 
   // Eventos do jogo
   GameStatus.gameEvents = GameJson.gameFlow.gameEvents;
@@ -145,11 +149,11 @@ exports.updateGameStatus = function (command) {
       let ownerId = command.slice(command.indexOf('&')+1);
       if (ownerId != GameStatus.currentPlayer.id) break;
       let tokenId = parseInt(command.slice(0, command.indexOf('&')));
-      let selectedToken = GameStatus.playerStatus[ownerId].tokens[tokenId];
-      GameStatus.playerStatus[ownerId].selectedToken = selectedToken;
-
-      console.log(ownerId + " " + selectedToken.positionId);
+      GameStatus.currentPlayer.selectedToken = GameStatus.currentPlayer.tokens[tokenId];
+      //console.log(GameStatus.currentPlayer.selectedToken);
+      //console.log(ownerId + " " + GameStatus.currentPlayer.selectedToken.positionId);
       nextAction(GameStatus);
+      //console.log(JSON.stringify(GameStatus.currentPlayer.selectedToken.position.next[1]));
       break;
     case "select-position":
       break;
@@ -164,13 +168,17 @@ exports.updateGameStatus = function (command) {
       }
       break;
     case "moving":
+      console.log("Moving");
       let token = GameStatus.currentPlayer.selectedToken;
-
+      //console.log(JSON.stringify(token.position));
+      token.position = GameConfig.evaluateMovement(GameStatus);
+      token.positionId = token.position.positionId;
       break;
   }
 }
 
 function rollDice() {
+  return 1;
   var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie")
     return 1 + Math.floor(Math.random() * dice.numberOfSides);
@@ -212,7 +220,12 @@ function nextAction(GameStatus) {
   } else {
     GameStatus.statusId =
       (GameStatus.currentAction.actionType == "selectToken")? "select-token":(
-      (GameStatus.currentAction.actionType == "selectPosition")? "select-position": "standby");
+      (GameStatus.currentAction.actionType == "selectPosition")? "select-position": (
+      (GameStatus.currentAction.actionType == "moveToken")? "moving":"standby"));
+
+    // if (GameStatus.statusId == "moving") {
+    //   exports.updateGameStatus("");
+    // }
   }
 
   return GameStatus.currentAction;
@@ -227,7 +240,9 @@ function nextPlayerId(GameConfig, currentPlayer) {
 // Path selector default. Retorna a primeira posição
 // adjacente à posição do token atual. (point to point boards)
 function pathSelector(GameStatus) {
-  return GameStatus.currentPlayer.selectedToken.next[0];
+  console.log("Position");
+  //console.log(JSON.stringify(GameStatus.currentPlayer.selectedToken.position));
+  return GameStatus.currentPlayer.selectedToken.position.next[0];
 }
 
 function clearGameStatus(){
