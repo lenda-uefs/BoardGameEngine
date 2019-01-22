@@ -47,19 +47,17 @@ exports.setGameConfig = function (gamePath) {
       nextPlayerId : GameJson.gameFlow.rules.turnOptions.playerOrder.dynamicOrder;
 
   // Movement Config
-  GameConfig.evaluatePosition = evaluatePositionDefault;
   let movementRule = GameJson.gameFlow.rules.movement;
-  if (movementRule == "rollAndMove"){
-    GameConfig.evaluateMovement = pathSelector;
-  } else if (movementRule.rollAndMove.pathSelector.playerPrompt) {
-    GameConfig.selectPathMsg = movementRule.rollAndMove.pathSelector.playerPrompt;
+  GameConfig.evaluatePosition = (movementRule.positionSelectRule)?
+    movementRule.positionSelectRule : evaluatePositionDefault;
+
+  if (movementRule.branchRule == "manual") {
     GameConfig.evaluateMovement = function(GameStatus, selectedToken){console.log("Placeholder");};
-  } else if (movementRule.rollAndMove.pathSelector) {
-    GameConfig.evaluateMovement = movementRule.rollAndMove.pathSelector;
+  } else if (typeof movementRule.branchRule === 'function') {
+    GameConfig.evaluateMovement = movementRule.branchRule;
   } else {
-    GameConfig.evaluateMovement = gridValidateMovement;
-    // Retorna true se a posição selecionada é valida
-    GameConfig.evaluatePosition = movementRule.grid.positionRule;
+    GameConfig.evaluateMovement = (GameConfig.boardType == "point-to-point")?
+      rnmEvaluateMovement : gridEvaluateMovement;
   }
 
   // Conditions to win/lose
@@ -243,18 +241,20 @@ function nextPlayerId(GameConfig, currentPlayer) {
   return GameConfig.playerIdList[currentPlayerIndex];
 }
 
-// Path selector default. Retorna a primeira posição
+// Branch Selector default. Retorna a primeira posição
 // adjacente à posição do token atual. (point to point boards)
-function pathSelector(GameStatus) {
+function rnmEvaluateMovement(GameStatus) {
   console.log("Position");
   //console.log(JSON.stringify(GameStatus.currentPlayer.selectedToken.position));
   return GameStatus.currentPlayer.selectedToken.position.next[0];
 }
 
+// Placeholder evaluate movement para
+// grid boards.
 // Retorna a posição selecionada
 // se a posição foi setada em selectedPosition
 // então quer dizer que ela é valida.
-function gridValidateMovement(GameStatus) {
+function gridEvaluateMovement(GameStatus) {
   return GameStatus.currentPlayer.selectedPosition;
 }
 

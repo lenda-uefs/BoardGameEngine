@@ -151,14 +151,10 @@ exports.boardGame = {
       {actionType: "moveToken", actionLabel: "Move"}
     ],
     rules: {
-      movement: "rollAndMove",
-      // {
-      //   rollAndMove: {
-      //     pathSelector: function(GameStatus) {
-      //
-      //     }
-      //   }
-      // },
+      movement: {
+        branchRule: null, // Ou "manual" ou uma função
+        positionSelectRule: null, // Ou uma função
+      },
       turnOptions: {maxTurnCount: 50, playerOrder: "staticOrder", actionQueue:["rollDice", "selectToken", "moveToken"]},
       conditionsToWin: {playerScore: null, numRemainingTokens: 0, numPositionsHeld: null, numRemainingPlayers: null},
       conditionsToLose: {playerScore: null, numRemainingTokens: null, numPositionsHeld: null, numRemainingPlayers: null}
