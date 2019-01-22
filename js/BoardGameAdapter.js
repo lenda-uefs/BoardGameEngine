@@ -2,8 +2,6 @@ var GameConfig = {};
 var GameStatus = {};
 var GameJson = {};
 
-var steps = 0;
-
 exports.boardGameList = ["Ludo.js"];
 
 exports.setGameConfig = function (gamePath) {
@@ -49,6 +47,7 @@ exports.setGameConfig = function (gamePath) {
       nextPlayerId : GameJson.gameFlow.rules.turnOptions.playerOrder.dynamicOrder;
 
   // Movement Config
+  GameConfig.evaluatePosition = evaluatePositionDefault;
   let movementRule = GameJson.gameFlow.rules.movement;
   if (movementRule == "rollAndMove"){
     GameConfig.evaluateMovement = pathSelector;
@@ -57,7 +56,11 @@ exports.setGameConfig = function (gamePath) {
     GameConfig.evaluateMovement = function(GameStatus, selectedToken){console.log("Placeholder");};
   } else if (movementRule.rollAndMove.pathSelector) {
     GameConfig.evaluateMovement = movementRule.rollAndMove.pathSelector;
-  } else GameConfig.evaluateMovement = movementRule.gridBased;
+  } else {
+    GameConfig.evaluateMovement = gridValidateMovement;
+    // Retorna true se a posição selecionada é valida
+    GameConfig.evaluatePosition = movementRule.grid.positionRule;
+  }
 
   // Conditions to win/lose
   GameConfig.conditionsToWin = GameJson.gameFlow.rules.conditionsToWin;
@@ -170,9 +173,11 @@ exports.updateGameStatus = function (command) {
     case "moving":
       console.log("Moving");
       let token = GameStatus.currentPlayer.selectedToken;
-      //console.log(JSON.stringify(token.position));
       token.position = GameConfig.evaluateMovement(GameStatus);
       token.positionId = token.position.positionId;
+      GameStatus.steps++;
+      if (GameStatus.steps == GameStatus.currentPlayer.diceValue)
+        nextAction(GameStatus);
       break;
   }
 }
@@ -206,9 +211,10 @@ function nextAction(GameStatus) {
       GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayer)];
 
     // Limpando estados relevantes
-    if (GameStatus.previousPlayer != "")
+    if (GameStatus.previousPlayer)
       GameStatus.previousPlayer.selectedToken = null;
     GameStatus.message = "";
+    GameStatus.steps = 0;
 
     nextAction(GameStatus);
 
@@ -245,6 +251,19 @@ function pathSelector(GameStatus) {
   return GameStatus.currentPlayer.selectedToken.position.next[0];
 }
 
+// Retorna a posição selecionada
+// se a posição foi setada em selectedPosition
+// então quer dizer que ela é valida.
+function gridValidateMovement(GameStatus) {
+  return GameStatus.currentPlayer.selectedPosition;
+}
+
+// Placeholder para avaliar posições selecionadas
+// Simplesmente retorna true se a posição for definida.
+function evaluatePositionDefault(GameStatus) {
+  return (GameStatus.currentPlayer.selectedPosition !== undefined);
+}
+
 function clearGameStatus(){
 	GameStatus.statusId = "";	// estado atual
 	GameStatus.message = "";  // mensagem atual
@@ -253,6 +272,7 @@ function clearGameStatus(){
   GameStatus.previousPlayer = {id:""};
   GameStatus.elapsedTurns = -1;
   GameStatus.actionQueue = [];
+  GameStatus.steps = 0;
 
   GameStatus.endTurn = endTurn;
   GameStatus.actions = {
@@ -264,6 +284,8 @@ function clearGameStatus(){
   }
 }
 
-function endTurn() {
+function endTurn(message="") {
+  if (message != "")
+    GameStatus.message = message;
   GameStatus.actionQueue = ["endTurn"];
 }
