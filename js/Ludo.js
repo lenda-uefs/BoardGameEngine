@@ -198,6 +198,10 @@ exports.boardGame = {
         }
 
         function removeActiveToken(activeTokenList, token) {
+          // Se o token não está na lista, não há o que remover
+          if (activeTokenList.indexOf(token.id) == -1)
+            return;
+
           // Remove o token da lista de tokens ativos
           activeTokenList.splice(
             activeTokenList.indexOf(token.id), 1
@@ -207,7 +211,7 @@ exports.boardGame = {
           GameStatus.playerStatus[token.ownerId].attributes["Active Tokens"] =
             activeTokenList.length;
         }
-        
+
         if (stopPosition.tokens.length > stopPosition.capacity) {
           // Pega o primeiro token que estava na posição
           // console.log("First Token");
@@ -239,6 +243,7 @@ exports.boardGame = {
 
         // Se o token parou na base
         } else if (currentToken.position.positionType.includes("Base")) {
+          console.log("Base");
           // Remove o token da lista de tokens ativos
           removeActiveToken(activeTokenList, currentToken);
 
