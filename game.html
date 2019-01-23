@@ -93,6 +93,8 @@
             for (var attributeName in playerAttributes) {
               if (playerAttributes.hasOwnProperty(attributeName)) {
                 attributeElem = document.getElementById(attributeName);
+                if (!attributeElem) return;
+
                 innerHTML = attributeElem.innerHTML;
                 attributeElem.innerHTML = innerHTML.slice(0, innerHTML.lastIndexOf('=')+1)
                   + " " + playerAttributes[attributeName];
@@ -163,7 +165,8 @@
                 p.id = attributeName;
                 p.title = (attributeDesc[attributeName] === undefined)?
                   attributeName : attributeDesc[attributeName];
-                p.appendChild(icon);
+
+                if (attributeImg[attributeName] != "") p.appendChild(icon);
                 p.appendChild(text);
 
                 playerAttributeDiv.appendChild(p);

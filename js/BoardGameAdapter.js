@@ -16,6 +16,7 @@ exports.setGameConfig = function (gamePath) {
   GameConfig.playerAttributeDesc = [];
   if (GameJson.gameData.playerOptions.playerAttributes !== undefined) { // Feature não mandatoria
     GameJson.gameData.playerOptions.playerAttributes.forEach(function(playerAttribute){
+      if (!playerAttribute.visible) return;
       if (playerAttribute.image !== undefined)
         GameConfig.playerAttributeImg[playerAttribute.name] = playerAttribute.image;
 

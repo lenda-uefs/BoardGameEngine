@@ -5,8 +5,8 @@ exports.boardGame = {
       playerCount: 4,
       playerId: ["Red", "Green", "Yellow", "Blue"],
       playerAttributes: [
-        {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg"},
-        {name: "Active Token List", value: [], description: "", image: ""}
+        {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg", visible:true},
+        {name: "Active Token List", value: [], description: "", image: "", visible:false}
       ]
     },
     board: {
@@ -214,7 +214,6 @@ exports.boardGame = {
 
         if (stopPosition.tokens.length > stopPosition.capacity) {
           // Pega o primeiro token que estava na posição
-          // console.log("First Token");
           let firstToken = stopPosition.tokens[0];
 
           // Se os tokens tiverem o mesmo tipo...
