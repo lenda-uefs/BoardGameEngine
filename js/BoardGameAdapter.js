@@ -89,6 +89,8 @@ exports.startGameStatus = function(){
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
   if (GameConfig.boardType == "point-to-point")
     GameStatus.boardPositionList.forEach(function (position, id){
+      position.tokens = [];
+
       for (let i = 0; i < position.prev.length; i++) {
         position.prev[i] = GameStatus.boardPositionList[position.prev[i]];
       }
@@ -97,11 +99,6 @@ exports.startGameStatus = function(){
         position.next[i] = GameStatus.boardPositionList[position.next[i]];
       }
     });
-
-  // console.log(GameStatus.boardPositionList[74]);
-  // console.log(JSON.stringify(GameStatus.boardPositionList[74]));
-  // console.log(GameStatus.boardPositionList[0]);
-  // console.log(JSON.stringify(GameStatus.boardPositionList[0]));
 
   // Eventos do jogo
   GameStatus.gameEvents = GameJson.gameFlow.gameEvents;
@@ -126,9 +123,19 @@ exports.startGameStatus = function(){
     GameStatus.playerStatus[GameConfig.playerIdList[i]] = player;
   }
 
-  GameJson.gameData.component.tokens.forEach(function(token){
-    token.isSelected = false;
-    token.position = GameStatus.boardPositionList[token.positionId];
+  GameJson.gameData.component.tokens.forEach(function(token, index){
+    token.id = token.ownerId + index;
+    token.position = GameStatus.boardPositionList[0];
+    token.setPosition = function (position){
+      let index = this.position.tokens.indexOf(this.id);
+      if (index > -1) this.position.tokens.splice(index, 1);
+      this.position = position;
+      this.positionId = position.positionId;
+      this.position.tokens.push(this.id);
+    };
+    token.setPosition(GameStatus.boardPositionList[token.positionId]);
+    token.originalPosition = token.position;
+    token.startPosition = null;
     GameStatus.playerStatus[token.ownerId].tokens.push(token);
   });
 
@@ -151,10 +158,7 @@ exports.updateGameStatus = function (command) {
       if (ownerId != GameStatus.currentPlayer.id) break;
       let tokenId = parseInt(command.slice(0, command.indexOf('&')));
       GameStatus.currentPlayer.selectedToken = GameStatus.currentPlayer.tokens[tokenId];
-      //console.log(GameStatus.currentPlayer.selectedToken);
-      //console.log(ownerId + " " + GameStatus.currentPlayer.selectedToken.positionId);
       nextAction(GameStatus);
-      //console.log(JSON.stringify(GameStatus.currentPlayer.selectedToken.position.next[1]));
       break;
     case "select-position":
       break;
@@ -169,19 +173,37 @@ exports.updateGameStatus = function (command) {
       }
       break;
     case "moving":
-      console.log("Moving");
+      // 1 Pega a posição valida
+      // 2 incrementa o step
+      // 3 chama o land ou o passing de acordo com o criteiro
       let token = GameStatus.currentPlayer.selectedToken;
-      token.position = GameConfig.evaluateMovement(GameStatus);
-      token.positionId = token.position.positionId;
+
+      // Guarda a posição inicial do turno
+      if (GameStatus.steps == 0) token.startPosition = token.position;
+
+      // Seta a próxima posição
+      token.setPosition(GameConfig.evaluateMovement(GameStatus));
+      console.log(token.position);
+
+      // incrementa o contador de passos
       GameStatus.steps++;
-      if (GameStatus.steps == GameStatus.currentPlayer.diceValue)
+
+      // Se não for preciso dar mais passos...
+      if (GameConfig.boardType == "grid" ||
+        GameStatus.steps == GameStatus.currentPlayer.diceValue){
+
+        // Dispara o evento de parada e chama a proxima ação
+        GameStatus.gameEvents.stoppingEvent(GameStatus);
         nextAction(GameStatus);
+
+      } else // Caso contrario, dispara o evento de passagem e continua
+        GameStatus.gameEvents.passingEvent(GameStatus);
       break;
   }
 }
 
 function rollDice() {
-  return 1;
+  return 6;
   var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie")
     return 1 + Math.floor(Math.random() * dice.numberOfSides);
@@ -209,8 +231,12 @@ function nextAction(GameStatus) {
       GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayer)];
 
     // Limpando estados relevantes
-    if (GameStatus.previousPlayer)
+    if (GameStatus.previousPlayer.id != ""){
+      GameStatus.previousPlayer.tokens.forEach(function (token){
+        token.startPosition = null;
+      });
       GameStatus.previousPlayer.selectedToken = null;
+    }
     GameStatus.message = "";
     GameStatus.steps = 0;
 
@@ -218,9 +244,6 @@ function nextAction(GameStatus) {
 
     // Chama o evento de fim de turno
     GameStatus.gameEvents.endTurn(GameStatus);
-
-    console.log(GameStatus.currentPlayer.id + " " +GameStatus.currentAction.actionType + " "
-      + GameStatus.elapsedTurns + " " + GameStatus.currentTurn);
   } else {
     GameStatus.statusId =
       (GameStatus.currentAction.actionType == "selectToken")? "select-token":(
@@ -244,8 +267,6 @@ function nextPlayerId(GameConfig, currentPlayer) {
 // Branch Selector default. Retorna a primeira posição
 // adjacente à posição do token atual. (point to point boards)
 function rnmEvaluateMovement(GameStatus) {
-  console.log("Position");
-  //console.log(JSON.stringify(GameStatus.currentPlayer.selectedToken.position));
   return GameStatus.currentPlayer.selectedToken.position.next[0];
 }
 

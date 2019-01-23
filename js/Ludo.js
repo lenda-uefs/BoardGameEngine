@@ -152,7 +152,9 @@ exports.boardGame = {
     ],
     rules: {
       movement: {
-        branchRule: null, // Ou "manual" ou uma função
+        branchRule: function (GameStatus) { // Ou "manual" ou uma função
+          return GameStatus.currentPlayer.selectedToken.position.next[0];
+        },
         positionSelectRule: null, // Ou uma função
       },
       turnOptions: {maxTurnCount: 50, playerOrder: "staticOrder", actionQueue:["rollDice", "selectToken", "moveToken"]},
@@ -177,8 +179,12 @@ exports.boardGame = {
             } else GameStatus.message = `You got a ${diceValue}!`;
         }
       },
-      passingEvent: function (GameStatus, positionType) {},
-      stopingEvent: function (GameStatus, positionType) {},
+      passingEvent: function (GameStatus) {
+        console.log("Passing...");
+      },
+      stoppingEvent: function (GameStatus) {
+        console.log("Landing...");
+      },
       endTurn: function(GameStatus) {
         if (GameStatus.previousPlayer && GameStatus.previousPlayer.diceValue == 6) {
           GameStatus.currentPlayer = GameStatus.previousPlayer;
