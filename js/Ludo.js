@@ -6,7 +6,8 @@ exports.boardGame = {
       playerId: ["Red", "Green", "Yellow", "Blue"],
       playerAttributes: [
         {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg", visible:true},
-        {name: "Active Token List", value: [], description: "", image: "", visible:false}
+        {name: "Active Token List", value: [], description: "", image: "", visible:false},
+        {name: "combo", value: 0, description: "", image: "", visible:false}
       ]
     },
     board: {
@@ -166,18 +167,27 @@ exports.boardGame = {
       diceEvent: function (GameStatus, diceValue) {
         switch (diceValue) {
           case 6:
-            GameStatus.message = "You got a 6! You can move a token from " +
-              "your base into the game AND you get to play another turn!";
+            GameStatus.currentPlayer.attributes["combo"]++;
+            if (GameStatus.currentPlayer.attributes["combo"] == 3) {
+              GameStatus.endTurn("You got three 6's in a row. You lost your turn");
+            } else {
+              GameStatus.message = "You got " +
+                ((GameStatus.currentPlayer.attributes["combo"] == 1)? 'a': "ANOTHER") +
+                " 6!! You can move a token from your base into the game AND you get to play another turn!";
+            }
             break;
           case 1:
             GameStatus.message = "You got a 1! You can move a token from " +
               "your base into the game!";
+            GameStatus.currentPlayer.attributes["combo"] = 0;
             break;
           default:
             if (GameStatus.currentPlayer.attributes["Active Tokens"] == 0){
               GameStatus.endTurn(`You got a ${diceValue}. You need a 1 or a 6`
                 + " to move a token into the game.");
             } else GameStatus.message = `You got a ${diceValue}!`;
+            GameStatus.currentPlayer.attributes["combo"] = 0;
+            break;
         }
       },
       passingEvent: function (GameStatus) {
@@ -253,6 +263,10 @@ exports.boardGame = {
       },
       endTurn: function(GameStatus) {
         if (GameStatus.previousPlayer && GameStatus.previousPlayer.diceValue == 6) {
+          if (GameStatus.previousPlayer.attributes["combo"] == 3){
+            GameStatus.previousPlayer.attributes["combo"] = 0;
+            return;
+          }
           GameStatus.currentPlayer = GameStatus.previousPlayer;
           GameStatus.elapsedTurns--;
           GameStatus.currentTurn--;

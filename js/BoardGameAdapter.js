@@ -227,7 +227,7 @@ exports.updateGameStatus = function (command) {
 }
 
 function rollDice() {
-  return 1;
+  return 6;
   var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie")
     return 1 + Math.floor(Math.random() * dice.numberOfSides);
