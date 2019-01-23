@@ -5,7 +5,8 @@ exports.boardGame = {
       playerCount: 4,
       playerId: ["Red", "Green", "Yellow", "Blue"],
       playerAttributes: [
-        {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg"}
+        {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg"},
+        {name: "Active Token List", value: [], description: "", image: ""}
       ]
     },
     board: {
@@ -183,7 +184,68 @@ exports.boardGame = {
         console.log("Passing...");
       },
       stoppingEvent: function (GameStatus) {
-        console.log("Landing...");
+        let currentToken = GameStatus.currentPlayer.selectedToken;
+        let stopPosition = currentToken.position;
+        let activeTokenList = [];
+
+        function addActiveToken(activeTokenList, token) {
+          // Adiciona o token na lista de tokens ativos
+          activeTokenList.push(token.id);
+
+          // Atualiza o numero de tokens ativos
+          GameStatus.playerStatus[token.ownerId].attributes["Active Tokens"] =
+            activeTokenList.length;
+        }
+
+        function removeActiveToken(activeTokenList, token) {
+          // Remove o token da lista de tokens ativos
+          activeTokenList.splice(
+            activeTokenList.indexOf(token.id), 1
+          );
+
+          // Atualiza o numero de tokens
+          GameStatus.playerStatus[token.ownerId].attributes["Active Tokens"] =
+            activeTokenList.length;
+        }
+        
+        if (stopPosition.tokens.length > stopPosition.capacity) {
+          // Pega o primeiro token que estava na posição
+          // console.log("First Token");
+          let firstToken = stopPosition.tokens[0];
+
+          // Se os tokens tiverem o mesmo tipo...
+          if (currentToken.tokenType == firstToken.tokenType) {
+            // Reseta a posição do token atual
+            currentToken.resetPositionTurn();
+            GameStatus.message = "You landed on your own token! You lost your turn!";
+
+          } else { // Caso contrário
+            // manda o token do inimigo pra base
+            firstToken.resetPositionGame();
+
+            // Remove o token da lista de tokens ativos
+            activeTokenList = GameStatus.playerStatus[firstToken.ownerId].attributes["Active Token List"];
+            removeActiveToken(activeTokenList, firstToken);
+            GameStatus.message = "You sent an enemy token back to its base!";
+          }
+        }
+
+        activeTokenList = GameStatus.playerStatus[currentToken.ownerId].attributes["Active Token List"];
+
+        // Se o token parou fora da base e se o token não está na lista de ativos...
+        if (!currentToken.position.positionType.includes("Base") && activeTokenList.indexOf(currentToken.id) == -1) {
+          // Adiciona o token na lista de tokens ativos
+          addActiveToken(activeTokenList, currentToken);
+
+        // Se o token parou na base
+        } else if (currentToken.position.positionType.includes("Base")) {
+          // Remove o token da lista de tokens ativos
+          removeActiveToken(activeTokenList, currentToken);
+
+        // Se o token parou na linha de chegada
+        } else if (currentToken.position.positionType == "finish") {
+          GameStatus.playerStatus[currentToken.ownerId].removeToken(currentToken);
+        }
       },
       endTurn: function(GameStatus) {
         if (GameStatus.previousPlayer && GameStatus.previousPlayer.diceValue == 6) {

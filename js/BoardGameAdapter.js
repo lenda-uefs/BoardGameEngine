@@ -85,7 +85,7 @@ exports.startGameStatus = function(){
       GameStatus.actions[action.actionType] = action;
   });
 
-  // Status relacionados ao tabuleiro
+  // Posições
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
   if (GameConfig.boardType == "point-to-point")
     GameStatus.boardPositionList.forEach(function (position, id){
@@ -116,7 +116,8 @@ exports.startGameStatus = function(){
     if (GameJson.gameData.playerOptions.playerAttributes !== undefined) {
       player.attributes = {};
       GameJson.gameData.playerOptions.playerAttributes.forEach(function(playerAttribute){
-        player.attributes[playerAttribute.name] = playerAttribute.value;
+        player.attributes[playerAttribute.name] = Array.isArray(playerAttribute.value)?
+          playerAttribute.value.slice() : playerAttribute.value;
       });
     }
 
@@ -124,18 +125,40 @@ exports.startGameStatus = function(){
   }
 
   GameJson.gameData.component.tokens.forEach(function(token, index){
+    // Cria um id pro token
     token.id = token.ownerId + index;
+
+    // Inicializa com uma posilção qualquer
     token.position = GameStatus.boardPositionList[0];
+
+    // Definie uma função para atualizar a posição do token
     token.setPosition = function (position){
-      let index = this.position.tokens.indexOf(this.id);
+      let index = this.position.tokens.map(function (tk){return tk.id}).indexOf(this.id);
       if (index > -1) this.position.tokens.splice(index, 1);
       this.position = position;
       this.positionId = position.positionId;
-      this.position.tokens.push(this.id);
+      this.position.tokens.push(this);
     };
+
+    // Atualiza a posição do token de acordo com o positionId
     token.setPosition(GameStatus.boardPositionList[token.positionId]);
+
+    // Armazena a posição original do token
     token.originalPosition = token.position;
+
+    // Função para resetar a posição original do token;
+    token.resetPositionGame = function () {
+      this.setPosition(this.originalPosition);
+    }
+
+    // Handle para armazenar a posição do token no início de um turno
     token.startPosition = null;
+
+    token.resetPositionTurn = function () {
+      this.setPosition(this.startPosition);
+    }
+
+    // Adiciona o token na lista do jogador
     GameStatus.playerStatus[token.ownerId].tokens.push(token);
   });
 
@@ -183,7 +206,7 @@ exports.updateGameStatus = function (command) {
 
       // Seta a próxima posição
       token.setPosition(GameConfig.evaluateMovement(GameStatus));
-      console.log(token.position);
+      //console.log(token.position);
 
       // incrementa o contador de passos
       GameStatus.steps++;
@@ -203,7 +226,7 @@ exports.updateGameStatus = function (command) {
 }
 
 function rollDice() {
-  return 6;
+  return 1;
   var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie")
     return 1 + Math.floor(Math.random() * dice.numberOfSides);
