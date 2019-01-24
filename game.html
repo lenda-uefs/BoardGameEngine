@@ -67,6 +67,7 @@
           var boardGameAdapter = require('js/BoardGameAdapter.js');
           boardGameAdapter.setGameConfig("js/"+boardGameAdapter.boardGameList[getGameIndex()]);
           boardGameAdapter.startGameStatus();
+          boardGameAdapter.setUpdateCallback(updateCallback);
 
           function updateTokens(boardGameAdapter) {
             for (let playerId in tokenSprites) {
@@ -190,7 +191,7 @@
                   label.href = "#";
                   label.onclick = function() {
                     boardGameAdapter.updateGameStatus(action.actionType);
-                    updateCallback(boardGameAdapter);
+                    //updateCallback(boardGameAdapter);
                   };
                 }
                 label.textContent = action.actionLabel;
@@ -234,7 +235,7 @@
                   sprite.events.onInputDown.add(
                     function(){
                       boardGameAdapter.updateGameStatus(i+"&"+id);
-                      updateCallback(boardGameAdapter);
+                      //updateCallback(boardGameAdapter);
                     }, this);
 
                   tokenSprites[id][i] = sprite;

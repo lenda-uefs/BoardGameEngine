@@ -75,6 +75,10 @@ exports.getGameConfig = function(config){
 	}
 }
 
+exports.setUpdateCallback = function(updateCallback) {
+  GameStatus.updateCallback = updateCallback;
+}
+
 exports.startGameStatus = function(){
   clearGameStatus();
 
@@ -224,6 +228,8 @@ exports.updateGameStatus = function (command) {
         GameStatus.gameEvents.passingEvent(GameStatus);
       break;
   }
+
+  GameStatus.updateCallback();
 }
 
 function rollDice() {
@@ -329,6 +335,8 @@ function clearGameStatus(){
     endTurn: {actionType: "endTurn", actionLabel: "End Turn"},
     displayMessage: {actionType: "displayMessage", actionLabel: "Ok"}
   }
+
+  GameStatus.updateCallback = function() {};
 }
 
 function endTurn(message="") {
