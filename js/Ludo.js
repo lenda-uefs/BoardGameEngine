@@ -150,7 +150,7 @@ exports.boardGame = {
     actions: [
       {actionType: "rollDice", actionLabel: "Roll Dice"},
       {actionType: "selectToken", actionLabel: "Select Token to move"},
-      {actionType: "moveToken", actionLabel: "Move"}
+      {actionType: "moveToken", actionLabel: ""}
     ],
     rules: {
       movement: {

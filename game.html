@@ -134,6 +134,12 @@
             updateTurnsDisplay(boardGameAdapter);
             updateMessage(boardGameAdapter);
             updateTokens(boardGameAdapter);
+
+            if (boardGameAdapter.getGameStatus("statusId") == "moving") {
+              if (boardGameAdapter.getGameStatus("steps") == 0)
+                boardGameAdapter.updateGameStatus("moveToken");
+              else setTimeout(function () {boardGameAdapter.updateGameStatus("moveToken")},500);
+            }
           }
 
           var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-game', { preload: preload, create: create });
