@@ -182,7 +182,7 @@ exports.boardGame = {
           case 6:
             GameStatus.currentPlayer.attributes["combo"]++;
             if (GameStatus.currentPlayer.attributes["combo"] == 3) {
-              GameStatus.endTurn("You got three 6's in a row. You lost your turn");
+              GameStatus.endTurn("You got three 6's in a row. You lost your turn ¯\\_(ツ)_/¯");
             } else {
               GameStatus.message = "You got " +
                 ((GameStatus.currentPlayer.attributes["combo"] == 1)? 'a': "ANOTHER") +
