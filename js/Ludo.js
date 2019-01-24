@@ -184,21 +184,21 @@ exports.boardGame = {
             if (GameStatus.currentPlayer.attributes["combo"] == 3) {
               GameStatus.endTurn("You got three 6's in a row. You lost your turn ¯\\_(ツ)_/¯");
             } else {
-              GameStatus.message = "You got " +
-                ((GameStatus.currentPlayer.attributes["combo"] == 1)? 'a': "ANOTHER") +
-                " 6!! You can move a token from your base into the game AND you get to play another turn!";
+              GameStatus.setMessage(
+                "You got " + ((GameStatus.currentPlayer.attributes["combo"] == 1)? 'a': "ANOTHER") +
+                " 6!! You can move a token from your base into the game AND you get to play another turn!");
             }
             break;
           case 1:
-            GameStatus.message = "You got a 1! You can move a token from " +
-              "your base into the game!";
+            GameStatus.setMessage("You got a 1! You can move a token from " +
+              "your base into the game!");
             GameStatus.currentPlayer.attributes["combo"] = 0;
             break;
           default:
             if (GameStatus.currentPlayer.attributes["Active Tokens"] == 0){
               GameStatus.endTurn(`You got a ${diceValue}. You need a 1 or a 6`
                 + " to move a token into the game.");
-            } else GameStatus.message = `You got a ${diceValue}!`;
+            } else GameStatus.setMessage(`You got a ${diceValue}!`);
             GameStatus.currentPlayer.attributes["combo"] = 0;
             break;
         }
@@ -243,7 +243,7 @@ exports.boardGame = {
           if (currentToken.tokenType == firstToken.tokenType) {
             // Reseta a posição do token atual
             currentToken.resetPositionTurn();
-            GameStatus.message = "You landed on your own token! You lost your turn!";
+            GameStatus.setMessage("You landed on your own token! Returning to starting position.");
 
           } else { // Caso contrário
             // manda o token do inimigo pra base
@@ -252,7 +252,7 @@ exports.boardGame = {
             // Remove o token da lista de tokens ativos
             activeTokenList = GameStatus.playerStatus[firstToken.ownerId].attributes["Active Token List"];
             removeActiveToken(activeTokenList, firstToken);
-            GameStatus.message = "You sent an enemy token back to its base!";
+            GameStatus.setMessage("You sent an enemy token back to its base!");
           }
         }
 

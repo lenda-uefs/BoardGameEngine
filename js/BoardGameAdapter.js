@@ -192,7 +192,7 @@ exports.updateGameStatus = function (command) {
         player.diceValue = rollDice();
         GameStatus.gameEvents.diceEvent(GameStatus, player.diceValue);
         nextAction(GameStatus);
-      } else if (command.includes("endTurn")) {
+      } else if (command.includes("endTurn") || command.includes("displayMessage")) {
         nextAction(GameStatus);
       }
       break;
@@ -227,7 +227,7 @@ exports.updateGameStatus = function (command) {
 }
 
 function rollDice() {
-  return 6;
+  return 1;
   var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie")
     return 1 + Math.floor(Math.random() * dice.numberOfSides);
@@ -319,6 +319,7 @@ function clearGameStatus(){
   GameStatus.actionQueue = [];
   GameStatus.steps = 0;
 
+  GameStatus.setMessage = setMessage;
   GameStatus.endTurn = endTurn;
   GameStatus.actions = {
     rollDice: {actionType: "rollDice", actionLabel: "Roll Dice"},
@@ -326,6 +327,7 @@ function clearGameStatus(){
     selectPosition: {actionType: "selectPosition", actionLabel: "Select Position"},
     moveToken: {actionType: "moveToken", actionLabel: ""},
     endTurn: {actionType: "endTurn", actionLabel: "End Turn"},
+    displayMessage: {actionType: "displayMessage", actionLabel: "Ok"}
   }
 }
 
@@ -333,4 +335,12 @@ function endTurn(message="") {
   if (message != "")
     GameStatus.message = message;
   GameStatus.actionQueue = ["endTurn"];
+}
+
+function setMessage(message) {
+  if (message != "")
+    GameStatus.message = message;
+  if (GameStatus.actionQueue.length == 0) {
+    GameStatus.actionQueue.push("displayMessage");
+  }
 }
