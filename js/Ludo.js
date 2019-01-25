@@ -122,7 +122,7 @@ exports.boardGame = {
         {dieType:"nSidedDie", numberOfSides:6}
       ],
       tokens: [
-        {positionId: 73, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
+        {positionId: 50/*73*/, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
         {positionId: 74, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
         {positionId: 75, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
         {positionId: 76, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
@@ -259,13 +259,14 @@ exports.boardGame = {
         activeTokenList = GameStatus.playerStatus[currentToken.ownerId].attributes["Active Token List"];
 
         // Se o token parou fora da base e se o token não está na lista de ativos...
-        if (!currentToken.position.positionType.includes("Base") && activeTokenList.indexOf(currentToken.id) == -1) {
+        if (!currentToken.position.positionType.includes("Base") &&
+          !currentToken.position.positionType.includes("finish") &&
+          activeTokenList.indexOf(currentToken.id) == -1) {
           // Adiciona o token na lista de tokens ativos
           addActiveToken(activeTokenList, currentToken);
 
         // Se o token parou na base
         } else if (currentToken.position.positionType.includes("Base")) {
-          console.log("Base");
           // Remove o token da lista de tokens ativos
           removeActiveToken(activeTokenList, currentToken);
 
@@ -289,7 +290,9 @@ exports.boardGame = {
       playerWin: function(GameStatus) {},
       playerEliminated: function(GameStatus) {},
       tokenGained: function(GameStatus) {},
-      tokenEliminated: function(GameStatus) {}
+      tokenEliminated: function(GameStatus) {
+        console.log("Token Eliminated");
+      }
     }
   }
 }

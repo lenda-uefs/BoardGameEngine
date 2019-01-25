@@ -126,6 +126,14 @@ exports.startGameStatus = function(){
       });
     }
 
+    player.removeToken = function (token) {
+      let tokenIndex = this.tokens.map(function (tk){return tk.id}).indexOf(token.id);
+      if (tokenIndex > -1) {
+        this.tokens.splice(tokenIndex, 1);
+        GameStatus.gameEvents.tokenEliminated(GameStatus);
+      }
+    }
+
     GameStatus.playerStatus[GameConfig.playerIdList[i]] = player;
   }
 
