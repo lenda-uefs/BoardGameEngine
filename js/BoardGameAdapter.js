@@ -114,7 +114,7 @@ exports.startGameStatus = function(){
     var player = {};
     player.id = GameConfig.playerIdList[i];
     player.diceValue = 0;
-    player.tokens = [];
+    player.tokens = {};
     player.selectedToken = null;
     player.selectedPosition = null;
 
@@ -127,11 +127,7 @@ exports.startGameStatus = function(){
     }
 
     player.removeToken = function (token) {
-      let tokenIndex = this.tokens.map(function (tk){return tk.id}).indexOf(token.id);
-      if (tokenIndex > -1) {
-        this.tokens.splice(tokenIndex, 1);
-        GameStatus.gameEvents.tokenEliminated(GameStatus);
-      }
+      if (this.tokens[token.id]) delete this.tokens[token.id];
     }
 
     GameStatus.playerStatus[GameConfig.playerIdList[i]] = player;
@@ -172,7 +168,7 @@ exports.startGameStatus = function(){
     }
 
     // Adiciona o token na lista do jogador
-    GameStatus.playerStatus[token.ownerId].tokens.push(token);
+    GameStatus.playerStatus[token.ownerId].tokens[token.id] = token;
   });
 
   nextAction(GameStatus);
@@ -192,8 +188,12 @@ exports.updateGameStatus = function (command) {
     case "select-token":
       let ownerId = command.slice(command.indexOf('&')+1);
       if (ownerId != GameStatus.currentPlayer.id) break;
-      let tokenId = parseInt(command.slice(0, command.indexOf('&')));
-      GameStatus.currentPlayer.selectedToken = GameStatus.currentPlayer.tokens[tokenId];
+      let tokenId = command.slice(0, command.indexOf('&'));
+      GameStatus.currentPlayer.selectedToken =
+        GameStatus.currentPlayer.tokens[tokenId];
+      console.log(ownerId + " " + tokenId);
+      // console.log(GameStatus.currentPlayer.tokens);
+      // console.log(GameStatus.currentPlayer.selectedToken);
       nextAction(GameStatus);
       break;
     case "select-position":
@@ -241,7 +241,7 @@ exports.updateGameStatus = function (command) {
 }
 
 function rollDice() {
-  return 6;
+  return (GameStatus.currentPlayer.id == "Red")?6:1;
   var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie")
     return 1 + Math.floor(Math.random() * dice.numberOfSides);
@@ -270,9 +270,12 @@ function nextAction(GameStatus) {
 
     // Limpando estados relevantes
     if (GameStatus.previousPlayer.id != ""){
-      GameStatus.previousPlayer.tokens.forEach(function (token){
-        token.startPosition = null;
-      });
+
+      for (var tokenId in GameStatus.previousPlayer.tokens) {
+        if (GameStatus.previousPlayer.tokens.hasOwnProperty(tokenId)) {
+          GameStatus.previousPlayer.tokens[tokenId].startPosition = null;
+        }
+      }
       GameStatus.previousPlayer.selectedToken = null;
     }
     GameStatus.message = "";

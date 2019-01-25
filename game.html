@@ -70,17 +70,34 @@
           boardGameAdapter.setUpdateCallback(updateCallback);
 
           function updateTokens(boardGameAdapter) {
+
+            // para cada jogador do mapa de token sprites...
             for (let playerId in tokenSprites) {
               if (tokenSprites.hasOwnProperty(playerId)) {
+
+                // Pega os tokens do boardGameAdapter
                 let tokens = boardGameAdapter.getGameStatus("playerStatus")[playerId].tokens;
-                //console.log(tokens);
-                for (let i = 0; i < tokens.length; i++) {
-                  tokenSprites[playerId][i].x = backgroundWidth*tokens[i].position.location[0];
-                  tokenSprites[playerId][i].y = backgroundHeight*tokens[i].position.location[1];
-                  tokenSprites[playerId][i].z =
-                    (playerId != boardGameAdapter.getGameStatus("currentPlayer").id)? 0 : Infinity;
-                  //console.log(tokenSprites[playerId][i].z);
-                  group.sort(Phaser.Group.SORT_ASCENDING);
+
+                // para cada tokenSprite pertencente ao jogador playerId...
+                for (var tokenId in tokenSprites[playerId]) {
+                  if (tokenSprites[playerId].hasOwnProperty(tokenId)) {
+
+                    // Se a lista de tokens do boardGameAdapter não possui o
+                    // mesmo tokenId do mapa de token sprites, o token sprite
+                    // é removido do mapa.
+                    if (!tokens[tokenId]) {
+                      tokenSprites[playerId][tokenId].destroy();
+                      delete tokenSprites[playerId][tokenId];
+                      continue;
+                    }
+
+                    // Caso contrário, atualiza o sprite com as posições do boardGameAdapter
+                    tokenSprites[playerId][tokenId].x = backgroundWidth*tokens[tokenId].position.location[0];
+                    tokenSprites[playerId][tokenId].y = backgroundHeight*tokens[tokenId].position.location[1];
+                    tokenSprites[playerId][tokenId].z =
+                      (playerId != boardGameAdapter.getGameStatus("currentPlayer").id)? 0 : Infinity;
+                    group.sort(Phaser.Group.SORT_ASCENDING);
+                  }
                 }
               }
             }
@@ -229,26 +246,36 @@
 
             let playerStatus = boardGameAdapter.getGameStatus('playerStatus');
 
+            // para cada jogador em player status
             for (let id in playerStatus) {
               if (playerStatus.hasOwnProperty(id)) {
+
+                // Recupera os tokens do jogador
                 let tokens = playerStatus[id].tokens;
-                tokenSprites[id] = [];
 
-                for (let i = 0; i < tokens.length; i++) {
-                  let sprite = group.create(0, 0, tokens[i].tokenType);
-                  sprite.anchor.set(0.5); // TODO: remover ancora (?)
-                  sprite.inputEnabled = true;
-                  sprite.events.onInputDown.add(
-                    function(){
-                      boardGameAdapter.updateGameStatus(i+"&"+id);
-                      //updateCallback(boardGameAdapter);
-                    }, this);
+                // Cria uma entrada para o jogador id no mapa de token sprites
+                tokenSprites[id] = {};
 
-                  tokenSprites[id][i] = sprite;
+                // para cada token do jogador
+                for (let tokenId in tokens) {
+                  if (tokens.hasOwnProperty(tokenId)) {
+
+                    // Cria um sprite e seta a posição do token e o callback
+                    let sprite = group.create(0, 0, tokens[tokenId].tokenType);
+                    sprite.anchor.set(0.5); // TODO: remover ancora (?)
+                    sprite.inputEnabled = true;
+                    sprite.events.onInputDown.add(
+                      function(){
+                        boardGameAdapter.updateGameStatus(tokenId+"&"+id);
+                        //updateCallback(boardGameAdapter);
+                      }, this);
+
+                    // Insere o sprite no mapa
+                    tokenSprites[id][tokenId] = sprite;
+                  }
                 }
               }
             }
-
             updateCallback();
           }
 
