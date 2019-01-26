@@ -151,7 +151,10 @@ exports.startGameStatus = function(){
     }
 
     player.removeToken = function (token) {
-      if (this.tokens[token.id]) delete this.tokens[token.id];
+      if (this.tokens[token.id]) {
+        delete this.tokens[token.id];
+        GameStatus.gameEvents.tokenEliminated(GameStatus);
+      }
     }
 
     player.getTokenCount = function (tokenType){

@@ -300,6 +300,7 @@ exports.boardGame = {
         }
       },
       endGame: function(GameStatus, winner) {
+        console.log("Win");
         GameStatus.setMessage(`Game Over! ${winner.id} wins!`);
       },
       playerEliminated: function(GameStatus) {},
