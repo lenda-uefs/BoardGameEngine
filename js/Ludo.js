@@ -7,7 +7,8 @@ exports.boardGame = {
       playerAttributes: [
         {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg", visible:true},
         {name: "Active Token List", value: [], description: "", image: "", visible:false},
-        {name: "combo", value: 0, description: "", image: "", visible:false}
+        {name: "combo", value: 0, description: "", image: "", visible:false},
+        {name: "test", value: 0, description: "", image: "", visible:true}
       ]
     },
     board: {
@@ -177,17 +178,14 @@ exports.boardGame = {
         playerOrder: "staticOrder",
         actionQueue:["rollDice", "selectToken", "moveToken"]
       },
-      conditionsToWin: {
-        playerAttribute: [{attributeName:"test", evalOption:"highest", evalEvent:"update"}],
-        numRemainingTokens: {tokenType:null, evalOption:"lowest", evalEvent:"update"},
-        lastPlayerRemainig: {evalEvent:"update"},
-        reachFinishLine: {evalEvent:"update"}
-      },
-      conditionsToLose: {
-        playerAttribute: null,
-        numRemainingTokens: null,
-        lastPlayerRemainig: null,
-        reachFinishLine: null
+      gameOverConditions: {
+        playerAttribute: [
+          {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"}//,
+          // {attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
+        ]//,
+        // numRemainingTokens: {tokenType:null, evalOption:"lowest", evalEvent:"turnEnd", conditionType:"lose"},
+        // lastPlayerRemainig: {evalEvent:"update",conditionType:"lose"},
+        // reachFinishLine: {evalEvent:"update", conditionType:"lose"}
       }
     },
     gameEvents: {
@@ -224,6 +222,7 @@ exports.boardGame = {
         let currentToken = GameStatus.currentPlayer.selectedToken;
         let stopPosition = currentToken.position;
         let activeTokenList = [];
+        GameStatus.currentPlayer.attributes.test = 100;
 
         function addActiveToken(activeTokenList, token) {
           // Adiciona o token na lista de tokens ativos
@@ -300,8 +299,9 @@ exports.boardGame = {
           GameStatus.currentTurn--;
         }
       },
-      endGame: function(GameStatus) {},
-      playerWin: function(GameStatus) {},
+      endGame: function(GameStatus, winner) {
+        GameStatus.setMessage(`Game Over! Player ${winner.id} wins!`);
+      },
       playerEliminated: function(GameStatus) {},
       tokenGained: function(GameStatus) {},
       tokenEliminated: function(GameStatus) {

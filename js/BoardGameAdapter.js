@@ -62,8 +62,32 @@ exports.setGameConfig = function (gamePath) {
   }
 
   // Conditions to win/lose
-  GameConfig.conditionsToWin = GameJson.gameFlow.rules.conditionsToWin;
-  GameConfig.conditionsToLose = GameJson.gameFlow.rules.conditionsToLose;
+  let gameOverConditions = GameJson.gameFlow.rules.gameOverConditions;
+  GameConfig.conditionsToWin = {update:{}, gameEnd:{}, turnEnd:{}};
+  GameConfig.conditionsToLose = {update:{}, gameEnd:{}, turnEnd:{}};
+
+  Object.getOwnPropertyNames(gameOverConditions).forEach(function(cdnName){
+    if (cdnName == "playerAttribute") {
+      gameOverConditions[cdnName].forEach(function (cdn){
+        if (cdn.conditionType == "win") {
+          if (!GameConfig.conditionsToWin[cdn.evalEvent][cdnName])
+            GameConfig.conditionsToWin[cdn.evalEvent][cdnName] = [];
+          GameConfig.conditionsToWin[cdn.evalEvent][cdnName].push(cdn);
+        } else {
+          if (!GameConfig.conditionsToLose[cdn.evalEvent][cdnName])
+            GameConfig.conditionsToLose[cdn.evalEvent][cdnName] = [];
+          GameConfig.conditionsToLose[cdn.evalEvent][cdnName].push(cdn);
+        }
+      });
+    } else {
+      if (gameOverConditions[cdnName].conditionType == "win")
+        GameConfig.conditionsToWin[gameOverConditions[cdnName].evalEvent][cdnName] = gameOverConditions[cdnName];
+      else
+        GameConfig.conditionsToLose[gameOverConditions[cdnName].evalEvent][cdnName] = gameOverConditions[cdnName];
+    }
+  });
+  console.log(GameConfig.conditionsToWin);
+  console.log(GameConfig.conditionsToLose);
 }
 
 exports.getGameConfig = function(config){
@@ -184,6 +208,19 @@ exports.startGameStatus = function(){
     GameStatus.playerStatus[token.ownerId].tokens[token.id] = token;
   });
 
+  // Checagem de condições de Fim de Jogo
+  // if (GameConfig.gameOverConditions.playerAttribute){
+  //   let paWin;
+  //   let paLose;
+  //   GameConfig.gameOverConditions.playerAttribute.forEach(function (condition) {
+  //
+  //   });
+  // }
+  //
+  // Object.getOwnPropertyNames(GameConfig.gameOverConditions).forEach(function (condition){
+  //   condition = GameConfig.gameOverConditions[condition];
+  // });
+
   nextAction(GameStatus);
 }
 
@@ -205,8 +242,7 @@ exports.updateGameStatus = function (command) {
       GameStatus.currentPlayer.selectedToken =
         GameStatus.currentPlayer.tokens[tokenId];
       console.log(ownerId + " " + tokenId);
-      // console.log(GameStatus.currentPlayer.tokens);
-      // console.log(GameStatus.currentPlayer.selectedToken);
+
       nextAction(GameStatus);
       break;
     case "select-position":
@@ -232,7 +268,6 @@ exports.updateGameStatus = function (command) {
 
       // Seta a próxima posição
       token.setPosition(GameConfig.evaluateMovement(GameStatus));
-      //console.log(token.position);
 
       // incrementa o contador de passos
       GameStatus.steps++;
@@ -248,13 +283,14 @@ exports.updateGameStatus = function (command) {
       } else // Caso contrario, dispara o evento de passagem e continua
         GameStatus.gameEvents.passingEvent(GameStatus);
       break;
+    case 'game-over':
+      break;
   }
 
   // GameStatus.checkVictoryConditions["update"]();
   // GameStatus.checkDefeatConditions["update"]();
 
   GameStatus.updateCallback();
-  console.log(GameStatus.currentPlayer.getTokenCount());
 }
 
 function rollDice() {
@@ -271,6 +307,15 @@ function nextAction(GameStatus) {
 
   // Acabou o turno
   if (GameStatus.currentAction === undefined) {
+
+    // Checa as condições de vitoria de fim de turno
+    // Automaticamente chama o endGame() se necessário
+    if (GameStatus.currentPlayer.id != "" &&
+      GameStatus.checkVictoryConditions["turnEnd"](GameStatus.currentPlayer)) {
+      nextAction(GameStatus);
+      return;
+    }
+
     // Incrementa o contador de turnos
     GameStatus.elapsedTurns++;
 
@@ -302,15 +347,13 @@ function nextAction(GameStatus) {
 
     // Chama o evento de fim de turno
     GameStatus.gameEvents.endTurn(GameStatus);
+
   } else {
     GameStatus.statusId =
       (GameStatus.currentAction.actionType == "selectToken")? "select-token":(
       (GameStatus.currentAction.actionType == "selectPosition")? "select-position": (
-      (GameStatus.currentAction.actionType == "moveToken")? "moving":"standby"));
-
-    // if (GameStatus.statusId == "moving") {
-    //   exports.updateGameStatus("");
-    // }
+      (GameStatus.currentAction.actionType == "moveToken")? "moving":(
+      (GameStatus.currentAction.actionType == "endGame")? "game-over":"standby")));
   }
 
   return GameStatus.currentAction;
@@ -361,12 +404,36 @@ function clearGameStatus(){
     selectPosition: {actionType: "selectPosition", actionLabel: "Select Position"},
     moveToken: {actionType: "moveToken", actionLabel: ""},
     endTurn: {actionType: "endTurn", actionLabel: "End Turn"},
-    displayMessage: {actionType: "displayMessage", actionLabel: "Ok"}
+    displayMessage: {actionType: "displayMessage", actionLabel: "Ok"},
+    endGame: {actionType: "endGame", actionLabel: ""}
   }
 
   GameStatus.updateCallback = function() {};
-  GameStatus.checkVictoryConditions = {};
-  GameStatus.checkDefeatConditions = {};
+
+  GameStatus.checkVictoryConditions = {
+    update:
+      function (player){return evalConditionsExact(player, GameConfig.conditionsToWin.update)},
+    turnEnd:
+      function (player){return evalConditionsExact(player, GameConfig.conditionsToWin.turnEnd)},
+    gameEnd: function () {return evalConditions(GameConfig.conditionsToWin.gameEnd)}
+  };
+
+  GameStatus.checkDefeatConditions = {
+    update:
+      function (player){return evalConditionsExact(player, GameConfig.conditionsToLose.update)},
+    turnEnd:
+      function (player){return evalConditionsExact(player, GameConfig.conditionsToLose.turnEnd)},
+    gameEnd: function () {return evalConditions(GameConfig.conditionsToLose.gameEnd)}
+  };
+
+  GameStatus.endGame = function(winner=null) {
+    if (GameStatus.statusId == "game-over") return;
+    if (!winner) {
+
+    }
+    GameStatus.gameEvents.endGame(GameStatus, winner);
+    GameStatus.actionQueue = ["endGame"];
+  };
 }
 
 function endTurn(message="") {
@@ -417,4 +484,47 @@ function evaluateTokenCount(playerList, tokenType, evalOption = "highest") {
   }
 
   return (evalOption == "lowest")? playerList.sort(comparator) : playerList.sort(comparator).reverse();
+}
+
+function evalConditionsExact(player, conditions){
+  if ((
+    conditions.playerAttribute &&
+    conditions.playerAttribute.some(function (cdn){
+      return evaluatePlayerAttributeExact(player, cdn.attributeName, cdn.value);
+    })
+    ) || (
+      conditions.numRemainingTokens &&
+      evaluateTokenCountExact(
+        player, conditions.numRemainingTokens.tokenType,
+        conditions.numRemainingTokens.value
+      )
+    ) || (
+      conditions.lastPlayerRemainig &&
+      isLastRemainingPlayer(player)
+    ) || (
+      conditions.reachFinishLine &&
+      hasReachedFinishLine(player)
+    )
+  ) {
+    GameStatus.endGame(player);
+    return true;
+  } return false;
+}
+
+function evalConditions(conditions){
+  let playerList = [];
+  GameStatus.playerIdList.forEach(function (playerId){
+    playerList.push(GameStatus.playerStatus[playerId]);
+  });
+  if (conditions.playerAttribute) {
+    return evaluatePlayerAttribute(playerList,
+      conditions.playerAttribute[0].attributeName,
+      conditions.playerAttribute[0].evalOption
+    );
+  } else if (conditions.numRemainingTokens){
+    return evaluateTokenCount(playerList,
+      conditions.numRemainingTokens.tokenType,
+      conditions.numRemainingTokens.evalOption
+    );
+  }
 }
