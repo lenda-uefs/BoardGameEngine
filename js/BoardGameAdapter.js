@@ -308,14 +308,6 @@ function nextAction(GameStatus) {
   // Acabou o turno
   if (GameStatus.currentAction === undefined) {
 
-    // Checa as condições de vitoria de fim de turno
-    // Automaticamente chama o endGame() se necessário
-    if (GameStatus.currentPlayer.id != "" &&
-      GameStatus.checkVictoryConditions["turnEnd"](GameStatus.currentPlayer)) {
-      nextAction(GameStatus);
-      return;
-    }
-
     // Incrementa o contador de turnos
     GameStatus.elapsedTurns++;
 
@@ -347,6 +339,15 @@ function nextAction(GameStatus) {
 
     // Chama o evento de fim de turno
     GameStatus.gameEvents.endTurn(GameStatus);
+
+    // Checa as condições de vitoria de fim de turno
+    // Automaticamente chama o endGame() se necessário
+    if (GameStatus.previousPlayer.id != "" &&
+      GameStatus.checkVictoryConditions["turnEnd"](GameStatus.previousPlayer)) {
+      GameStatus.currentPlayer = GameStatus.previousPlayer;
+      nextAction(GameStatus);
+      return;
+    }
 
   } else {
     GameStatus.statusId =

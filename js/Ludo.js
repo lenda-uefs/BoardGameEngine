@@ -300,10 +300,9 @@ exports.boardGame = {
         }
       },
       endGame: function(GameStatus, winner) {
-        GameStatus.setMessage(`Game Over! Player ${winner.id} wins!`);
+        GameStatus.setMessage(`Game Over! ${winner.id} wins!`);
       },
       playerEliminated: function(GameStatus) {},
-      tokenGained: function(GameStatus) {},
       tokenEliminated: function(GameStatus) {
         console.log("Token Eliminated");
       }
