@@ -130,6 +130,19 @@ exports.startGameStatus = function(){
       if (this.tokens[token.id]) delete this.tokens[token.id];
     }
 
+    player.getTokenCount = function (tokenType){
+      let tokenCount = 0;
+      if (tokenType) {
+        for (let tokenId in this.tokens) {
+          if (this.tokens.hasOwnProperty(tokenId) &&
+            this.tokens[tokenId].tokenType == tokenType)
+            tokenCount++;
+        }
+      } else tokenCount = Object.getOwnPropertyNames(this.tokens).length;
+
+      return tokenCount;
+    }
+
     GameStatus.playerStatus[GameConfig.playerIdList[i]] = player;
   }
 
@@ -237,7 +250,11 @@ exports.updateGameStatus = function (command) {
       break;
   }
 
+  // GameStatus.checkVictoryConditions["update"]();
+  // GameStatus.checkDefeatConditions["update"]();
+
   GameStatus.updateCallback();
+  console.log(GameStatus.currentPlayer.getTokenCount());
 }
 
 function rollDice() {
@@ -348,6 +365,8 @@ function clearGameStatus(){
   }
 
   GameStatus.updateCallback = function() {};
+  GameStatus.checkVictoryConditions = {};
+  GameStatus.checkDefeatConditions = {};
 }
 
 function endTurn(message="") {
@@ -362,4 +381,40 @@ function setMessage(message) {
   if (GameStatus.actionQueue.length == 0) {
     GameStatus.actionQueue.push("displayMessage");
   }
+}
+
+function isLastRemainingPlayer(player) {
+  return GameStatus.playerStatus.length == 1 && GameStatus.playerStatus[player.id];
+}
+
+function hasReachedFinishLine(player) {
+  return player && player.position && player.position.positionType.includes("finish");
+}
+
+// Retorna se a condição de fim de jogo é verdadeira para este jogador
+function evaluatePlayerAttributeExact(player, attributeName, value) {
+  return player.attributes[attributeName] == value;
+}
+
+function evaluateTokenCountExact(player, tokenType, value){
+  return player.tokenCount(tokenType) == value;
+}
+
+// Retorna uma lista de jogadores em ordem crescente ou decrescente,
+// de acordo com o eval option, em relação ao attribute name
+// O primeiro da lista satisfaz a condição de fim de jogo
+function evaluatePlayerAttribute(playerList, attributeName, evalOption = "highest") {
+  var comparator = function (playerA, playerB) {
+    return playerA.attributes[attributeName] - playerB.attributes[attributeName];
+  }
+
+  return (evalOption == "lowest")? playerList.sort(comparator) : playerList.sort(comparator).reverse();
+}
+
+function evaluateTokenCount(playerList, tokenType, evalOption = "highest") {
+  var comparator = function (playerA, playerB) {
+    return playerA.getTokenCount(tokenType) - playerB.getTokenCount(tokenType);
+  }
+
+  return (evalOption == "lowest")? playerList.sort(comparator) : playerList.sort(comparator).reverse();
 }

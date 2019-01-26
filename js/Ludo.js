@@ -172,9 +172,23 @@ exports.boardGame = {
         },
         positionSelectRule: null, // Ou uma função
       },
-      turnOptions: {maxTurnCount: 50, playerOrder: "staticOrder", actionQueue:["rollDice", "selectToken", "moveToken"]},
-      conditionsToWin: {playerScore: null, numRemainingTokens: 0, numPositionsHeld: null, numRemainingPlayers: null},
-      conditionsToLose: {playerScore: null, numRemainingTokens: null, numPositionsHeld: null, numRemainingPlayers: null}
+      turnOptions: {
+        maxTurnCount: 50,
+        playerOrder: "staticOrder",
+        actionQueue:["rollDice", "selectToken", "moveToken"]
+      },
+      conditionsToWin: {
+        playerAttribute: [{attributeName:"test", evalOption:"highest", evalEvent:"update"}],
+        numRemainingTokens: {tokenType:null, evalOption:"lowest", evalEvent:"update"},
+        lastPlayerRemainig: {evalEvent:"update"},
+        reachFinishLine: {evalEvent:"update"}
+      },
+      conditionsToLose: {
+        playerAttribute: null,
+        numRemainingTokens: null,
+        lastPlayerRemainig: null,
+        reachFinishLine: null
+      }
     },
     gameEvents: {
       diceEvent: function (GameStatus, diceValue) {
