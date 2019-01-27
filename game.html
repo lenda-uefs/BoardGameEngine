@@ -108,16 +108,14 @@
             let attributeElem = null;
             let innerHTML = null;
 
-            for (var attributeName in playerAttributes) {
-              if (playerAttributes.hasOwnProperty(attributeName)) {
-                attributeElem = document.getElementById(attributeName);
-                if (!attributeElem) return;
+            Object.getOwnPropertyNames(playerAttributes).forEach(function (attributeName){
+              attributeElem = document.getElementById(attributeName);
+              if (!attributeElem) return;
 
-                innerHTML = attributeElem.innerHTML;
-                attributeElem.innerHTML = innerHTML.slice(0, innerHTML.lastIndexOf('=')+1)
-                  + " " + playerAttributes[attributeName];
-              }
-            }
+              innerHTML = attributeElem.innerHTML;
+              attributeElem.innerHTML = innerHTML.slice(0, innerHTML.lastIndexOf('=')+1)
+                + " " + playerAttributes[attributeName];
+            });
           }
 
           function updateActions(boardGameAdapter) {
