@@ -277,7 +277,7 @@ exports.updateGameStatus = function (command) {
       break;
   }
 
-  // GameStatus.checkVictoryConditions["update"]();
+  GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
   // GameStatus.checkDefeatConditions["update"]();
 
   GameStatus.updateCallback();

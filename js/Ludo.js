@@ -185,7 +185,7 @@ exports.boardGame = {
         // ],
         //numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"turnEnd", conditionType:"win"},
         // lastPlayerRemainig: {evalEvent:"update",conditionType:"lose"},
-        reachFinishLine: {evalEvent:"turnEnd", conditionType:"win"}
+        reachFinishLine: {evalEvent:"update", conditionType:"win"}
       }
     },
     gameEvents: {
@@ -285,7 +285,7 @@ exports.boardGame = {
 
         // Se o token parou na linha de chegada
         } else if (currentToken.position.positionType == "finish") {
-          GameStatus.playerStatus[currentToken.ownerId].removeToken(currentToken);
+          //GameStatus.playerStatus[currentToken.ownerId].removeToken(currentToken);
         }
       },
       endTurn: function(GameStatus) {
