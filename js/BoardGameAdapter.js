@@ -233,6 +233,7 @@ exports.updateGameStatus = function (command) {
         GameStatus.currentPlayer.tokens[tokenId];
       console.log(ownerId + " " + tokenId);
 
+      GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
       nextAction(GameStatus);
       break;
     case "select-position":
@@ -242,8 +243,12 @@ exports.updateGameStatus = function (command) {
         var player = GameStatus.playerStatus[GameStatus.currentPlayer.id];
         player.diceValue = rollDice();
         GameStatus.gameEvents.diceEvent(GameStatus, player.diceValue);
+
+        GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
         nextAction(GameStatus);
       } else if (command.includes("endTurn") || command.includes("displayMessage")) {
+
+        GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
         nextAction(GameStatus);
       }
       break;
@@ -268,16 +273,20 @@ exports.updateGameStatus = function (command) {
 
         // Dispara o evento de parada e chama a proxima ação
         GameStatus.gameEvents.stoppingEvent(GameStatus);
+
+        GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
         nextAction(GameStatus);
 
       } else // Caso contrario, dispara o evento de passagem e continua
         GameStatus.gameEvents.passingEvent(GameStatus);
+        if (GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer))
+          nextAction(GameStatus);
       break;
     case 'game-over':
       break;
   }
 
-  GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
+  //GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
   // GameStatus.checkDefeatConditions["update"]();
 
   GameStatus.updateCallback();

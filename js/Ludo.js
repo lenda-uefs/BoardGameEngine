@@ -179,13 +179,13 @@ exports.boardGame = {
         actionQueue:["rollDice", "selectToken", "moveToken"]
       },
       gameOverConditions: {
-        // playerAttribute: [
-        //   {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"},
-        //   {attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
-        // ],
-        //numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"turnEnd", conditionType:"win"},
+        playerAttribute: [
+          {attributeName:"test", evalOption:"exact", value:100, evalEvent:"update", conditionType:"win"}//,
+          // {attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
+        ],
+        // numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"update", conditionType:"win"},
         // lastPlayerRemainig: {evalEvent:"update",conditionType:"lose"},
-        reachFinishLine: {evalEvent:"update", conditionType:"win"}
+        // reachFinishLine: {evalEvent:"update", conditionType:"win"}
       }
     },
     gameEvents: {
@@ -217,6 +217,7 @@ exports.boardGame = {
       },
       passingEvent: function (GameStatus) {
         console.log("Passing...");
+        GameStatus.currentPlayer.attributes.test += 50;
       },
       stoppingEvent: function (GameStatus) {
         let currentToken = GameStatus.currentPlayer.selectedToken;
@@ -285,7 +286,7 @@ exports.boardGame = {
 
         // Se o token parou na linha de chegada
         } else if (currentToken.position.positionType == "finish") {
-          //GameStatus.playerStatus[currentToken.ownerId].removeToken(currentToken);
+          GameStatus.playerStatus[currentToken.ownerId].removeToken(currentToken);
         }
       },
       endTurn: function(GameStatus) {
@@ -294,9 +295,9 @@ exports.boardGame = {
             GameStatus.previousPlayer.attributes["combo"] = 0;
             return;
           }
-          GameStatus.currentPlayer = GameStatus.previousPlayer;
-          GameStatus.elapsedTurns--;
-          GameStatus.currentTurn--;
+          // GameStatus.currentPlayer = GameStatus.previousPlayer;
+          // GameStatus.elapsedTurns--;
+          // GameStatus.currentTurn--;
         }
       },
       endGame: function(GameStatus, winner) {
