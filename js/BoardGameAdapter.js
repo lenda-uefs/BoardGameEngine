@@ -233,7 +233,6 @@ exports.updateGameStatus = function (command) {
         GameStatus.currentPlayer.tokens[tokenId];
       console.log(ownerId + " " + tokenId);
 
-      GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
       nextAction(GameStatus);
       break;
     case "select-position":
@@ -243,12 +242,8 @@ exports.updateGameStatus = function (command) {
         var player = GameStatus.playerStatus[GameStatus.currentPlayer.id];
         player.diceValue = rollDice();
         GameStatus.gameEvents.diceEvent(GameStatus, player.diceValue);
-
-        GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
         nextAction(GameStatus);
       } else if (command.includes("endTurn") || command.includes("displayMessage")) {
-
-        GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
         nextAction(GameStatus);
       }
       break;
@@ -273,20 +268,21 @@ exports.updateGameStatus = function (command) {
 
         // Dispara o evento de parada e chama a proxima ação
         GameStatus.gameEvents.stoppingEvent(GameStatus);
-
-        GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
         nextAction(GameStatus);
 
       } else // Caso contrario, dispara o evento de passagem e continua
         GameStatus.gameEvents.passingEvent(GameStatus);
-        if (GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer))
+
+        if (GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer)){
+          console.log("aqui2");
           nextAction(GameStatus);
+        }
       break;
     case 'game-over':
       break;
   }
 
-  //GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
+  // GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
   // GameStatus.checkDefeatConditions["update"]();
 
   GameStatus.updateCallback();
@@ -339,6 +335,14 @@ function nextAction(GameStatus) {
     // Chama o evento de fim de turno
     GameStatus.gameEvents.endTurn(GameStatus);
 
+    // Checa as condições de vitoria do game update
+    // Automaticamente chama o endGame() se necessário
+    if (GameStatus.previousPlayer.id != "" &&
+      GameStatus.checkVictoryConditions["update"](GameStatus.previousPlayer)){
+      console.log("aqui");
+      nextAction(GameStatus);
+      return;
+    }
     // Checa as condições de vitoria de fim de turno
     // Automaticamente chama o endGame() se necessário
     if (GameStatus.previousPlayer.id != "" &&
@@ -354,6 +358,12 @@ function nextAction(GameStatus) {
       (GameStatus.currentAction.actionType == "selectPosition")? "select-position": (
       (GameStatus.currentAction.actionType == "moveToken")? "moving":(
       (GameStatus.currentAction.actionType == "endGame")? "game-over":"standby")));
+
+    if (GameStatus.statusId != "game-over" &&
+      GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer)){
+      console.log("aqui1");
+      nextAction(GameStatus);
+    }
   }
 
   return GameStatus.currentAction;

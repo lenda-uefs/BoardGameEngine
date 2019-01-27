@@ -174,18 +174,18 @@ exports.boardGame = {
         positionSelectRule: null, // Ou uma função
       },
       turnOptions: {
-        maxTurnCount: 50,
+        //maxTurnCount: 50,
         playerOrder: "staticOrder",
         actionQueue:["rollDice", "selectToken", "moveToken"]
       },
       gameOverConditions: {
         playerAttribute: [
-          {attributeName:"test", evalOption:"exact", value:100, evalEvent:"update", conditionType:"win"}//,
-          // {attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
+          {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"}
+          //{attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
         ],
-        // numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"update", conditionType:"win"},
+        // numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"turnEnd", conditionType:"win"}//,
         // lastPlayerRemainig: {evalEvent:"update",conditionType:"lose"},
-        // reachFinishLine: {evalEvent:"update", conditionType:"win"}
+        //reachFinishLine: {evalEvent:"turnEnd", conditionType:"win"}
       }
     },
     gameEvents: {
@@ -217,7 +217,9 @@ exports.boardGame = {
       },
       passingEvent: function (GameStatus) {
         console.log("Passing...");
-        GameStatus.currentPlayer.attributes.test += 50;
+        //GameStatus.currentPlayer.attributes.test += 50;
+        if (GameStatus.currentPlayer.selectedToken.position.positionType == "finish")
+          GameStatus.currentPlayer.removeToken(GameStatus.currentPlayer.selectedToken);
       },
       stoppingEvent: function (GameStatus) {
         let currentToken = GameStatus.currentPlayer.selectedToken;
