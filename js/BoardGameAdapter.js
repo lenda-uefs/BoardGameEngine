@@ -425,17 +425,37 @@ function clearGameStatus(){
 
   GameStatus.checkVictoryConditions = {
     update:
-      function (player){return evalConditionsExact(player, GameConfig.conditionsToWin.update)},
+      function (player){
+        if (evalConditionsExact(player, GameConfig.conditionsToWin.update)){
+          GameStatus.endGame(player);
+          return true;
+        } return false;
+      },
     turnEnd:
-      function (player){return evalConditionsExact(player, GameConfig.conditionsToWin.turnEnd)},
+      function (player){
+        if (evalConditionsExact(player, GameConfig.conditionsToWin.turnEnd)){
+          GameStatus.endGame(player);
+          return true;
+        } return false;
+      },
     gameEnd: function () {return evalConditions(GameConfig.conditionsToWin.gameEnd)}
   };
 
   GameStatus.checkDefeatConditions = {
     update:
-      function (player){return evalConditionsExact(player, GameConfig.conditionsToLose.update)},
+      function (player){
+        if (evalConditionsExact(player, GameConfig.conditionsToLose.update)){
+          GameStatus.endGame(player);
+          return true;
+        } return false;
+      },
     turnEnd:
-      function (player){return evalConditionsExact(player, GameConfig.conditionsToLose.turnEnd)},
+      function (player){
+        if (evalConditionsExact(player, GameConfig.conditionsToLose.turnEnd)){
+          GameStatus.endGame(player);
+          return true;
+        } return false;
+      },
     gameEnd: function () {return evalConditions(GameConfig.conditionsToLose.gameEnd)}
   };
 
@@ -528,7 +548,6 @@ function evalConditionsExact(player, conditions){
       hasReachedFinishLine(player)
     )
   ) {
-    GameStatus.endGame(player);
     return true;
   } return false;
 }
