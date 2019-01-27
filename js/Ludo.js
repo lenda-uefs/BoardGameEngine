@@ -183,9 +183,9 @@ exports.boardGame = {
         //   {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"},
         //   {attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
         // ],
-        numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"turnEnd", conditionType:"win"},
+        //numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"turnEnd", conditionType:"win"},
         // lastPlayerRemainig: {evalEvent:"update",conditionType:"lose"},
-        // reachFinishLine: {evalEvent:"update", conditionType:"lose"}
+        reachFinishLine: {evalEvent:"turnEnd", conditionType:"win"}
       }
     },
     gameEvents: {

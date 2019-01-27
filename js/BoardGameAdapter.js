@@ -211,19 +211,6 @@ exports.startGameStatus = function(){
     GameStatus.playerStatus[token.ownerId].tokens[token.id] = token;
   });
 
-  // Checagem de condições de Fim de Jogo
-  // if (GameConfig.gameOverConditions.playerAttribute){
-  //   let paWin;
-  //   let paLose;
-  //   GameConfig.gameOverConditions.playerAttribute.forEach(function (condition) {
-  //
-  //   });
-  // }
-  //
-  // Object.getOwnPropertyNames(GameConfig.gameOverConditions).forEach(function (condition){
-  //   condition = GameConfig.gameOverConditions[condition];
-  // });
-
   nextAction(GameStatus);
 }
 
@@ -459,7 +446,9 @@ function isLastRemainingPlayer(player) {
 }
 
 function hasReachedFinishLine(player) {
-  return player && player.position && player.position.positionType.includes("finish");
+  return Object.getOwnPropertyNames(player.tokens).some(function (tokenId){
+    return player.tokens[tokenId].position.positionType.includes("finish");
+  });
 }
 
 // Retorna se a condição de fim de jogo é verdadeira para este jogador
