@@ -152,6 +152,8 @@ exports.startGameStatus = function(){
 
     player.removeToken = function (token) {
       if (this.tokens[token.id]) {
+        let index = token.position.tokens.map(function (tk){return tk.id}).indexOf(token.id);
+        if (index > -1) token.position.tokens.splice(index, 1);
         delete this.tokens[token.id];
         GameStatus.gameEvents.tokenEliminated(GameStatus);
       }
@@ -232,7 +234,7 @@ exports.updateGameStatus = function (command) {
       GameStatus.currentPlayer.selectedToken =
         GameStatus.currentPlayer.tokens[tokenId];
       console.log(ownerId + " " + tokenId);
-
+      GameStatus.gameEvents.tokenSelected(GameStatus, GameStatus.currentPlayer.selectedToken);
       nextAction(GameStatus);
       break;
     case "select-position":
@@ -289,7 +291,7 @@ exports.updateGameStatus = function (command) {
 }
 
 function rollDice() {
-  return (GameStatus.currentPlayer.id == "Red")?6:1;
+  //return (GameStatus.currentPlayer.id == "Red")?6:1;
   var dice = GameConfig.dice[0];
   if (dice.dieType == "nSidedDie")
     return 1 + Math.floor(Math.random() * dice.numberOfSides);
@@ -408,6 +410,7 @@ function clearGameStatus(){
 
   GameStatus.setMessage = setMessage;
   GameStatus.endTurn = endTurn;
+  GameStatus.repeatAction = repeatAction;
   GameStatus.actions = {
     rollDice: {actionType: "rollDice", actionLabel: "Roll Dice"},
     selectToken: {actionType: "selectToken", actionLabel: "Select Token"},
@@ -458,6 +461,13 @@ function setMessage(message) {
   if (GameStatus.actionQueue.length == 0) {
     GameStatus.actionQueue.push("displayMessage");
   }
+}
+
+function repeatAction(message=null) {
+  if (message)
+    GameStatus.message = message;
+
+  GameStatus.actionQueue.unshift(GameStatus.currentAction.actionType);
 }
 
 function isLastRemainingPlayer(player) {

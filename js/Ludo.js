@@ -8,7 +8,7 @@ exports.boardGame = {
         {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg", visible:true},
         {name: "Active Token List", value: [], description: "", image: "", visible:false},
         {name: "combo", value: 0, description: "", image: "", visible:false},
-        {name: "test", value: 0, description: "", image: "", visible:true}
+        {name: "test", value: 0, description: "", image: "", visible:false}
       ]
     },
     board: {
@@ -123,7 +123,7 @@ exports.boardGame = {
         {dieType:"nSidedDie", numberOfSides:6}
       ],
       tokens: [
-        {positionId: 50/*73*/, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
+        {positionId: 73, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
         {positionId: 74, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
         {positionId: 75, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
         {positionId: 76, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
@@ -179,11 +179,11 @@ exports.boardGame = {
         actionQueue:["rollDice", "selectToken", "moveToken"]
       },
       gameOverConditions: {
-        playerAttribute: [
-          {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"}
-          //{attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
-        ],
-        // numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"turnEnd", conditionType:"win"}//,
+        // playerAttribute: [
+        //   {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"}
+        //   //{attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
+        // ],
+        numRemainingTokens: {tokenType:null, evalOption:"exact", value:0, evalEvent:"update", conditionType:"win"}//,
         // lastPlayerRemainig: {evalEvent:"update",conditionType:"lose"},
         //reachFinishLine: {evalEvent:"turnEnd", conditionType:"win"}
       }
@@ -218,14 +218,14 @@ exports.boardGame = {
       passingEvent: function (GameStatus) {
         console.log("Passing...");
         //GameStatus.currentPlayer.attributes.test += 50;
-        if (GameStatus.currentPlayer.selectedToken.position.positionType == "finish")
-          GameStatus.currentPlayer.removeToken(GameStatus.currentPlayer.selectedToken);
+        // if (GameStatus.currentPlayer.selectedToken.position.positionType == "finish")
+        //   GameStatus.currentPlayer.removeToken(GameStatus.currentPlayer.selectedToken);
       },
       stoppingEvent: function (GameStatus) {
         let currentToken = GameStatus.currentPlayer.selectedToken;
         let stopPosition = currentToken.position;
         let activeTokenList = [];
-        GameStatus.currentPlayer.attributes.test = 100;
+        //GameStatus.currentPlayer.attributes.test = 100;
 
         function addActiveToken(activeTokenList, token) {
           // Adiciona o token na lista de tokens ativos
@@ -288,6 +288,7 @@ exports.boardGame = {
 
         // Se o token parou na linha de chegada
         } else if (currentToken.position.positionType == "finish") {
+          removeActiveToken(activeTokenList, currentToken);
           GameStatus.playerStatus[currentToken.ownerId].removeToken(currentToken);
         }
       },
@@ -297,9 +298,9 @@ exports.boardGame = {
             GameStatus.previousPlayer.attributes["combo"] = 0;
             return;
           }
-          // GameStatus.currentPlayer = GameStatus.previousPlayer;
-          // GameStatus.elapsedTurns--;
-          // GameStatus.currentTurn--;
+          GameStatus.currentPlayer = GameStatus.previousPlayer;
+          GameStatus.elapsedTurns--;
+          GameStatus.currentTurn--;
         }
       },
       endGame: function(GameStatus, winner) {
@@ -309,6 +310,18 @@ exports.boardGame = {
       playerEliminated: function(GameStatus) {},
       tokenEliminated: function(GameStatus) {
         console.log("Token Eliminated");
+      },
+      tokenSelected: function(GameStatus, selectedToken) {
+        if (
+          selectedToken.position.positionType.includes("Base") &&
+          GameStatus.currentPlayer.diceValue != 6 &&
+          GameStatus.currentPlayer.diceValue != 1 &&
+          GameStatus.currentPlayer.attributes["Active Tokens"] > 0
+        ) {
+          GameStatus.repeatAction(`You got a ${GameStatus.currentPlayer.diceValue}.`
+            + "You need a 1 or a 6 to move a token into the game."
+            + " Please select another token.");
+        } else GameStatus.setMessage(" ");
       }
     }
   }
