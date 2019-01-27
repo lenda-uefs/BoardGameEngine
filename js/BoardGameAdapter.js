@@ -468,7 +468,7 @@ function evaluatePlayerAttributeExact(player, attributeName, value) {
 }
 
 function evaluateTokenCountExact(player, tokenType, value){
-  return player.tokenCount(tokenType) == value;
+  return player.getTokenCount(tokenType) == value;
 }
 
 // Retorna uma lista de jogadores em ordem crescente ou decrescente,

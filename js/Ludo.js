@@ -179,11 +179,11 @@ exports.boardGame = {
         actionQueue:["rollDice", "selectToken", "moveToken"]
       },
       gameOverConditions: {
-        playerAttribute: [
-          {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"}//,
-          // {attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
-        ]//,
-        // numRemainingTokens: {tokenType:null, evalOption:"lowest", evalEvent:"turnEnd", conditionType:"lose"},
+        // playerAttribute: [
+        //   {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"},
+        //   {attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
+        // ],
+        numRemainingTokens: {tokenType:null, evalOption:"exact", value:3, evalEvent:"turnEnd", conditionType:"win"},
         // lastPlayerRemainig: {evalEvent:"update",conditionType:"lose"},
         // reachFinishLine: {evalEvent:"update", conditionType:"lose"}
       }
