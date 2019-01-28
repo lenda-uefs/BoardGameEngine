@@ -275,7 +275,8 @@ exports.updateGameStatus = function (command) {
       } else // Caso contrario, dispara o evento de passagem e continua
         GameStatus.gameEvents.passingEvent(GameStatus);
 
-        if (GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer)){
+        if (GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer) ||
+        GameStatus.checkDefeatConditions["update"](GameStatus.currentPlayer)){
           console.log("aqui2");
           nextAction(GameStatus);
         }
@@ -283,9 +284,6 @@ exports.updateGameStatus = function (command) {
     case 'game-over':
       break;
   }
-
-  // GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer);
-  // GameStatus.checkDefeatConditions["update"]();
 
   GameStatus.updateCallback();
 }
@@ -315,9 +313,22 @@ function nextAction(GameStatus) {
     GameStatus.actionQueue = GameStatus.defaultActionQueue.slice();
 
     // Atualiza o player atual
-    GameStatus.previousPlayer = GameStatus.currentPlayer;
+    let currentPlayer = GameStatus.currentPlayer;
     GameStatus.currentPlayer = GameStatus.playerStatus[
-      GameConfig.nextPlayerId(GameConfig, GameStatus.currentPlayer)];
+      GameConfig.nextPlayerId(GameConfig, currentPlayer)];
+
+    // Se o jogador NÃO foi marcado para remoção...
+    if (!GameStatus.removedPlayers[currentPlayer.id]){
+      GameStatus.previousPlayer = currentPlayer;
+    } else {
+      console.log("Apagando");
+      GameStatus.previousPlayer = GameStatus.currentPlayer;
+      let playerIndex = GameConfig.playerIdList.indexOf(currentPlayer.id);
+      if (playerIndex > -1) {
+        delete GameStatus.playerStatus[currentPlayer.id];
+        GameConfig.playerIdList.splice(playerIndex, 1);
+      }
+    }
 
     // Limpando estados relevantes
     if (GameStatus.previousPlayer.id != ""){
@@ -340,7 +351,8 @@ function nextAction(GameStatus) {
     // Checa as condições de vitoria do game update
     // Automaticamente chama o endGame() se necessário
     if (GameStatus.previousPlayer.id != "" &&
-      GameStatus.checkVictoryConditions["update"](GameStatus.previousPlayer)){
+      (GameStatus.checkVictoryConditions["update"](GameStatus.previousPlayer) ||
+      GameStatus.checkDefeatConditions["update"](GameStatus.previousPlayer))){
       console.log("aqui");
       nextAction(GameStatus);
       return;
@@ -348,7 +360,9 @@ function nextAction(GameStatus) {
     // Checa as condições de vitoria de fim de turno
     // Automaticamente chama o endGame() se necessário
     if (GameStatus.previousPlayer.id != "" &&
-      GameStatus.checkVictoryConditions["turnEnd"](GameStatus.previousPlayer)) {
+      (GameStatus.checkVictoryConditions["turnEnd"](GameStatus.previousPlayer) ||
+      GameStatus.checkDefeatConditions["turnEnd"](GameStatus.previousPlayer))) {
+      console.log("aqui3");
       GameStatus.currentPlayer = GameStatus.previousPlayer;
       nextAction(GameStatus);
       return;
@@ -362,8 +376,10 @@ function nextAction(GameStatus) {
       (GameStatus.currentAction.actionType == "endGame")? "game-over":"standby")));
 
     if (GameStatus.statusId != "game-over" &&
-      GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer)){
+      (GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer) ||
+      GameStatus.checkDefeatConditions["update"](GameStatus.currentPlayer))){
       console.log("aqui1");
+      console.log(GameStatus.statusId);
       nextAction(GameStatus);
     }
   }
@@ -373,7 +389,7 @@ function nextAction(GameStatus) {
 
 function nextPlayerId(GameConfig, currentPlayer) {
   let currentPlayerIndex = GameConfig.playerIdList.indexOf(currentPlayer.id);
-  currentPlayerIndex = (currentPlayerIndex == GameConfig.playerCount - 1)? 0 : currentPlayerIndex+1;
+  currentPlayerIndex = (currentPlayerIndex == GameConfig.playerIdList.length - 1)? 0 : currentPlayerIndex+1;
   return GameConfig.playerIdList[currentPlayerIndex];
 }
 
@@ -416,7 +432,7 @@ function clearGameStatus(){
     selectToken: {actionType: "selectToken", actionLabel: "Select Token"},
     selectPosition: {actionType: "selectPosition", actionLabel: "Select Position"},
     moveToken: {actionType: "moveToken", actionLabel: ""},
-    endTurn: {actionType: "endTurn", actionLabel: "End Turn"},
+    endTurn: {actionType: "endTurn", actionLabel: "Ok"},
     displayMessage: {actionType: "displayMessage", actionLabel: "Ok"},
     endGame: {actionType: "endGame", actionLabel: ""}
   }
@@ -445,14 +461,14 @@ function clearGameStatus(){
     update:
       function (player){
         if (evalConditionsExact(player, GameConfig.conditionsToLose.update)){
-          GameStatus.endGame(player);
+          GameStatus.removePlayer(player);
           return true;
         } return false;
       },
     turnEnd:
       function (player){
         if (evalConditionsExact(player, GameConfig.conditionsToLose.turnEnd)){
-          GameStatus.endGame(player);
+          GameStatus.removePlayer(player);
           return true;
         } return false;
       },
@@ -467,6 +483,21 @@ function clearGameStatus(){
     GameStatus.gameEvents.endGame(GameStatus, winner);
     GameStatus.actionQueue = ["endGame"];
   };
+
+  GameStatus.removedPlayers = {};
+
+  // marca um player para remoção. Players são removidos no fim do turno
+  GameStatus.removePlayer = function(player) {
+    // Apaga todos os tokens do player
+    Object.getOwnPropertyNames(player.tokens).forEach(function (tkId){
+      player.removeToken(player.tokens[tkId]);
+    });
+
+    // Põe o player na lista dos removidos
+    GameStatus.removedPlayers[player.id] = player;
+    GameStatus.endTurn();
+    GameStatus.gameEvents.playerEliminated(GameStatus, player);
+  }
 }
 
 function endTurn(message="") {

@@ -75,6 +75,9 @@
             for (let playerId in tokenSprites) {
               if (tokenSprites.hasOwnProperty(playerId)) {
 
+                if (!boardGameAdapter.getGameStatus("playerStatus")[playerId])
+                  continue;
+
                 // Pega os tokens do boardGameAdapter
                 let tokens = boardGameAdapter.getGameStatus("playerStatus")[playerId].tokens;
 
