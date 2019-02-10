@@ -7,8 +7,7 @@ exports.boardGame = {
       playerAttributes: [
         {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg", visible:true},
         {name: "Active Token List", value: [], description: "", image: "", visible:false},
-        {name: "combo", value: 0, description: "", image: "", visible:false},
-        {name: "test", value: 0, description: "", image: "", visible:false}
+        {name: "combo", value: 0, description: "", image: "", visible:false}
       ]
     },
     board: {
@@ -174,18 +173,11 @@ exports.boardGame = {
         positionSelectRule: null, // Ou uma função
       },
       turnOptions: {
-        //maxTurnCount: 50,
         playerOrder: "staticOrder",
         actionQueue:["rollDice", "selectToken", "moveToken"]
       },
-      gameOverConditions: {
-        // playerAttribute: [
-        //   {attributeName:"test", evalOption:"exact", value:100, evalEvent:"turnEnd", conditionType:"win"}
-        //   //{attributeName:"test", evalOption:"highest", evalEvent:"gameEnd", conditionType:"lose"}
-        // ],
-        numRemainingTokens: {tokenType:null, evalOption:"exact", value:0, evalEvent:"update", conditionType:"win"}//,
-        // lastPlayerRemainig: {evalEvent:"update",conditionType:"lose"},
-        //reachFinishLine: {evalEvent:"turnEnd", conditionType:"win"}
+      conditionsToWin: {
+        numRemainingTokens: {tokenType:null, evalOption:"exact", value:0, evalEvent:"update"}
       }
     },
     gameEvents: {
@@ -217,15 +209,11 @@ exports.boardGame = {
       },
       passingEvent: function (GameStatus) {
         console.log("Passing...");
-        //GameStatus.currentPlayer.attributes.test += 50;
-        // if (GameStatus.currentPlayer.selectedToken.position.positionType == "finish")
-        //   GameStatus.currentPlayer.removeToken(GameStatus.currentPlayer.selectedToken);
       },
       stoppingEvent: function (GameStatus) {
         let currentToken = GameStatus.currentPlayer.selectedToken;
         let stopPosition = currentToken.position;
         let activeTokenList = [];
-        //GameStatus.currentPlayer.attributes.test = 100;
 
         function addActiveToken(activeTokenList, token) {
           // Adiciona o token na lista de tokens ativos

@@ -62,13 +62,14 @@ exports.setGameConfig = function (gamePath) {
   }
 
   // Conditions to win/lose
-  let gameOverConditions = GameJson.gameFlow.rules.gameOverConditions;
+  let gameOverConditions = GameJson.gameFlow.rules.conditionsToWin;
   GameConfig.conditionsToWin = {update:{}, gameEnd:{}, turnEnd:{}};
   GameConfig.conditionsToLose = {update:{}, gameEnd:{}, turnEnd:{}};
 
   Object.getOwnPropertyNames(gameOverConditions).forEach(function(cdnName){
     if (cdnName == "playerAttribute") {
       gameOverConditions[cdnName].forEach(function (cdn){
+        cdn.conditionType = "win";
         if (cdn.conditionType == "win") {
           if (!GameConfig.conditionsToWin[cdn.evalEvent][cdnName])
             GameConfig.conditionsToWin[cdn.evalEvent][cdnName] = [];
@@ -80,6 +81,7 @@ exports.setGameConfig = function (gamePath) {
         }
       });
     } else {
+      gameOverConditions[cdnName].conditionType = "win";
       if (gameOverConditions[cdnName].conditionType == "win")
         GameConfig.conditionsToWin[gameOverConditions[cdnName].evalEvent][cdnName] = gameOverConditions[cdnName];
       else
