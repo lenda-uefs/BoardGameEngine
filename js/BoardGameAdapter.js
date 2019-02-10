@@ -45,7 +45,7 @@ exports.setGameConfig = function (gamePath) {
   GameConfig.maxTurnCount = GameJson.gameFlow.rules.turnOptions.maxTurnCount;
   GameConfig.nextPlayerId =
     (GameJson.gameFlow.rules.turnOptions.playerOrder == "staticOrder") ?
-      nextPlayerId : GameJson.gameFlow.rules.turnOptions.playerOrder.dynamicOrder;
+      nextPlayerId : GameJson.gameFlow.rules.turnOptions.playerOrder;
 
   // Movement Config
   let movementRule = GameJson.gameFlow.rules.movement;
@@ -317,7 +317,7 @@ function nextAction(GameStatus) {
     // Atualiza o player atual
     let currentPlayer = GameStatus.currentPlayer;
     GameStatus.currentPlayer = GameStatus.playerStatus[
-      GameConfig.nextPlayerId(GameConfig, currentPlayer)];
+      GameConfig.nextPlayerId(GameStatus, currentPlayer)];
 
     // Se o jogador NÃO foi marcado para remoção...
     if (!GameStatus.removedPlayers[currentPlayer.id]){
@@ -389,7 +389,7 @@ function nextAction(GameStatus) {
   return GameStatus.currentAction;
 }
 
-function nextPlayerId(GameConfig, currentPlayer) {
+function nextPlayerId(GameStatus, currentPlayer) {
   let currentPlayerIndex = GameConfig.playerIdList.indexOf(currentPlayer.id);
   currentPlayerIndex = (currentPlayerIndex == GameConfig.playerIdList.length - 1)? 0 : currentPlayerIndex+1;
   return GameConfig.playerIdList[currentPlayerIndex];

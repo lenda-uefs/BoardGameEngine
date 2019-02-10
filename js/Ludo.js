@@ -173,7 +173,23 @@ exports.boardGame = {
         positionSelectRule: null, // Ou uma função
       },
       turnOptions: {
-        playerOrder: "staticOrder",
+        playerOrder: function (GameStatus, currentPlayer){
+          if (GameStatus.currentTurn == 1) return "Red";
+
+          let nextPlayer = {Red:"Green", Green:"Yellow", Yellow:"Blue", Blue:"Red"};
+
+          if (currentPlayer.diceValue != 6)
+            return nextPlayer[currentPlayer.id];
+
+          if (currentPlayer.attributes["combo"] == 3){
+            currentPlayer.attributes["combo"] = 0;
+            return nextPlayer[currentPlayer.id];
+          }
+
+          GameStatus.elapsedTurns--;
+          GameStatus.currentTurn--;
+          return currentPlayer.id;
+        },
         actionQueue:["rollDice", "selectToken", "moveToken"]
       },
       conditionsToWin: {
@@ -281,23 +297,11 @@ exports.boardGame = {
         }
       },
       endTurn: function(GameStatus) {
-        if (GameStatus.previousPlayer && GameStatus.previousPlayer.diceValue == 6) {
-          if (GameStatus.previousPlayer.attributes["combo"] == 3){
-            GameStatus.previousPlayer.attributes["combo"] = 0;
-            return;
-          }
-          GameStatus.currentPlayer = GameStatus.previousPlayer;
-          GameStatus.elapsedTurns--;
-          GameStatus.currentTurn--;
-        }
+
       },
       endGame: function(GameStatus, winner) {
         console.log("Win");
         GameStatus.setMessage(`Game Over! ${winner.id} wins!`);
-      },
-      playerEliminated: function(GameStatus, player) {
-        console.log(player.id);
-        GameStatus.setMessage(`${player.id} was eliminated!`);
       },
       tokenEliminated: function(GameStatus) {
         console.log("Token Eliminated");
@@ -313,6 +317,10 @@ exports.boardGame = {
             + "You need a 1 or a 6 to move a token into the game."
             + " Please select another token.");
         } else GameStatus.setMessage(" ");
+      },
+      playerEliminated: function(GameStatus, player) {
+        console.log(player.id);
+        GameStatus.setMessage(`${player.id} was eliminated!`);
       }
     }
   }
