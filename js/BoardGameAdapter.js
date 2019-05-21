@@ -2,7 +2,7 @@ var GameConfig = {};
 var GameStatus = {};
 var GameJson = {};
 
-exports.boardGameList = ["Ludo.js"];
+exports.boardGameList = ["Ludo.js", "Checkers.js"];
 
 exports.setGameConfig = function (gamePath) {
   GameJson = require(gamePath).boardGame;
