@@ -4,12 +4,14 @@ exports.boardGame = {
   gameData: {
     playerOptions: {
       playerCount: 2,
-      playerId: ["Red", "Green"],
-      playerAttributes: [
-        {name: "Active Tokens", value: 0, description: "Number of Tokens outside the base", image: "assets/imgs/tokenpile.svg", visible:true},
-        {name: "Active Token List", value: [], description: "", image: "", visible:false},
-        {name: "combo", value: 0, description: "", image: "", visible:false}
-      ]
+      playerId: ["Black", "White"],
+      playerAttributes: [{
+        name: "Captured Tokens",
+        value: 0,
+        description: "Number of Tokens captured from the opponent.",
+        image: "assets/imgs/tokenpile.svg",
+        visible:true
+      }]
     },
     board: {
       background:"assets/imgs/checkers.png",
@@ -117,43 +119,40 @@ exports.boardGame = {
       ]
     },
     component: {
-      dice: [
-        {dieType:"nSidedDie", numberOfSides:6}
-      ],
       tokens: [
-        {positionId: 41, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 43, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 45, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 47, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 48, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 50, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 52, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 54, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 57, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 59, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 61, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
-        {positionId: 63, tokenType: "red", tokenImage: "assets/imgs/black0.png", ownerId:"Red"},
+        {positionId: 41, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 43, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 45, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 47, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 48, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 50, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 52, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 54, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 57, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 59, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 61, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
+        {positionId: 63, tokenType: "black0", tokenImage: "assets/imgs/black0.png", ownerId:"Black"},
 
-        {positionId: 0, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 2, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 4, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 6, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 9, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 11, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 13, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 15, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 16, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 18, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 20, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"},
-        {positionId: 22, tokenType: "green", tokenImage: "assets/imgs/white0.png", ownerId:"Green"}
+        {positionId: 0, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 2, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 4, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 6, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 9, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 11, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 13, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 15, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 16, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 18, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 20, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"},
+        {positionId: 22, tokenType: "white0", tokenImage: "assets/imgs/white0.png", ownerId:"White"}
       ]
     }
   },
 
   gameFlow: {
     actions: [
-      {actionType: "rollDice", actionLabel: "Roll Dice"},
-      {actionType: "selectToken", actionLabel: "Select Token to move"},
+      {actionType: "selectToken", actionLabel: "Select Token"},
+      {actionType: "selectPosition", actionLabel: "Select Position"},
       {actionType: "moveToken", actionLabel: ""}
     ],
     rules: {
@@ -177,27 +176,11 @@ exports.boardGame = {
         positionSelectRule: null, // Ou uma função
       },
       turnOptions: {
-        playerOrder: function (GameStatus, currentPlayer){
-          if (GameStatus.currentTurn == 1) return "Red";
-
-          let nextPlayer = {Red:"Green", Green:"Yellow", Yellow:"Blue", Blue:"Red"};
-
-          if (currentPlayer.diceValue != 6)
-            return nextPlayer[currentPlayer.id];
-
-          if (currentPlayer.attributes["combo"] == 3){
-            currentPlayer.attributes["combo"] = 0;
-            return nextPlayer[currentPlayer.id];
-          }
-
-          GameStatus.elapsedTurns--;
-          GameStatus.currentTurn--;
-          return currentPlayer.id;
-        },
-        actionQueue:["rollDice", "selectToken", "moveToken"]
+        playerOrder: "staticOrder",
+        actionQueue:["selectToken", "moveToken"]
       },
       conditionsToWin: {
-        numRemainingTokens: {tokenType:null, evalOption:"exact", value:0, evalEvent:"update"}
+        playerAttribute: [{attributeName:"Captured Tokens", evalOption:"exact", value:12, evalEvent:"update"}]
       }
     },
     gameEvents: {
