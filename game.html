@@ -62,6 +62,7 @@
           var gameState = "";
 
           var tokenSprites = {};
+          var positionSprites = {};
           var group = {};
 
           var boardGameAdapter = require('js/BoardGameAdapter.js');
@@ -267,6 +268,7 @@
                     sprite.inputEnabled = true;
                     sprite.events.onInputDown.add(
                       function(){
+                        console.log('click token');
                         boardGameAdapter.updateGameStatus(tokenId+"&"+id);
                         //updateCallback(boardGameAdapter);
                       }, this);
@@ -277,19 +279,35 @@
                 }
               }
             }
+
+            // para cada posição...
+            let positionList = boardGameAdapter.getGameStatus('boardPositionList');
+            for (let position in positionList) {
+              position = positionList[position];
+              let w = backgroundWidth*position.width;
+              let h = backgroundHeight*position.height;
+              let x = backgroundWidth*position.location[0];
+              let y = backgroundHeight*position.location[1];
+
+              let posSprite = game.add.sprite(x,y);
+              group.add(posSprite);
+              posSprite.z = 1;
+              posSprite.width = w;
+              posSprite.height = h;
+              posSprite.anchor.set(0.5);
+              // posSprite.beginFill(0xFF0000, 0);
+              // posSprite.drawRect(x, y, w, h);
+
+              posSprite.inputEnabled = true;
+
+              posSprite.events.onInputUp.add(onClick, this);﻿
+
+              function onClick(target, pointer){
+               console.log("clock position");
+              }
+            }
             updateCallback();
           }
-
-          function perform() {
-            switch (gameState) {
-              case "ready":
-
-                break;
-              default:
-
-            }
-          }
-
         }
       </script>
       <!-- <h3>Test</h3>
