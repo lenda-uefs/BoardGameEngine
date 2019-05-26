@@ -269,7 +269,7 @@
                     sprite.events.onInputDown.add(
                       function(){
                         console.log('click token');
-                        boardGameAdapter.updateGameStatus(tokenId+"&"+id);
+                        boardGameAdapter.updateGameStatus({tokenId:tokenId, playerId:id});
                         //updateCallback(boardGameAdapter);
                       }, this);
 
@@ -303,7 +303,8 @@
               posSprite.events.onInputUp.add(onClick, this);﻿
 
               function onClick(target, pointer){
-               console.log("clock position");
+               console.log("click position");
+               boardGameAdapter.updateGameStatus(position.positionId);
               }
             }
             updateCallback();

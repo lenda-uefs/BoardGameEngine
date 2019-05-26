@@ -227,27 +227,37 @@ exports.getGameStatus = function(status){
 	}
 }
 
-exports.updateGameStatus = function (command) {
+exports.updateGameStatus = function (args) {
   switch (GameStatus.statusId) {
     case "select-token":
-      let ownerId = command.slice(command.indexOf('&')+1);
+      if (!args || !args.tokenId || !args.playerId)
+        break;
+
+      console.log(args);
+      let ownerId = args.playerId;
       if (ownerId != GameStatus.currentPlayer.id) break;
-      let tokenId = command.slice(0, command.indexOf('&'));
+
+      let tokenId = args.tokenId;
+
       GameStatus.currentPlayer.selectedToken =
         GameStatus.currentPlayer.tokens[tokenId];
       console.log(ownerId + " " + tokenId);
+
       GameStatus.gameEvents.tokenSelected(GameStatus, GameStatus.currentPlayer.selectedToken);
       nextAction(GameStatus);
       break;
     case "select-position":
+      console.log("select token");
+      console.log(args);
       break;
     case "standby":
-      if (command.includes("rollDice")) {
+      if (!args || typeof args != 'string') break;
+      if (args.includes("rollDice")) {
         var player = GameStatus.playerStatus[GameStatus.currentPlayer.id];
         player.diceValue = rollDice();
         GameStatus.gameEvents.diceEvent(GameStatus, player.diceValue);
         nextAction(GameStatus);
-      } else if (command.includes("endTurn") || command.includes("displayMessage")) {
+      } else if (args.includes("endTurn") || args.includes("displayMessage")) {
         nextAction(GameStatus);
       }
       break;
@@ -397,6 +407,7 @@ function nextPlayerId(GameStatus, currentPlayer) {
 
 // Branch Selector default. Retorna a primeira posição
 // adjacente à posição do token atual. (point to point boards)
+// rnm = roll and move
 function rnmEvaluateMovement(GameStatus) {
   return GameStatus.currentPlayer.selectedToken.position.next[0];
 }
