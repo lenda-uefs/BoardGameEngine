@@ -118,10 +118,10 @@ exports.startGameStatus = function(){
 
   // Posições
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
-  if (GameConfig.boardType == "point-to-point")
-    GameStatus.boardPositionList.forEach(function (position, id){
-      position.tokens = [];
+  GameStatus.boardPositionList.forEach(function (position, id){
+    position.tokens = [];
 
+    if (GameConfig.boardType == "point-to-point"){
       for (let i = 0; i < position.prev.length; i++) {
         position.prev[i] = GameStatus.boardPositionList[position.prev[i]];
       }
@@ -129,7 +129,8 @@ exports.startGameStatus = function(){
       for (let i = 0; i < position.next.length; i++) {
         position.next[i] = GameStatus.boardPositionList[position.next[i]];
       }
-    });
+    }
+  });
 
   // Eventos do jogo
   GameStatus.gameEvents = GameJson.gameFlow.gameEvents;
