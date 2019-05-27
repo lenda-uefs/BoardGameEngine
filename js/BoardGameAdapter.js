@@ -120,6 +120,7 @@ exports.startGameStatus = function(){
 
   // Posições
   GameStatus.boardPositionList = GameJson.gameData.board.positions;
+  GameStatus.boardPositionGrid = {};
   GameStatus.boardPositionList.forEach(function (position, id){
     position.tokens = [];
 
@@ -131,8 +132,13 @@ exports.startGameStatus = function(){
       for (let i = 0; i < position.next.length; i++) {
         position.next[i] = GameStatus.boardPositionList[position.next[i]];
       }
+    } else {
+      if (!GameStatus.boardPositionGrid[position.gridPos[0]])
+        GameStatus.boardPositionGrid[position.gridPos[0]] = {};
+      GameStatus.boardPositionGrid[position.gridPos[0]][position.gridPos[1]] = position;
     }
   });
+  console.log(GameStatus.boardPositionGrid);
 
   // Eventos do jogo
   GameStatus.gameEvents = GameJson.gameFlow.gameEvents;
