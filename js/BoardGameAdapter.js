@@ -49,6 +49,8 @@ exports.setGameConfig = function (gamePath) {
 
   // Movement Config
   let movementRule = GameJson.gameFlow.rules.movement;
+
+  // Em jogos tipo grid, gerenciar o movimento usando positionSelectRule
   GameConfig.evaluatePosition = (movementRule.positionSelectRule)?
     movementRule.positionSelectRule : evaluatePositionDefault;
 
@@ -249,7 +251,13 @@ exports.updateGameStatus = function (args) {
       break;
     case "select-position":
       console.log("select token");
+
+      if (!args || !GameConfig.evaluatePosition(GameStatus, GameStatus.boardPositionList[args]))
+        break;
+
       console.log(args);
+      GameStatus.currentPlayer.selectedPosition = GameStatus.boardPositionList[args];
+      nextAction(GameStatus);
       break;
     case "standby":
       if (!args || typeof args != 'string') break;
@@ -424,8 +432,8 @@ function gridEvaluateMovement(GameStatus) {
 
 // Placeholder para avaliar posições selecionadas
 // Simplesmente retorna true se a posição for definida.
-function evaluatePositionDefault(GameStatus) {
-  return (GameStatus.currentPlayer.selectedPosition !== undefined);
+function evaluatePositionDefault(GameStatus, selectedPosition) {
+  return (selectedPosition !== undefined);
 }
 
 function clearGameStatus(){
