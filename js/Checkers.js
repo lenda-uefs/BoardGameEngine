@@ -31,8 +31,8 @@ exports.boardGame = {
         // Segunda fileira. Posição inicial das peças brancas
         {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.792], positionId:8,  positionType:"white", gridPos: [0,1]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.792], positionId:9,  positionType:"black", gridPos: [1,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.792], positionId:10,  positionType:"white", gridPos: [3,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.792], positionId:11,  positionType:"black", gridPos: [2,1]},
+        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.792], positionId:10,  positionType:"white", gridPos: [2,1]},
+        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.792], positionId:11,  positionType:"black", gridPos: [3,1]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.792], positionId:12,  positionType:"white", gridPos: [4,1]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.792], positionId:13,  positionType:"black", gridPos: [5,1]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.792], positionId:14,  positionType:"white", gridPos: [6,1]},
@@ -51,8 +51,8 @@ exports.boardGame = {
         // Quarta fileira.
         {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.558], positionId:24,  positionType:"white", gridPos: [0,3]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.558], positionId:25,  positionType:"black", gridPos: [1,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.558], positionId:26,  positionType:"white", gridPos: [3,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.558], positionId:27,  positionType:"black", gridPos: [2,3]},
+        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.558], positionId:26,  positionType:"white", gridPos: [2,3]},
+        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.558], positionId:27,  positionType:"black", gridPos: [3,3]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.558], positionId:28,  positionType:"white", gridPos: [4,3]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.558], positionId:29,  positionType:"black", gridPos: [5,3]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.558], positionId:30,  positionType:"white", gridPos: [6,3]},
@@ -71,8 +71,8 @@ exports.boardGame = {
         // Sexta fileira.
         {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.325], positionId:40,  positionType:"white", gridPos: [0,5]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.325], positionId:41,  positionType:"black", gridPos: [1,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.325], positionId:42,  positionType:"white", gridPos: [3,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.325], positionId:43,  positionType:"black", gridPos: [2,5]},
+        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.325], positionId:42,  positionType:"white", gridPos: [2,5]},
+        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.325], positionId:43,  positionType:"black", gridPos: [3,5]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.325], positionId:44,  positionType:"white", gridPos: [4,5]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.325], positionId:45,  positionType:"black", gridPos: [5,5]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.325], positionId:46,  positionType:"white", gridPos: [6,5]},
@@ -91,8 +91,8 @@ exports.boardGame = {
         // Oitava fileira. Posição inicial das peças pretas.
         {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.092], positionId:56,  positionType:"white", gridPos: [0,7]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.092], positionId:57,  positionType:"black", gridPos: [1,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.092], positionId:58,  positionType:"white", gridPos: [3,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.092], positionId:59,  positionType:"black", gridPos: [2,7]},
+        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.092], positionId:58,  positionType:"white", gridPos: [2,7]},
+        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.092], positionId:59,  positionType:"black", gridPos: [3,7]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.092], positionId:60,  positionType:"white", gridPos: [4,7]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.092], positionId:61,  positionType:"black", gridPos: [5,7]},
         {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.092], positionId:62,  positionType:"white", gridPos: [6,7]},
@@ -162,7 +162,10 @@ exports.boardGame = {
           if (isJumping) {
             let midX = (curX + posX)/2;
             let midY = (curY + posY)/2;
-            console.log({midX:midX, midY:midY});
+
+            return
+              GameStatus.getPositionGrid(midX, midY).tokens[0].tokenType !=
+              currentPlayer.selectedToken.tokenType;
           }
 
           return isMovingForward;
@@ -221,6 +224,45 @@ exports.boardGame = {
       },
       tokenSelected: function(GameStatus, selectedToken) {
         console.log("Selected Token: " + selectedToken.id);
+
+        let goForward = (selectedToken.ownerId == "Black")? -1 : 1;
+
+        // Selecionando as posições adjacentes
+        let currentPosition = selectedToken.position;
+        let curX = currentPosition.gridPos[0];
+        let curY = currentPosition.gridPos[1];
+
+        let canMove = false;
+        let canStep = false;
+        let canJump = false;
+        let stop = (selectedToken.tokenType == 'king')? -2: 0;
+        console.log(stop);
+        for(let i=1; i>stop; i=i-2) {
+          for (let j=1; j>-2; j=j-2) {
+            // checa se pode dar um passo para frente/tras
+            let step = GameStatus.getPositionGrid(curX+j, curY+i*goForward);
+            if (step && !step.isOcupied()) {
+              console.log("step");
+              canMove = true;
+              break;
+            }
+
+            // se não for possível, checa se pode fazer um pulo
+            let jump = GameStatus.getPositionGrid(curX+2*j, curY+2*i*goForward);
+            if (step && (step.isOcupied() &&
+              step.tokens[0].ownerId != selectedToken.ownerId) &&
+              jump && !jump.isOcupied()) {
+              console.log("jump");
+              canMove = true;
+              break;
+            }
+          }
+          if (canMove) break;
+        }
+
+        if (!canMove) {
+          GameStatus.repeatAction("You can't move this token, please select another one.");
+        } else GameStatus.setMessage(" ");
       },
       playerEliminated: function(GameStatus, player) {
         console.log(player.id);
