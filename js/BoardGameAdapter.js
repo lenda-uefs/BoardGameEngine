@@ -123,6 +123,9 @@ exports.startGameStatus = function(){
   GameStatus.boardPositionGrid = {};
   GameStatus.boardPositionList.forEach(function (position, id){
     position.tokens = [];
+    position.isOcupied = function () {
+      return this.tokens.length;
+    }
 
     if (GameConfig.boardType == "point-to-point"){
       for (let i = 0; i < position.prev.length; i++) {
@@ -138,7 +141,7 @@ exports.startGameStatus = function(){
       GameStatus.boardPositionGrid[position.gridPos[0]][position.gridPos[1]] = position;
     }
   });
-  console.log(GameStatus.boardPositionGrid);
+  GameStatus.getPositionGrid = getPositionGrid;
 
   // Eventos do jogo
   GameStatus.gameEvents = GameJson.gameFlow.gameEvents;
@@ -626,5 +629,17 @@ function evalConditions(conditions){
       conditions.numRemainingTokens.tokenType,
       conditions.numRemainingTokens.evalOption
     );
+  }
+}
+
+function getPositionGrid(x, y, logError = false) {
+  try {
+    console.log([x,y]);
+    // console.log(GameStatus.boardPositionList);
+    // console.log(GameStatus.boardPositionGrid);
+    return GameStatus.boardPositionGrid[x][y];
+  } catch (e) {
+    if (logError) console.error(e);
+    return null;
   }
 }
