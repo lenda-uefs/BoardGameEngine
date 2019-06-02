@@ -121,6 +121,12 @@ exports.boardGame = {
       dice: [
         {dieType:"nSidedDie", numberOfSides:6}
       ],
+      tokenTypes: [
+        {typeId:"red", tokenImage:{'Red':'assets/imgs/pokerchip1.png'}},
+        {typeId:"green", tokenImage:{'Green':'assets/imgs/pokerchip2.png'}},
+        {typeId:"yellow", tokenImage:{'Yellow':'assets/imgs/pokerchip4.png'}},
+        {typeId:"blue", tokenImage:{'Blue':'assets/imgs/pokerchip3.png'}},
+      ],
       tokens: [
         {positionId: 73, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},
         {positionId: 74, tokenType: "red", tokenImage: "assets/imgs/pokerchip1.png", ownerId:"Red"},

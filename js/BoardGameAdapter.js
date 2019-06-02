@@ -30,12 +30,9 @@ exports.setGameConfig = function (gamePath) {
   GameConfig.boardType = GameJson.gameData.board.boardType;
 
   // Component Config
-  GameConfig.tokenImg = [];
-  GameConfig.tokenDescription = [];
-  GameJson.gameData.component.tokens.forEach(function(token) {
-    GameConfig.tokenImg[token.tokenType] = token.tokenImage;
-    if (token.tokenDescription !== undefined)
-      GameConfig.tokenDescription[token.tokenType] = token.tokenDescription;
+  GameConfig.tokenType = {};
+  GameJson.gameData.component.tokenTypes.forEach(function(tokenType) {
+    GameConfig.tokenType[tokenType.typeId] = tokenType;
   });
 
   // Dice config

@@ -230,12 +230,17 @@
             }
 
             // Carregando icones dos tokens
-            let tokenImg = boardGameAdapter.getGameConfig("tokenImg");
-            for (var tokenType in tokenImg) {
-              if (tokenImg.hasOwnProperty(tokenType)) {
-                game.load.image(tokenType, tokenImg[tokenType]);
+            let tokenTypes = boardGameAdapter.getGameConfig("tokenType");
+            for (var typeId in tokenTypes)
+              if (tokenTypes.hasOwnProperty(typeId)) {
+                let tokenType = tokenTypes[typeId];
+
+                for (var playerId in tokenType.tokenImage)
+                  if (tokenType.tokenImage.hasOwnProperty(playerId)) {
+                    //console.log(typeId + playerId);
+                    game.load.image(typeId + playerId, tokenType.tokenImage[playerId]);
+                  }
               }
-            }
           }
 
           // Insere os componentes do jogo no mundo
@@ -247,6 +252,7 @@
             group = game.add.group();
 
             let playerStatus = boardGameAdapter.getGameStatus('playerStatus');
+            let tokenTypes = boardGameAdapter.getGameConfig("tokenType");
 
             // para cada jogador em player status
             for (let id in playerStatus) {
@@ -263,7 +269,7 @@
                   if (tokens.hasOwnProperty(tokenId)) {
 
                     // Cria um sprite e seta a posição do token e o callback
-                    let sprite = group.create(0, 0, tokens[tokenId].tokenType);
+                    let sprite = group.create(0, 0, tokens[tokenId].tokenType + id);
                     sprite.anchor.set(0.5); // TODO: remover ancora (?)
                     sprite.inputEnabled = true;
                     sprite.events.onInputDown.add(
