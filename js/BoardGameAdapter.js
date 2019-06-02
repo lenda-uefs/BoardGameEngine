@@ -634,7 +634,6 @@ function evalConditions(conditions){
 
 function getPositionGrid(x, y, logError = false) {
   try {
-    console.log([x,y]);
     // console.log(GameStatus.boardPositionList);
     // console.log(GameStatus.boardPositionGrid);
     return GameStatus.boardPositionGrid[x][y];

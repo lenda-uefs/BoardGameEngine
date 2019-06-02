@@ -143,7 +143,7 @@ exports.boardGame = {
           let currentPlayer = GameStatus.currentPlayer;
           let currentPosition = currentPlayer.selectedToken.position;
 
-          if (selectedPosition.tokens.length > 0 ||
+          if (selectedPosition.isOcupied() ||
             selectedPosition.positionType != 'black') return false;
 
           let posX = selectedPosition.gridPos[0];
@@ -151,21 +151,27 @@ exports.boardGame = {
           let curX = currentPosition.gridPos[0];
           let curY = currentPosition.gridPos[1];
 
+          let moveCount = Math.abs(posY - curY);
+          if (moveCount > 2) return false;
+
+          let isJumping = moveCount > 1;
           let isMovingForward = (posY - curY) < 0;
           isMovingForward = (currentPlayer.id == "Black") ?
             isMovingForward : !isMovingForward;
 
-          let moveCount = Math.abs(posY - curY);
-          let isJumping = moveCount > 1;
-          console.log({isMovingForward:moveCount, isJumping:isJumping});
+          //console.log({isMovingForward:moveCount, isJumping:isJumping});
 
           if (isJumping) {
             let midX = (curX + posX)/2;
             let midY = (curY + posY)/2;
 
-            return
-              GameStatus.getPositionGrid(midX, midY).tokens[0].tokenType !=
-              currentPlayer.selectedToken.tokenType;
+            let mid = GameStatus.getPositionGrid(midX, midY);
+            if (!mid.isOcupied() || mid.tokens[0].ownerId ==
+              currentPlayer.selectedToken.ownerId)
+              return false;
+
+            GameStatus.playerStatus[mid.tokens[0].ownerId].removeToken(mid.tokens[0]);
+            currentPlayer.attributes["Captured Tokens"]++;
           }
 
           return isMovingForward;
