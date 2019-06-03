@@ -216,13 +216,12 @@ exports.boardGame = {
             break;
         }
       },
-      passingEvent: function (GameStatus) {
+      passingEvent: function (GameStatus, token) {
         console.log("Passing...");
       },
-      stoppingEvent: function (GameStatus) {
+      stoppingEvent: function (GameStatus, token) {
         console.log("Landing...");
-        GameStatus.currentPlayer.selectedToken.tokenType =
-          (GameStatus.currentPlayer.selectedToken.tokenType == "man") ? "king" : "man";
+        let kingsRow = (GameStatus)
       },
       endTurn: function(GameStatus) {
 

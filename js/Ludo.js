@@ -229,11 +229,10 @@ exports.boardGame = {
             break;
         }
       },
-      passingEvent: function (GameStatus) {
+      passingEvent: function (GameStatus, currentToken) {
         console.log("Passing...");
       },
-      stoppingEvent: function (GameStatus) {
-        let currentToken = GameStatus.currentPlayer.selectedToken;
+      stoppingEvent: function (GameStatus, currentToken) {
         let stopPosition = currentToken.position;
         let activeTokenList = [];
 

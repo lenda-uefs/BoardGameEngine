@@ -296,11 +296,11 @@ exports.updateGameStatus = function (args) {
         GameStatus.steps == GameStatus.currentPlayer.diceValue){
 
         // Dispara o evento de parada e chama a proxima ação
-        GameStatus.gameEvents.stoppingEvent(GameStatus);
+        GameStatus.gameEvents.stoppingEvent(GameStatus, token);
         nextAction(GameStatus);
 
       } else // Caso contrario, dispara o evento de passagem e continua
-        GameStatus.gameEvents.passingEvent(GameStatus);
+        GameStatus.gameEvents.passingEvent(GameStatus, token);
 
         if (GameStatus.checkVictoryConditions["update"](GameStatus.currentPlayer) ||
         GameStatus.checkDefeatConditions["update"](GameStatus.currentPlayer)){
