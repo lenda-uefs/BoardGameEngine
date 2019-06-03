@@ -95,6 +95,13 @@
                       continue;
                     }
 
+                    // atualiza o sprite de acordo com o tipo do token
+                    if (!tokenSprites[playerId][tokenId].key.includes(tokens[tokenId].tokenType)) {
+                      tokenSprites[playerId][tokenId].destroy();
+                      tokenSprites[playerId][tokenId] =
+                        createSprite(tokens[tokenId].tokenType + playerId, tokenId, playerId);
+                    }
+
                     // Caso contrário, atualiza o sprite com as posições do boardGameAdapter
                     tokenSprites[playerId][tokenId].x = backgroundWidth*tokens[tokenId].position.location[0];
                     tokenSprites[playerId][tokenId].y = backgroundHeight*tokens[tokenId].position.location[1];
@@ -145,6 +152,19 @@
           function updateMessage(boardGameAdapter) {
             document.getElementById('message').textContent =
               boardGameAdapter.getGameStatus("message");
+          }
+
+          function createSprite(key, tokenId, id) {
+            let sprite = group.create(0, 0, key);
+            sprite.anchor.set(0.5); // TODO: remover ancora (?)
+            sprite.inputEnabled = true;
+            sprite.events.onInputDown.add(
+              function(){
+                console.log('click token');
+                boardGameAdapter.updateGameStatus({tokenId:tokenId, playerId:id});
+                //updateCallback(boardGameAdapter);
+              }, this);
+            return sprite;
           }
 
           function updateCallback() {
@@ -269,15 +289,7 @@
                   if (tokens.hasOwnProperty(tokenId)) {
 
                     // Cria um sprite e seta a posição do token e o callback
-                    let sprite = group.create(0, 0, tokens[tokenId].tokenType + id);
-                    sprite.anchor.set(0.5); // TODO: remover ancora (?)
-                    sprite.inputEnabled = true;
-                    sprite.events.onInputDown.add(
-                      function(){
-                        console.log('click token');
-                        boardGameAdapter.updateGameStatus({tokenId:tokenId, playerId:id});
-                        //updateCallback(boardGameAdapter);
-                      }, this);
+                    let sprite =  createSprite(tokens[tokenId].tokenType + id, tokenId, id);
 
                     // Insere o sprite no mapa
                     tokenSprites[id][tokenId] = sprite;

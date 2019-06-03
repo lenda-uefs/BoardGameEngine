@@ -221,6 +221,8 @@ exports.boardGame = {
       },
       stoppingEvent: function (GameStatus) {
         console.log("Landing...");
+        GameStatus.currentPlayer.selectedToken.tokenType =
+          (GameStatus.currentPlayer.selectedToken.tokenType == "man") ? "king" : "man";
       },
       endTurn: function(GameStatus) {
 
