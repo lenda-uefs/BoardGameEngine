@@ -160,10 +160,12 @@ exports.boardGame = {
 
           let isJumping = moveCount > 1;
           let isMovingForward = (posY - curY) < 0;
-          isMovingForward = (currentPlayer.id == "Black") ?
-            isMovingForward : !isMovingForward;
+          isMovingForward =
+            (currentPlayer.selectedToken.tokenType == 'king') ? true :
+            ((currentPlayer.id == "Black") ? isMovingForward : !isMovingForward);
 
           //console.log({isMovingForward:moveCount, isJumping:isJumping});
+          if (!isMovingForward) return false;
 
           if (isJumping) {
             let midX = (curX + posX)/2;
@@ -221,7 +223,10 @@ exports.boardGame = {
       },
       stoppingEvent: function (GameStatus, token) {
         console.log("Landing...");
-        let kingsRow = (GameStatus)
+        let kingsRow = (token.ownerId == "Black") ? 0 : 7;
+
+        token.tokenType = (token.position.gridPos[1] == kingsRow) ?
+          "king" : token.tokenType;
       },
       endTurn: function(GameStatus) {
 
