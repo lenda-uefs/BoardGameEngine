@@ -183,6 +183,17 @@ exports.startGameStatus = function(){
       return tokenCount;
     }
 
+    player.getTokens = function () {
+      let tokenList = [];
+
+      for (let tokenId in this.tokens) {
+        if (this.tokens.hasOwnProperty(tokenId))
+          tokenList.push(this.tokens[tokenId]);
+      }
+
+      return tokenList;
+    }
+
     GameStatus.playerStatus[GameConfig.playerIdList[i]] = player;
   }
 
