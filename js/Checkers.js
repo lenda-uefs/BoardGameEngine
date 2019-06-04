@@ -241,44 +241,32 @@ exports.boardGame = {
       tokenSelected: function(GameStatus, selectedToken) {
         console.log("Selected Token: " + selectedToken.id);
 
-        let goForward = (selectedToken.ownerId == "Black")? -1 : 1;
-
-        // Selecionando as posições adjacentes
-        let currentPosition = selectedToken.position;
-        let curX = currentPosition.gridPos[0];
-        let curY = currentPosition.gridPos[1];
-
-        let canMove = false;
-        let canStep = false;
         let canJump = false;
-        let stop = (selectedToken.tokenType == 'king')? -2: 0;
-        console.log(stop);
-        for(let i=1; i>stop; i=i-2) {
-          for (let j=1; j>-2; j=j-2) {
-            // checa se pode dar um passo para frente/tras
-            let step = GameStatus.getPositionGrid(curX+j, curY+i*goForward);
-            if (step && !step.isOcupied()) {
-              console.log("step");
-              canMove = true;
-              break;
-            }
+        let jumpingTokens = [];
+        let playerTokens = GameStatus.currentPlayer.getTokens();
 
-            // se não for possível, checa se pode fazer um pulo
-            let jump = GameStatus.getPositionGrid(curX+2*j, curY+2*i*goForward);
-            if (step && (step.isOcupied() &&
-              step.tokens[0].ownerId != selectedToken.ownerId) &&
-              jump && !jump.isOcupied()) {
-              console.log("jump");
-              canMove = true;
-              break;
-            }
+        playerTokens.forEach(token => {
+          if (_canJump(GameStatus, token)) {
+            jumpingTokens.push(token);
+            canJump = token.id == selectedToken.id;
           }
-          if (canMove) break;
+        });
+
+        // Se o token pode pular, a escolha é valida
+        //if (canJump) return;
+
+        // Se existem tokens que podem pular, um deles deve ser o escolhido
+        if (jumpingTokens.length > 0 && !canJump) {
+          GameStatus.repeatAction("You need to capture the enemy token.");
+          return;
         }
 
-        if (!canMove) {
-          GameStatus.repeatAction("You can't move this token, please select another one.");
-        } else GameStatus.setMessage(" ");
+        if (canJump || _canStep(GameStatus, selectedToken)) {
+          GameStatus.setMessage(" ");
+          return;
+        }
+
+        GameStatus.repeatAction("You can't move this token, please select another one.");
       },
       playerEliminated: function(GameStatus, player) {
         console.log(player.id);
@@ -286,4 +274,48 @@ exports.boardGame = {
       }
     }
   }
+}
+
+function _canJump(GameStatus, token) {
+  let currentPosition = token.position;
+  let goForward = (token.ownerId == "Black")? -1 : 1;
+
+  let curX = currentPosition.gridPos[0];
+  let curY = currentPosition.gridPos[1];
+
+  let stop = (token.tokenType == 'king')? -2: 0;
+  for(let i=1; i>stop; i=i-2)
+    for (let j=1; j>-2; j=j-2) {
+      let step = GameStatus.getPositionGrid(curX+j, curY+i*goForward);
+      let jump = GameStatus.getPositionGrid(curX+2*j, curY+2*i*goForward);
+
+      if (step && (step.isOcupied() &&
+        step.tokens[0].ownerId != token.ownerId) &&
+        jump && !jump.isOcupied()) {
+        console.log("jump");
+        return true;
+      }
+    }
+  return false
+}
+
+function _canStep(GameStatus, token) {
+  let currentPosition = token.position;
+  let goForward = (token.ownerId == "Black")? -1 : 1;
+
+  let curX = currentPosition.gridPos[0];
+  let curY = currentPosition.gridPos[1];
+
+  let stop = (token.tokenType == 'king')? -2: 0;
+  for(let i=1; i>stop; i=i-2)
+    for (let j=1; j>-2; j=j-2) {
+      let step = GameStatus.getPositionGrid(curX+j, curY+i*goForward);
+
+      // checa se pode dar um passo para frente/tras
+      if (step && !step.isOcupied()) {
+        console.log("step");
+        return true;
+      }
+    }
+  return false
 }
