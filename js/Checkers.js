@@ -11,7 +11,7 @@ exports.boardGame = {
         description: "Number of Tokens captured from the opponent.",
         image: "assets/imgs/tokenpile.svg",
         visible:true
-      }]
+      }, {name: "jumping", value: false, description: "", image: "", visible:false}]
     },
     board: {
       background:"assets/imgs/checkers.png",
@@ -104,33 +104,7 @@ exports.boardGame = {
         {typeId:"man", tokenImage:{'Black':'assets/imgs/black0.png', 'White':'assets/imgs/white0.png'}},
         {typeId:"king", tokenImage:{'Black':'assets/imgs/black1.png', 'White':'assets/imgs/white1.png'}}
       ],
-      tokens: [
-        {positionId: 41, tokenType: "man", ownerId:"Black"},
-        {positionId: 43, tokenType: "man", ownerId:"Black"},
-        {positionId: 45, tokenType: "man", ownerId:"Black"},
-        {positionId: 47, tokenType: "man", ownerId:"Black"},
-        {positionId: 48, tokenType: "man", ownerId:"Black"},
-        {positionId: 50, tokenType: "man", ownerId:"Black"},
-        {positionId: 52, tokenType: "man", ownerId:"Black"},
-        {positionId: 54, tokenType: "man", ownerId:"Black"},
-        {positionId: 57, tokenType: "man", ownerId:"Black"},
-        {positionId: 59, tokenType: "man", ownerId:"Black"},
-        {positionId: 61, tokenType: "man", ownerId:"Black"},
-        {positionId: 63, tokenType: "man", ownerId:"Black"},
-
-        {positionId: 0, tokenType: "man", ownerId:"White"},
-        {positionId: 2, tokenType: "man", ownerId:"White"},
-        {positionId: 4, tokenType: "man", ownerId:"White"},
-        {positionId: 6, tokenType: "man", ownerId:"White"},
-        {positionId: 9, tokenType: "man", ownerId:"White"},
-        {positionId: 11, tokenType: "man", ownerId:"White"},
-        {positionId: 13, tokenType: "man", ownerId:"White"},
-        {positionId: 15, tokenType: "man", ownerId:"White"},
-        {positionId: 16, tokenType: "man", ownerId:"White"},
-        {positionId: 18, tokenType: "man", ownerId:"White"},
-        {positionId: 20, tokenType: "man", ownerId:"White"},
-        {positionId: 22, tokenType: "man", ownerId:"White"}
-      ]
+      tokens: require('js/CheckersTokens.js').tokens
     }
   },
 
@@ -159,15 +133,17 @@ exports.boardGame = {
           if (moveCount > 2) return false;
 
           let isJumping = moveCount > 1;
+          if (!isJumping && currentPlayer.attributes["jumping"]) return false;
+
           let isMovingForward = (posY - curY) < 0;
           isMovingForward =
             (currentPlayer.selectedToken.tokenType == 'king') ? true :
             ((currentPlayer.id == "Black") ? isMovingForward : !isMovingForward);
 
-          //console.log({isMovingForward:moveCount, isJumping:isJumping});
           if (!isMovingForward) return false;
 
           if (isJumping) {
+            console.log("jump");
             let midX = (curX + posX)/2;
             let midY = (curY + posY)/2;
 
@@ -227,6 +203,19 @@ exports.boardGame = {
 
         token.tokenType = (token.position.gridPos[1] == kingsRow) ?
           "king" : token.tokenType;
+
+        let currentPlayer = GameStatus.currentPlayer;
+
+        // se o token veio de um pule e ainda pode pular...
+        if (currentPlayer.attributes["jumping"] &&
+          _canJump(GameStatus, token)) {
+          // manda selecionar outra posição
+          GameStatus.addAction("selectPosition", "moveToken");
+          return;
+        }
+
+        // caso contrário desabilita a flag de pulo
+        currentPlayer.attributes["jumping"] = false;
       },
       endTurn: function(GameStatus) {
 
@@ -249,6 +238,7 @@ exports.boardGame = {
           if (_canJump(GameStatus, token)) {
             jumpingTokens.push(token);
             canJump = token.id == selectedToken.id;
+            GameStatus.currentPlayer.attributes["jumping"] = canJump;
           }
         });
 

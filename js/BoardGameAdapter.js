@@ -87,8 +87,8 @@ exports.setGameConfig = function (gamePath) {
         GameConfig.conditionsToLose[gameOverConditions[cdnName].evalEvent][cdnName] = gameOverConditions[cdnName];
     }
   });
-  console.log(GameConfig.conditionsToWin);
-  console.log(GameConfig.conditionsToLose);
+  // console.log(GameConfig.conditionsToWin);
+  // console.log(GameConfig.conditionsToLose);
 }
 
 exports.getGameConfig = function(config){
@@ -253,7 +253,6 @@ exports.updateGameStatus = function (args) {
       if (!args || !args.tokenId || !args.playerId)
         break;
 
-      console.log(args);
       let ownerId = args.playerId;
       if (ownerId != GameStatus.currentPlayer.id) break;
 
@@ -267,12 +266,9 @@ exports.updateGameStatus = function (args) {
       nextAction(GameStatus);
       break;
     case "select-position":
-      console.log("select token");
-
       if (!args || !GameConfig.evaluatePosition(GameStatus, GameStatus.boardPositionList[args]))
         break;
 
-      console.log(args);
       GameStatus.currentPlayer.selectedPosition = GameStatus.boardPositionList[args];
       nextAction(GameStatus);
       break;
@@ -305,7 +301,7 @@ exports.updateGameStatus = function (args) {
       // Se não for preciso dar mais passos...
       if (GameConfig.boardType == "grid" ||
         GameStatus.steps == GameStatus.currentPlayer.diceValue){
-
+        GameStatus.steps = 0;
         // Dispara o evento de parada e chama a proxima ação
         GameStatus.gameEvents.stoppingEvent(GameStatus, token);
         nextAction(GameStatus);
@@ -466,6 +462,7 @@ function clearGameStatus(){
   GameStatus.setMessage = setMessage;
   GameStatus.endTurn = endTurn;
   GameStatus.repeatAction = repeatAction;
+  GameStatus.addAction = addAction;
   GameStatus.actions = {
     rollDice: {actionType: "rollDice", actionLabel: "Roll Dice"},
     selectToken: {actionType: "selectToken", actionLabel: "Select Token"},
@@ -558,6 +555,10 @@ function repeatAction(message=null) {
     GameStatus.message = message;
 
   GameStatus.actionQueue.unshift(GameStatus.currentAction.actionType);
+}
+
+function addAction(...actions) {
+  GameStatus.actionQueue = GameStatus.actionQueue.concat(actions);
 }
 
 function isLastRemainingPlayer(player) {
