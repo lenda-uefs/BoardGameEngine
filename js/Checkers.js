@@ -218,7 +218,10 @@ exports.boardGame = {
         currentPlayer.attributes["jumping"] = false;
       },
       endTurn: function(GameStatus) {
-
+        let tokens = GameStatus.currentPlayer.getTokens();
+        if (!tokens.some(token => {
+          return _canStep(GameStatus, token) || _canJump(GameStatus, token)
+        })) GameStatus.endGame(GameStatus.previousPlayer);
       },
       endGame: function(GameStatus, winner) {
         console.log("Win");
@@ -231,22 +234,23 @@ exports.boardGame = {
         console.log("Selected Token: " + selectedToken.id);
 
         let canJump = false;
-        let jumpingTokens = [];
+        let jumpingTokens = {};
         let playerTokens = GameStatus.currentPlayer.getTokens();
 
         playerTokens.forEach(token => {
           if (_canJump(GameStatus, token)) {
-            jumpingTokens.push(token);
-            canJump = token.id == selectedToken.id;
+            jumpingTokens[token.id] = token;
+            canJump = jumpingTokens[selectedToken.id] !== undefined;
             GameStatus.currentPlayer.attributes["jumping"] = canJump;
           }
         });
 
         // Se o token pode pular, a escolha é valida
         //if (canJump) return;
+        console.log([jumpingTokens, selectedToken]);
 
         // Se existem tokens que podem pular, um deles deve ser o escolhido
-        if (jumpingTokens.length > 0 && !canJump) {
+        if (Object.getOwnPropertyNames(jumpingTokens).length > 0 && !canJump) {
           GameStatus.repeatAction("You need to capture the enemy token.");
           return;
         }
