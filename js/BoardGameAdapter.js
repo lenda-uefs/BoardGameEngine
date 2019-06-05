@@ -51,10 +51,10 @@ exports.setGameConfig = function (gamePath) {
   GameConfig.evaluatePosition = (movementRule.positionSelectRule)?
     movementRule.positionSelectRule : evaluatePositionDefault;
 
-  if (movementRule.branchRule == "manual") {
+  if (movementRule.pathSelectionRule == "manual") {
     GameConfig.evaluateMovement = function(GameStatus, selectedToken){console.log("Placeholder");};
-  } else if (typeof movementRule.branchRule === 'function') {
-    GameConfig.evaluateMovement = movementRule.branchRule;
+  } else if (typeof movementRule.pathSelectionRule === 'function') {
+    GameConfig.evaluateMovement = movementRule.pathSelectionRule;
   } else {
     GameConfig.evaluateMovement = (GameConfig.boardType == "point-to-point")?
       rnmEvaluateMovement : gridEvaluateMovement;
@@ -141,7 +141,11 @@ exports.startGameStatus = function(){
   GameStatus.getPositionGrid = getPositionGrid;
 
   // Eventos do jogo
-  GameStatus.gameEvents = GameJson.gameFlow.gameEvents;
+  let gameEvents = GameJson.gameFlow.gameEvents;
+  for (let eventName in GameJson.gameFlow.gameEvents)
+    if (gameEvents.hasOwnProperty(eventName)) {
+      GameStatus.gameEvents[eventName] = gameEvents[eventName];
+    }
 
   // Player Attributes
   GameStatus.playerStatus = [];
@@ -166,7 +170,7 @@ exports.startGameStatus = function(){
         let index = token.position.tokens.map(function (tk){return tk.id}).indexOf(token.id);
         if (index > -1) token.position.tokens.splice(index, 1);
         delete this.tokens[token.id];
-        GameStatus.gameEvents.tokenEliminated(GameStatus);
+        GameStatus.gameEvents.tokenEliminated(GameStatus, token);
       }
     }
 
@@ -380,7 +384,7 @@ function nextAction(GameStatus) {
     nextAction(GameStatus);
 
     // Chama o evento de fim de turno
-    GameStatus.gameEvents.endTurn(GameStatus);
+    GameStatus.gameEvents.endTurn(GameStatus, GameStatus.currentPlayer, GameStatus.previousPlayer);
 
     // Checa as condições de vitoria do game update
     // Automaticamente chama o endGame() se necessário
@@ -427,7 +431,7 @@ function nextPlayerId(GameStatus, currentPlayer) {
   return GameConfig.playerIdList[currentPlayerIndex];
 }
 
-// Branch Selector default. Retorna a primeira posição
+// Path Selector default. Retorna a primeira posição
 // adjacente à posição do token atual. (point to point boards)
 // rnm = roll and move
 function rnmEvaluateMovement(GameStatus) {
@@ -471,6 +475,20 @@ function clearGameStatus(){
     endTurn: {actionType: "endTurn", actionLabel: "Ok"},
     displayMessage: {actionType: "displayMessage", actionLabel: "Ok"},
     endGame: {actionType: "endGame", actionLabel: ""}
+  }
+
+  GameStatus.gameEvents = {
+    diceEvent: function (GameStatus, diceValue) {},
+    passingEvent: function (GameStatus, currentToken) {},
+    stoppingEvent: function (GameStatus, currentToken) {},
+    endTurn: function(GameStatus, currentPlayer, previousPlayer) {},
+    endGame: function(GameStatus, winner) {
+      console.log("Win");
+      GameStatus.setMessage(`Game Over! ${winner.id} wins!`);
+    },
+    tokenEliminated: function(GameStatus, token) {},
+    tokenSelected: function(GameStatus, selectedToken) {},
+    playerEliminated: function(GameStatus, player) {}
   }
 
   GameStatus.updateCallback = function() {};

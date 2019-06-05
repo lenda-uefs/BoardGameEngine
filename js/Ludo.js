@@ -160,7 +160,7 @@ exports.boardGame = {
     ],
     rules: {
       movement: {
-        branchRule: function (GameStatus) { // Ou "manual" ou uma função
+        pathSelectionRule: function (GameStatus) { // Ou "manual" ou uma função
           let currentToken = GameStatus.currentPlayer.selectedToken;
           let currentPosition = currentToken.position;
           let positionMap = {
@@ -228,9 +228,6 @@ exports.boardGame = {
             GameStatus.currentPlayer.attributes["combo"] = 0;
             break;
         }
-      },
-      passingEvent: function (GameStatus, currentToken) {
-        console.log("Passing...");
       },
       stoppingEvent: function (GameStatus, currentToken) {
         let stopPosition = currentToken.position;
@@ -301,16 +298,6 @@ exports.boardGame = {
           GameStatus.playerStatus[currentToken.ownerId].removeToken(currentToken);
         }
       },
-      endTurn: function(GameStatus) {
-
-      },
-      endGame: function(GameStatus, winner) {
-        console.log("Win");
-        GameStatus.setMessage(`Game Over! ${winner.id} wins!`);
-      },
-      tokenEliminated: function(GameStatus) {
-        console.log("Token Eliminated");
-      },
       tokenSelected: function(GameStatus, selectedToken) {
         if (
           selectedToken.position.positionType.includes("Base") &&
@@ -322,10 +309,6 @@ exports.boardGame = {
             + "You need a 1 or a 6 to move a token into the game."
             + " Please select another token.");
         } else GameStatus.setMessage(" ");
-      },
-      playerEliminated: function(GameStatus, player) {
-        console.log(player.id);
-        GameStatus.setMessage(`${player.id} was eliminated!`);
       }
     }
   }

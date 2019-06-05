@@ -116,7 +116,7 @@ exports.boardGame = {
     ],
     rules: {
       movement: {
-        branchRule: null,
+        pathSelectionRule: null,
         positionSelectRule: function (GameStatus, selectedPosition) {
           let currentPlayer = GameStatus.currentPlayer;
           let currentPosition = currentPlayer.selectedToken.position;
@@ -168,35 +168,6 @@ exports.boardGame = {
       }
     },
     gameEvents: {
-      diceEvent: function (GameStatus, diceValue) {
-        switch (diceValue) {
-          case 6:
-            GameStatus.currentPlayer.attributes["combo"]++;
-            if (GameStatus.currentPlayer.attributes["combo"] == 3) {
-              GameStatus.endTurn("You got three 6's in a row. You lost your turn ¯\\_(ツ)_/¯");
-            } else {
-              GameStatus.setMessage(
-                "You got " + ((GameStatus.currentPlayer.attributes["combo"] == 1)? 'a': "ANOTHER") +
-                " 6!! You can move a token from your base into the game AND you get to play another turn!");
-            }
-            break;
-          case 1:
-            GameStatus.setMessage("You got a 1! You can move a token from " +
-              "your base into the game!");
-            GameStatus.currentPlayer.attributes["combo"] = 0;
-            break;
-          default:
-            if (GameStatus.currentPlayer.attributes["Active Tokens"] == 0){
-              GameStatus.endTurn(`You got a ${diceValue}. You need a 1 or a 6`
-                + " to move a token into the game.");
-            } else GameStatus.setMessage(`You got a ${diceValue}!`);
-            GameStatus.currentPlayer.attributes["combo"] = 0;
-            break;
-        }
-      },
-      passingEvent: function (GameStatus, token) {
-        console.log("Passing...");
-      },
       stoppingEvent: function (GameStatus, token) {
         console.log("Landing...");
         let kingsRow = (token.ownerId == "Black") ? 0 : 7;
@@ -222,13 +193,6 @@ exports.boardGame = {
         if (!tokens.some(token => {
           return _canStep(GameStatus, token) || _canJump(GameStatus, token)
         })) GameStatus.endGame(GameStatus.previousPlayer);
-      },
-      endGame: function(GameStatus, winner) {
-        console.log("Win");
-        GameStatus.setMessage(`Game Over! ${winner.id} wins!`);
-      },
-      tokenEliminated: function(GameStatus) {
-        console.log("Token Eliminated");
       },
       tokenSelected: function(GameStatus, selectedToken) {
         console.log("Selected Token: " + selectedToken.id);
@@ -261,10 +225,6 @@ exports.boardGame = {
         }
 
         GameStatus.repeatAction("You can't move this token, please select another one.");
-      },
-      playerEliminated: function(GameStatus, player) {
-        console.log(player.id);
-        GameStatus.setMessage(`${player.id} was eliminated!`);
       }
     }
   }
