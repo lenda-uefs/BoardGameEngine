@@ -1,7 +1,7 @@
 var plato = require('plato');
 
 var files = [
-  'game.html',
+  './js/PhaserClient.js',
   './js/BoardGameAdapter.js',
   './js/Ludo.js',
   './js/Checkers.js',
