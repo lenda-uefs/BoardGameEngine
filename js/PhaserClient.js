@@ -249,8 +249,8 @@ window.onload = function () {
     let positionList = boardGameAdapter.getGameStatus('boardPositionList');
     for (let position in positionList) {
       position = positionList[position];
-      let w = backgroundWidth*position.width;
-      let h = backgroundHeight*position.height;
+      let w = backgroundWidth*position.area.width;
+      let h = backgroundHeight*position.area.height;
       let x = backgroundWidth*position.location[0];
       let y = backgroundHeight*position.location[1];
 

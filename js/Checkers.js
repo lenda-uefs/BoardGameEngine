@@ -19,84 +19,84 @@ exports.boardGame = {
       positions: [
         // De baixo para cima
         // Primeira fileira. Posição inicial das peças brancas
-        {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.908], positionId:0,  positionType:"black", gridPos: [0,0]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.908], positionId:1,  positionType:"white", gridPos: [1,0]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.908], positionId:2,  positionType:"black", gridPos: [2,0]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.908], positionId:3,  positionType:"white", gridPos: [3,0]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.908], positionId:4,  positionType:"black", gridPos: [4,0]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.908], positionId:5,  positionType:"white", gridPos: [5,0]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.908], positionId:6,  positionType:"black", gridPos: [6,0]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.800, 0.908], positionId:7,  positionType:"white", gridPos: [7,0]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.195, 0.908], positionId:0,  positionType:"black", gridIndex: [0,0]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.281, 0.908], positionId:1,  positionType:"white", gridIndex: [1,0]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.368, 0.908], positionId:2,  positionType:"black", gridIndex: [2,0]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.452, 0.908], positionId:3,  positionType:"white", gridIndex: [3,0]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.540, 0.908], positionId:4,  positionType:"black", gridIndex: [4,0]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.627, 0.908], positionId:5,  positionType:"white", gridIndex: [5,0]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.713, 0.908], positionId:6,  positionType:"black", gridIndex: [6,0]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.800, 0.908], positionId:7,  positionType:"white", gridIndex: [7,0]},
 
         // Segunda fileira. Posição inicial das peças brancas
-        {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.792], positionId:8,  positionType:"white", gridPos: [0,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.792], positionId:9,  positionType:"black", gridPos: [1,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.792], positionId:10,  positionType:"white", gridPos: [2,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.792], positionId:11,  positionType:"black", gridPos: [3,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.792], positionId:12,  positionType:"white", gridPos: [4,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.792], positionId:13,  positionType:"black", gridPos: [5,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.792], positionId:14,  positionType:"white", gridPos: [6,1]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.800, 0.792], positionId:15,  positionType:"black", gridPos: [7,1]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.195, 0.792], positionId:8,  positionType:"white", gridIndex: [0,1]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.281, 0.792], positionId:9,  positionType:"black", gridIndex: [1,1]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.368, 0.792], positionId:10,  positionType:"white", gridIndex: [2,1]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.452, 0.792], positionId:11,  positionType:"black", gridIndex: [3,1]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.540, 0.792], positionId:12,  positionType:"white", gridIndex: [4,1]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.627, 0.792], positionId:13,  positionType:"black", gridIndex: [5,1]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.713, 0.792], positionId:14,  positionType:"white", gridIndex: [6,1]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.800, 0.792], positionId:15,  positionType:"black", gridIndex: [7,1]},
 
         // Terceira fileira.
-        {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.675], positionId:16,  positionType:"black", gridPos: [0,2]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.675], positionId:17,  positionType:"white", gridPos: [1,2]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.675], positionId:18,  positionType:"black", gridPos: [2,2]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.675], positionId:19,  positionType:"white", gridPos: [3,2]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.675], positionId:20,  positionType:"black", gridPos: [4,2]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.675], positionId:21,  positionType:"white", gridPos: [5,2]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.675], positionId:22,  positionType:"black", gridPos: [6,2]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.800, 0.675], positionId:23,  positionType:"white", gridPos: [7,2]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.195, 0.675], positionId:16,  positionType:"black", gridIndex: [0,2]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.281, 0.675], positionId:17,  positionType:"white", gridIndex: [1,2]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.368, 0.675], positionId:18,  positionType:"black", gridIndex: [2,2]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.452, 0.675], positionId:19,  positionType:"white", gridIndex: [3,2]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.540, 0.675], positionId:20,  positionType:"black", gridIndex: [4,2]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.627, 0.675], positionId:21,  positionType:"white", gridIndex: [5,2]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.713, 0.675], positionId:22,  positionType:"black", gridIndex: [6,2]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.800, 0.675], positionId:23,  positionType:"white", gridIndex: [7,2]},
 
         // Quarta fileira.
-        {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.558], positionId:24,  positionType:"white", gridPos: [0,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.558], positionId:25,  positionType:"black", gridPos: [1,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.558], positionId:26,  positionType:"white", gridPos: [2,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.558], positionId:27,  positionType:"black", gridPos: [3,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.558], positionId:28,  positionType:"white", gridPos: [4,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.558], positionId:29,  positionType:"black", gridPos: [5,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.558], positionId:30,  positionType:"white", gridPos: [6,3]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.800, 0.558], positionId:31,  positionType:"black", gridPos: [7,3]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.195, 0.558], positionId:24,  positionType:"white", gridIndex: [0,3]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.281, 0.558], positionId:25,  positionType:"black", gridIndex: [1,3]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.368, 0.558], positionId:26,  positionType:"white", gridIndex: [2,3]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.452, 0.558], positionId:27,  positionType:"black", gridIndex: [3,3]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.540, 0.558], positionId:28,  positionType:"white", gridIndex: [4,3]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.627, 0.558], positionId:29,  positionType:"black", gridIndex: [5,3]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.713, 0.558], positionId:30,  positionType:"white", gridIndex: [6,3]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.800, 0.558], positionId:31,  positionType:"black", gridIndex: [7,3]},
 
         // Quinta fileira.
-        {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.442], positionId:32,  positionType:"black", gridPos: [0,4]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.442], positionId:33,  positionType:"white", gridPos: [1,4]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.442], positionId:34,  positionType:"black", gridPos: [2,4]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.442], positionId:35,  positionType:"white", gridPos: [3,4]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.442], positionId:36,  positionType:"black", gridPos: [4,4]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.442], positionId:37,  positionType:"white", gridPos: [5,4]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.442], positionId:38,  positionType:"black", gridPos: [6,4]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.800, 0.442], positionId:39,  positionType:"white", gridPos: [7,4]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.195, 0.442], positionId:32,  positionType:"black", gridIndex: [0,4]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.281, 0.442], positionId:33,  positionType:"white", gridIndex: [1,4]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.368, 0.442], positionId:34,  positionType:"black", gridIndex: [2,4]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.452, 0.442], positionId:35,  positionType:"white", gridIndex: [3,4]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.540, 0.442], positionId:36,  positionType:"black", gridIndex: [4,4]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.627, 0.442], positionId:37,  positionType:"white", gridIndex: [5,4]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.713, 0.442], positionId:38,  positionType:"black", gridIndex: [6,4]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.800, 0.442], positionId:39,  positionType:"white", gridIndex: [7,4]},
 
         // Sexta fileira.
-        {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.325], positionId:40,  positionType:"white", gridPos: [0,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.325], positionId:41,  positionType:"black", gridPos: [1,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.325], positionId:42,  positionType:"white", gridPos: [2,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.325], positionId:43,  positionType:"black", gridPos: [3,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.325], positionId:44,  positionType:"white", gridPos: [4,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.325], positionId:45,  positionType:"black", gridPos: [5,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.325], positionId:46,  positionType:"white", gridPos: [6,5]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.800, 0.325], positionId:47,  positionType:"black", gridPos: [7,5]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.195, 0.325], positionId:40,  positionType:"white", gridIndex: [0,5]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.281, 0.325], positionId:41,  positionType:"black", gridIndex: [1,5]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.368, 0.325], positionId:42,  positionType:"white", gridIndex: [2,5]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.452, 0.325], positionId:43,  positionType:"black", gridIndex: [3,5]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.540, 0.325], positionId:44,  positionType:"white", gridIndex: [4,5]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.627, 0.325], positionId:45,  positionType:"black", gridIndex: [5,5]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.713, 0.325], positionId:46,  positionType:"white", gridIndex: [6,5]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.800, 0.325], positionId:47,  positionType:"black", gridIndex: [7,5]},
 
         // Sétima fileira. Posição inicial das peças pretas.
-        {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.208], positionId:48,  positionType:"black", gridPos: [0,6]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.208], positionId:49,  positionType:"white", gridPos: [1,6]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.208], positionId:50,  positionType:"black", gridPos: [2,6]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.208], positionId:51,  positionType:"white", gridPos: [3,6]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.208], positionId:52,  positionType:"black", gridPos: [4,6]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.208], positionId:53,  positionType:"white", gridPos: [5,6]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.208], positionId:54,  positionType:"black", gridPos: [6,6]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.800, 0.208], positionId:55,  positionType:"white", gridPos: [7,6]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.195, 0.208], positionId:48,  positionType:"black", gridIndex: [0,6]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.281, 0.208], positionId:49,  positionType:"white", gridIndex: [1,6]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.368, 0.208], positionId:50,  positionType:"black", gridIndex: [2,6]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.452, 0.208], positionId:51,  positionType:"white", gridIndex: [3,6]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.540, 0.208], positionId:52,  positionType:"black", gridIndex: [4,6]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.627, 0.208], positionId:53,  positionType:"white", gridIndex: [5,6]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.713, 0.208], positionId:54,  positionType:"black", gridIndex: [6,6]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.800, 0.208], positionId:55,  positionType:"white", gridIndex: [7,6]},
 
         // Oitava fileira. Posição inicial das peças pretas.
-        {width:0.0875, height:0.1167, capacity:1, location:[0.195, 0.092], positionId:56,  positionType:"white", gridPos: [0,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.281, 0.092], positionId:57,  positionType:"black", gridPos: [1,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.368, 0.092], positionId:58,  positionType:"white", gridPos: [2,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.452, 0.092], positionId:59,  positionType:"black", gridPos: [3,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.540, 0.092], positionId:60,  positionType:"white", gridPos: [4,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.627, 0.092], positionId:61,  positionType:"black", gridPos: [5,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.713, 0.092], positionId:62,  positionType:"white", gridPos: [6,7]},
-        {width:0.0875, height:0.1167, capacity:1, location:[0.800, 0.092], positionId:63,  positionType:"black", gridPos: [7,7]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.195, 0.092], positionId:56,  positionType:"white", gridIndex: [0,7]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.281, 0.092], positionId:57,  positionType:"black", gridIndex: [1,7]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.368, 0.092], positionId:58,  positionType:"white", gridIndex: [2,7]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.452, 0.092], positionId:59,  positionType:"black", gridIndex: [3,7]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.540, 0.092], positionId:60,  positionType:"white", gridIndex: [4,7]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.627, 0.092], positionId:61,  positionType:"black", gridIndex: [5,7]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.713, 0.092], positionId:62,  positionType:"white", gridIndex: [6,7]},
+        {area:{width: 0.0875, height: 0.1167}, capacity:1, location:[0.800, 0.092], positionId:63,  positionType:"black", gridIndex: [7,7]},
       ]
     },
     component: {
@@ -124,10 +124,10 @@ exports.boardGame = {
           if (selectedPosition.isOcupied() ||
             selectedPosition.positionType != 'black') return false;
 
-          let posX = selectedPosition.gridPos[0];
-          let posY = selectedPosition.gridPos[1];
-          let curX = currentPosition.gridPos[0];
-          let curY = currentPosition.gridPos[1];
+          let posX = selectedPosition.gridIndex[0];
+          let posY = selectedPosition.gridIndex[1];
+          let curX = currentPosition.gridIndex[0];
+          let curY = currentPosition.gridIndex[1];
 
           let moveCount = Math.abs(posY - curY);
           if (moveCount > 2) return false;
@@ -172,7 +172,7 @@ exports.boardGame = {
         console.log("Landing...");
         let kingsRow = (token.ownerId == "Black") ? 0 : 7;
 
-        token.tokenType = (token.position.gridPos[1] == kingsRow) ?
+        token.tokenType = (token.position.gridIndex[1] == kingsRow) ?
           "king" : token.tokenType;
 
         let currentPlayer = GameStatus.currentPlayer;
@@ -211,7 +211,6 @@ exports.boardGame = {
 
         // Se o token pode pular, a escolha é valida
         //if (canJump) return;
-        console.log([jumpingTokens, selectedToken]);
 
         // Se existem tokens que podem pular, um deles deve ser o escolhido
         if (Object.getOwnPropertyNames(jumpingTokens).length > 0 && !canJump) {
@@ -234,8 +233,8 @@ function _canJump(GameStatus, token) {
   let currentPosition = token.position;
   let goForward = (token.ownerId == "Black")? -1 : 1;
 
-  let curX = currentPosition.gridPos[0];
-  let curY = currentPosition.gridPos[1];
+  let curX = currentPosition.gridIndex[0];
+  let curY = currentPosition.gridIndex[1];
 
   let stop = (token.tokenType == 'king')? -2: 0;
   for(let i=1; i>stop; i=i-2)
@@ -257,8 +256,8 @@ function _canStep(GameStatus, token) {
   let currentPosition = token.position;
   let goForward = (token.ownerId == "Black")? -1 : 1;
 
-  let curX = currentPosition.gridPos[0];
-  let curY = currentPosition.gridPos[1];
+  let curX = currentPosition.gridIndex[0];
+  let curY = currentPosition.gridIndex[1];
 
   let stop = (token.tokenType == 'king')? -2: 0;
   for(let i=1; i>stop; i=i-2)

@@ -133,9 +133,9 @@ exports.startGameStatus = function(){
         position.next[i] = GameStatus.boardPositionList[position.next[i]];
       }
     } else {
-      if (!GameStatus.boardPositionGrid[position.gridPos[0]])
-        GameStatus.boardPositionGrid[position.gridPos[0]] = {};
-      GameStatus.boardPositionGrid[position.gridPos[0]][position.gridPos[1]] = position;
+      if (!GameStatus.boardPositionGrid[position.gridIndex[0]])
+        GameStatus.boardPositionGrid[position.gridIndex[0]] = {};
+      GameStatus.boardPositionGrid[position.gridIndex[0]][position.gridIndex[1]] = position;
     }
   });
   GameStatus.getPositionGrid = getPositionGrid;
