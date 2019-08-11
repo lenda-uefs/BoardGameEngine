@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg 
+  xmlns="http://www.w3.org/2000/svg" width="4253.060546875" height="728" class="Tree">
+  <style>svg{font-family:'Fira Sans','Helvetica Neue Light','Helvetica Neue LT Std Light','Helvetica Neue','Helvetica Neue LT Std',Helvetica,Arial,sans-serif;font-weight:300;font-size:75%;color:#fff;text-rendering:optimizeLegibility;padding:24px}svg text{fill:#fff}svg line{stroke:hsl(0,0%,29.17960675%);stroke-width:.16666667rem}svg .node.default .background{fill:hsl(0,0%,29.17960675%)}svg .node.hover .background{fill:hsl(0,0%,23.60679775%)}svg .node.excludes .background{fill:#ED6B60}svg .node.implies .background{fill:#64C957}svg .node.closure .background{fill:#3479C6}svg .node.highlight .background{fill:#FF2262}svg .node:not(.optional) .optionalIndicator{display:none}svg .node.falseOptional .optionalIndicator{stroke:#ED6B60;fill:#ED6B60;fill-opacity:1}svg .node.common .nameLabel{fill:#64C957}svg .node.common.implies .nameLabel{fill:#fff}svg .node:not(.dead) .deadIndicator{display:none}svg .node .nameLabel{text-anchor:middle;dominant-baseline:central}svg .node .deadIndicator{stroke:#ED6B60}svg .cardinalitiesLabel{font-size:.8rem;letter-spacing:.23606798rem}svg .subtreeIndicator.excludes{fill:#ED6B60}svg .subtreeIndicator.implies{fill:#64C957}svg .subtreeIndicator.closure{fill:#3479C6}svg .constraint path{stroke-width:.16666667rem;fill:none}svg .constraint polygon{stroke-width:.08333333rem}svg .constraint.implies{stroke:#64C957}svg .constraint.implies polygon{fill:#64C957}svg .constraint.excludes{stroke:#ED6B60}svg .constraint.excludes polygon{fill:#ED6B60}svg .constraint.closure{stroke:#3479C6}svg .constraint.closure polygon{fill:#3479C6}svg.Circle .node .optionalIndicator{stroke:hsl(0,0%,29.17960675%);stroke-width:.16666667rem;fill:hsl(0,0%,61.80339887%);fill-opacity:0}svg.Circle .circle{stroke:hsl(0,0%,29.17960675%);stroke-width:.41666667rem;fill:none}svg.Icicle .node .optionalIndicator{font-size:.8rem;dominant-baseline:text-before-edge}svg.Icicle .node .typeIndicator{stroke:hsl(0,0%,48.58682718%)}svg.Icicle .node .impliesDirectionIndicator{font-size:1.2rem;text-anchor:end;dominant-baseline:text-before-edge}svg.Tree .edges line{stroke-width:.08333333rem}svg.Tree .edges .optionalIndicator{stroke:hsl(0,0%,29.17960675%);stroke-width:.16666667rem;fill:hsl(0,0%,61.80339887%);fill-opacity:0;stroke-width:.08333333rem}svg.Tree .edges :not(.optional) .optionalIndicator{display:none}svg.Tree .edges .falseOptional .optionalIndicator{stroke:#ED6B60;fill:#ED6B60;fill-opacity:1}svg.Tree .typeIndicators .cardinalitiesLabel{text-anchor:middle;dominant-baseline:central}svg.Tree .typeIndicators .circleSector{fill:hsl(0,0%,29.17960675%);stroke:hsl(0,0%,29.17960675%);stroke-width:.08333333rem;fill-opacity:0}svg.Tree .typeIndicators .circleSector.filled{fill-opacity:1}</style>
+  <g class="constraints" transform="translate(958.7548828125, -14)"></g>
+  <g class="edges" transform="translate(958.7548828125, -14)">
+    <g>
+      <line x1="1246.814453125" y1="42" x2="94.59375" y2="114"></line>
+      <circle cx="94.59375" cy="111" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1246.814453125" y1="42" x2="165.78125" y2="114"></line>
+      <circle cx="165.78125" cy="111" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="165.78125" y1="142" x2="-695.8173828125" y2="214"></line>
+      <circle cx="-695.8173828125" cy="211" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="-695.8173828125" y1="242" x2="-746.3330078125" y2="314"></line>
+      <circle cx="-746.3330078125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-746.3330078125" y1="342" x2="-928.4423828125" y2="408"></line>
+      <circle cx="-928.4423828125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-746.3330078125" y1="342" x2="-842.5830078125" y2="408"></line>
+      <circle cx="-842.5830078125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-746.3330078125" y1="342" x2="-740.4892578125" y2="408"></line>
+      <circle cx="-740.4892578125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-746.3330078125" y1="342" x2="-648.2861328125" y2="408"></line>
+      <circle cx="-648.2861328125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-746.3330078125" y1="342" x2="-564.2236328125" y2="408"></line>
+      <circle cx="-564.2236328125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="-695.8173828125" y1="242" x2="-645.3017578125" y2="314"></line>
+      <circle cx="-645.3017578125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="165.78125" y1="142" x2="135.224609375" y2="214"></line>
+      <circle cx="135.224609375" cy="211" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="135.224609375" y1="242" x2="-337.4697265625" y2="314"></line>
+      <circle cx="-337.4697265625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-337.4697265625" y1="342" x2="-446.8408203125" y2="408"></line>
+      <circle cx="-446.8408203125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="-337.4697265625" y1="342" x2="-334.7314453125" y2="414"></line>
+      <circle cx="-334.7314453125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-334.7314453125" y1="442" x2="-385.2509765625" y2="508"></line>
+      <circle cx="-385.2509765625" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-334.7314453125" y1="442" x2="-284.2119140625" y2="508"></line>
+      <circle cx="-284.2119140625" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="-337.4697265625" y1="342" x2="-228.0986328125" y2="414"></line>
+      <circle cx="-228.0986328125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="135.224609375" y1="242" x2="-13.0830078125" y2="314"></line>
+      <circle cx="-13.0830078125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-13.0830078125" y1="342" x2="-88.1455078125" y2="408"></line>
+      <circle cx="-88.1455078125" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-88.1455078125" y1="442" x2="-126.5205078125" y2="508"></line>
+      <circle cx="-126.5205078125" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-88.1455078125" y1="442" x2="-49.7705078125" y2="508"></line>
+      <circle cx="-49.7705078125" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="-13.0830078125" y1="342" x2="61.9794921875" y2="408"></line>
+      <circle cx="61.9794921875" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="135.224609375" y1="242" x2="607.9189453125" y2="314"></line>
+      <circle cx="607.9189453125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="607.9189453125" y1="342" x2="262.5888671875" y2="414"></line>
+      <circle cx="262.5888671875" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="262.5888671875" y1="442" x2="87.4482421875" y2="514"></line>
+      <circle cx="87.4482421875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="87.4482421875" y1="542" x2="87.4482421875" y2="614"></line>
+      <circle cx="87.4482421875" cy="611" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="262.5888671875" y1="442" x2="268.4013671875" y2="514"></line>
+      <circle cx="268.4013671875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="268.4013671875" y1="542" x2="268.4013671875" y2="608"></line>
+      <circle cx="268.4013671875" cy="611" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="262.5888671875" y1="442" x2="437.7294921875" y2="514"></line>
+      <circle cx="437.7294921875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="437.7294921875" y1="542" x2="437.7294921875" y2="614"></line>
+      <circle cx="437.7294921875" cy="611" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="607.9189453125" y1="342" x2="684.0576171875" y2="414"></line>
+      <circle cx="684.0576171875" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="684.0576171875" y1="442" x2="581.1357421875" y2="508"></line>
+      <circle cx="581.1357421875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="684.0576171875" y1="442" x2="688.6982421875" y2="508"></line>
+      <circle cx="688.6982421875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="684.0576171875" y1="442" x2="786.9794921875" y2="508"></line>
+      <circle cx="786.9794921875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="607.9189453125" y1="342" x2="953.2490234375" y2="414"></line>
+      <circle cx="953.2490234375" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="953.2490234375" y1="442" x2="887.9482421875" y2="508"></line>
+      <circle cx="887.9482421875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="953.2490234375" y1="442" x2="956.4482421875" y2="508"></line>
+      <circle cx="956.4482421875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="953.2490234375" y1="442" x2="1018.5498046875" y2="508"></line>
+      <circle cx="1018.5498046875" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="165.78125" y1="142" x2="1027.3798828125" y2="214"></line>
+      <circle cx="1027.3798828125" cy="211" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1027.3798828125" y1="242" x2="732.1064453125" y2="314"></line>
+      <circle cx="732.1064453125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1027.3798828125" y1="242" x2="825.6220703125" y2="314"></line>
+      <circle cx="825.6220703125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1027.3798828125" y1="242" x2="931.5439453125" y2="314"></line>
+      <circle cx="931.5439453125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1027.3798828125" y1="242" x2="1024.6064453125" y2="314"></line>
+      <circle cx="1024.6064453125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1027.3798828125" y1="242" x2="1104.2314453125" y2="314"></line>
+      <circle cx="1104.2314453125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1027.3798828125" y1="242" x2="1206.5751953125" y2="314"></line>
+      <circle cx="1206.5751953125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1027.3798828125" y1="242" x2="1322.6533203125" y2="314"></line>
+      <circle cx="1322.6533203125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1246.814453125" y1="42" x2="2399.03515625" y2="114"></line>
+      <circle cx="2399.03515625" cy="111" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2399.03515625" y1="142" x2="1732.8076171875" y2="214"></line>
+      <circle cx="1732.8076171875" cy="211" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="1732.8076171875" y1="242" x2="1426.3095703125" y2="308"></line>
+      <circle cx="1426.3095703125" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1426.3095703125" y1="342" x2="1319.7275390625" y2="414"></line>
+      <circle cx="1319.7275390625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="1319.7275390625" y1="442" x2="1274.7587890625" y2="508"></line>
+      <circle cx="1274.7587890625" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="1319.7275390625" y1="442" x2="1364.6962890625" y2="508"></line>
+      <circle cx="1364.6962890625" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1426.3095703125" y1="342" x2="1532.8916015625" y2="414"></line>
+      <circle cx="1532.8916015625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="1532.8916015625" y1="442" x2="1483.1025390625" y2="508"></line>
+      <circle cx="1483.1025390625" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="1532.8916015625" y1="442" x2="1582.6806640625" y2="508"></line>
+      <circle cx="1582.6806640625" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1732.8076171875" y1="242" x2="1729.4853515625" y2="314"></line>
+      <circle cx="1729.4853515625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1729.4853515625" y1="342" x2="1644.5869140625" y2="414"></line>
+      <circle cx="1644.5869140625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1729.4853515625" y1="342" x2="1732.2275390625" y2="414"></line>
+      <circle cx="1732.2275390625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1729.4853515625" y1="342" x2="1814.3837890625" y2="414"></line>
+      <circle cx="1814.3837890625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1732.8076171875" y1="242" x2="1945.9306640625" y2="314"></line>
+      <circle cx="1945.9306640625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1945.9306640625" y1="342" x2="1901.0712890625" y2="414"></line>
+      <circle cx="1901.0712890625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1945.9306640625" y1="342" x2="1990.7900390625" y2="414"></line>
+      <circle cx="1990.7900390625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1990.7900390625" y1="442" x2="1951.1494140625" y2="514"></line>
+      <circle cx="1951.1494140625" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="1990.7900390625" y1="442" x2="2030.4306640625" y2="514"></line>
+      <circle cx="2030.4306640625" cy="511" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="1732.8076171875" y1="242" x2="2039.3056640625" y2="308"></line>
+      <circle cx="2039.3056640625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2399.03515625" y1="142" x2="2578.9072265625" y2="214"></line>
+      <circle cx="2578.9072265625" cy="211" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2578.9072265625" y1="242" x2="2298.0322265625" y2="314"></line>
+      <circle cx="2298.0322265625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2578.9072265625" y1="242" x2="2408.6103515625" y2="314"></line>
+      <circle cx="2408.6103515625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2408.6103515625" y1="342" x2="2104.4306640625" y2="414"></line>
+      <circle cx="2104.4306640625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2408.6103515625" y1="342" x2="2184.5322265625" y2="414"></line>
+      <circle cx="2184.5322265625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2408.6103515625" y1="342" x2="2258.8056640625" y2="414"></line>
+      <circle cx="2258.8056640625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2408.6103515625" y1="342" x2="2322.8525390625" y2="414"></line>
+      <circle cx="2322.8525390625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="2408.6103515625" y1="342" x2="2399.7744140625" y2="408"></line>
+      <circle cx="2399.7744140625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="2408.6103515625" y1="342" x2="2510.3994140625" y2="408"></line>
+      <circle cx="2510.3994140625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="2408.6103515625" y1="342" x2="2620.7900390625" y2="408"></line>
+      <circle cx="2620.7900390625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="2408.6103515625" y1="342" x2="2712.7900390625" y2="408"></line>
+      <circle cx="2712.7900390625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2578.9072265625" y1="242" x2="2859.7822265625" y2="314"></line>
+      <circle cx="2859.7822265625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="2859.7822265625" y1="342" x2="2821.3056640625" y2="408"></line>
+      <circle cx="2821.3056640625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="2859.7822265625" y1="342" x2="2898.2587890625" y2="408"></line>
+      <circle cx="2898.2587890625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="2399.03515625" y1="142" x2="3065.2626953125" y2="214"></line>
+      <circle cx="3065.2626953125" cy="211" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="3065.2626953125" y1="242" x2="2964.3447265625" y2="314"></line>
+      <circle cx="2964.3447265625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="3065.2626953125" y1="242" x2="3050.8134765625" y2="314"></line>
+      <circle cx="3050.8134765625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="3065.2626953125" y1="242" x2="3166.1806640625" y2="308"></line>
+      <circle cx="3166.1806640625" cy="311" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="3166.1806640625" y1="342" x2="3061.1806640625" y2="414"></line>
+      <circle cx="3061.1806640625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g>
+      <line x1="3166.1806640625" y1="342" x2="3120.8681640625" y2="414"></line>
+      <circle cx="3120.8681640625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="3166.1806640625" y1="342" x2="3195.5087890625" y2="408"></line>
+      <circle cx="3195.5087890625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+    <g class="optional">
+      <line x1="3166.1806640625" y1="342" x2="3271.1806640625" y2="408"></line>
+      <circle cx="3271.1806640625" cy="411" r="3" class="optionalIndicator"></circle>
+    </g>
+  </g>
+  <g class="typeIndicators" transform="translate(958.7548828125, -14)">
+    <g>
+      <path d="M0,0 L40,-1.0658141036401503e-14Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.282032302755095,29.282032302755088 20.000000000000004,34.64101615137754 Q10.71796769724491,40 2.4492935982947065e-15,40 Q-10.7179676972449,40 -19.999999999999993,34.64101615137755 Q-25.64080595892251,31.38429531254719 -29.956973950592957,26.506220245887473" transform="translate(-746.3330078125,342) rotate(20.75135631006995)" class="circleSector filled"></path>
+      <text x="-746.3330078125" y="367" class="cardinalitiesLabel">1-5</text>
+    </g>
+    <g>
+      <path d="M0,0 L40,-1.7763568394002505e-14Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.282032302755095,29.282032302755088 20.000000000000004,34.64101615137754 Q16.230442559380823,36.817371154444785 12.081004235139384,38.131998854905895" transform="translate(-334.7314453125,442) rotate(53.78963817740194)" class="circleSector"></path>
+    </g>
+    <g>
+      <path d="M0,0 L40,-1.0658141036401503e-14Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.62440009723932,28.689033887833105 21.100731163821294,33.98174722335714" transform="translate(-88.1455078125,442) rotate(60.91896389625647)" class="circleSector"></path>
+    </g>
+    <g>
+      <path d="M0,0 L40,-1.0658141036401503e-14Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.282032302755095,29.282032302755088 20.000000000000004,34.64101615137754 Q10.71796769724491,40 2.4492935982947065e-15,40 Q-10.7179676972449,40 -19.999999999999993,34.64101615137755 Q-25.17533633152457,31.653034327224987 -29.251377559457204,27.282905103270863" transform="translate(262.5888671875,442) rotate(21.50290927419944)" class="circleSector filled"></path>
+      <text x="262.5888671875" y="467" class="cardinalitiesLabel">1-3</text>
+    </g>
+    <g>
+      <path d="M0,0 L40,-1.0658141036401503e-14Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.282032302755095,29.282032302755088 20.000000000000004,34.64101615137754 Q10.71796769724491,40 2.4492935982947065e-15,40 Q-7.8923929837317095,40 -15.193293329384616,37.002213958184676" transform="translate(684.0576171875,442) rotate(33.83835130934548)" class="circleSector"></path>
+    </g>
+    <g>
+      <path d="M0,0 L40,-2.7533531010703882e-14Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.282032302755095,29.282032302755088 20.000000000000004,34.64101615137754 Q11.733142933379026,39.41388830414333 2.201872121438908,39.93935101076168" transform="translate(953.2490234375,442) rotate(46.57777224455713)" class="circleSector"></path>
+    </g>
+    <g>
+      <path d="M0,0 L40,-2.1316282072803006e-14Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.282032302755095,29.282032302755088 20.000000000000004,34.64101615137754 Q18.128073888243026,35.72177319590352 16.150584834260368,36.59451611254559" transform="translate(1319.7275390625,442) rotate(56.906867533809624)" class="circleSector"></path>
+    </g>
+    <g>
+      <path d="M0,0 L40.00000000000001,0Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.282032302755095,29.282032302755088 20.000000000000004,34.64101615137754 Q16.47305592754375,36.67729826102692 12.608092711481916,37.960979942286485" transform="translate(1532.8916015625,442) rotate(54.18651398116577)" class="circleSector"></path>
+    </g>
+    <g>
+      <path d="M0,0 L40,-1.0658141036401503e-14Q40,10.717967697244903 34.64101615137755,19.999999999999996 Q29.60050984998258,28.73041300988717 21.024321676829388,34.029074304617836" transform="translate(2859.7822265625,342) rotate(60.85459268033743)" class="circleSector"></path>
+    </g>
+  </g>
+  <g class="nodes" transform="translate(958.7548828125, -14)">
+    <g id="510ff22f-4c6b-42cb-9235-0bb4c7134f3c" class="node default">
+      <title>Board Game</title>
+      <rect x="1199.517578125" y="14" width="94.59375" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1294.111328125" y1="14" x2="1199.517578125" y2="42" class="deadIndicator"></line>
+      <text x="1246.814453125" y="28" class="nameLabel">▼  Board Game</text>
+      <polygon points="1224.814453125,42 1234.814453125,54.36 1244.814453125,42" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1248.814453125,42 1258.814453125,54.36 1268.814453125,42" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1236.814453125,42 1246.814453125,54.36 1256.814453125,42" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjql6h8m20000395jk7cuuk41" class="node default">
+      <title>Id</title>
+      <rect x="82.390625" y="114" width="24.40625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="106.796875" y1="114" x2="82.390625" y2="142" class="deadIndicator"></line>
+      <text x="94.59375" y="128" class="nameLabel">Id</text>
+      <polygon points="72.59375,142 82.59375,154.36 92.59375,142" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="96.59375,142 106.59375,154.36 116.59375,142" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="84.59375,142 94.59375,154.36 104.59375,142" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="7514895f-73b5-4da3-8d73-5632150ecc8f" class="node default">
+      <title>Game Flow</title>
+      <rect x="121.796875" y="114" width="87.96875" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="209.765625" y1="114" x2="121.796875" y2="142" class="deadIndicator"></line>
+      <text x="165.78125" y="128" class="nameLabel">▼  Game Flow</text>
+      <polygon points="143.78125,142 153.78125,154.36 163.78125,142" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="167.78125,142 177.78125,154.36 187.78125,142" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="155.78125,142 165.78125,154.36 175.78125,142" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="ee596a98-7ff8-4a35-8f9b-58f99a9a0fc4" class="node default">
+      <title>Actions</title>
+      <rect x="-730.2392578125" y="214" width="68.84375" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="-661.3955078125" y1="214" x2="-730.2392578125" y2="242" class="deadIndicator"></line>
+      <text x="-695.8173828125" y="228" class="nameLabel">▼  Actions</text>
+      <polygon points="-717.8173828125,242 -707.8173828125,254.36 -697.8173828125,242" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-693.8173828125,242 -683.8173828125,254.36 -673.8173828125,242" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-705.8173828125,242 -695.8173828125,254.36 -685.8173828125,242" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqv7hos60000395j19v7rm13" class="node default">
+      <title>Action Type</title>
+      <rect x="-791.6611328125" y="314" width="90.65625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="-701.0048828125" y1="314" x2="-791.6611328125" y2="342" class="deadIndicator"></line>
+      <text x="-746.3330078125" y="328" class="nameLabel">▼  Action Type</text>
+      <polygon points="-768.3330078125,342 -758.3330078125,354.36 -748.3330078125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-744.3330078125,342 -734.3330078125,354.36 -724.3330078125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-756.3330078125,342 -746.3330078125,354.36 -736.3330078125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="43ca70ef-7368-4035-aabe-1da6d4abd7c9" class="node default optional">
+      <title>Roll Dice</title>
+      <rect x="-958.7548828125" y="414" width="60.625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-898.1298828125" y1="414" x2="-958.7548828125" y2="442" class="deadIndicator"></line>
+      <text x="-928.4423828125" y="428" class="nameLabel">Roll Dice</text>
+      <polygon points="-950.4423828125,442 -940.4423828125,454.36 -930.4423828125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-926.4423828125,442 -916.4423828125,454.36 -906.4423828125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-938.4423828125,442 -928.4423828125,454.36 -918.4423828125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="d71a0978-085c-4252-aded-756fda29f214" class="node default optional">
+      <title>Select Token</title>
+      <rect x="-883.1298828125" y="414" width="81.09375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-802.0361328125" y1="414" x2="-883.1298828125" y2="442" class="deadIndicator"></line>
+      <text x="-842.5830078125" y="428" class="nameLabel">Select Token</text>
+      <polygon points="-864.5830078125,442 -854.5830078125,454.36 -844.5830078125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-840.5830078125,442 -830.5830078125,454.36 -820.5830078125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-852.5830078125,442 -842.5830078125,454.36 -832.5830078125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cfb211e8-5783-440a-99ae-42000655bff7" class="node default optional">
+      <title>Select Position</title>
+      <rect x="-787.0361328125" y="414" width="93.09375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-693.9423828125" y1="414" x2="-787.0361328125" y2="442" class="deadIndicator"></line>
+      <text x="-740.4892578125" y="428" class="nameLabel">Select Position</text>
+      <polygon points="-762.4892578125,442 -752.4892578125,454.36 -742.4892578125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-738.4892578125,442 -728.4892578125,454.36 -718.4892578125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-750.4892578125,442 -740.4892578125,454.36 -730.4892578125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqprk2bp000e395jycwy9xw8" class="node default optional">
+      <title>End Turn</title>
+      <rect x="-678.9423828125" y="414" width="61.3125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-617.6298828125" y1="414" x2="-678.9423828125" y2="442" class="deadIndicator"></line>
+      <text x="-648.2861328125" y="428" class="nameLabel">End Turn</text>
+      <polygon points="-670.2861328125,442 -660.2861328125,454.36 -650.2861328125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-646.2861328125,442 -636.2861328125,454.36 -626.2861328125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-658.2861328125,442 -648.2861328125,454.36 -638.2861328125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjr0w329d0000395j6b54988p" class="node default optional">
+      <title>Move Token</title>
+      <rect x="-602.6298828125" y="414" width="76.8125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-525.8173828125" y1="414" x2="-602.6298828125" y2="442" class="deadIndicator"></line>
+      <text x="-564.2236328125" y="428" class="nameLabel">Move Token</text>
+      <polygon points="-586.2236328125,442 -576.2236328125,454.36 -566.2236328125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-562.2236328125,442 -552.2236328125,454.36 -542.2236328125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-574.2236328125,442 -564.2236328125,454.36 -554.2236328125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqv7i1rq0001395j3pgrt733" class="node default">
+      <title>Action Label</title>
+      <rect x="-686.0048828125" y="314" width="81.40625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-604.5986328125" y1="314" x2="-686.0048828125" y2="342" class="deadIndicator"></line>
+      <text x="-645.3017578125" y="328" class="nameLabel">Action Label</text>
+      <polygon points="-667.3017578125,342 -657.3017578125,354.36 -647.3017578125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-643.3017578125,342 -633.3017578125,354.36 -623.3017578125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-655.3017578125,342 -645.3017578125,354.36 -635.3017578125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="536f51d2-7a7c-4c3c-9e73-002912f53359" class="node default">
+      <title>Rules</title>
+      <rect x="105.701171875" y="214" width="59.046875" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="164.748046875" y1="214" x2="105.701171875" y2="242" class="deadIndicator"></line>
+      <text x="135.224609375" y="228" class="nameLabel">▼  Rules</text>
+      <polygon points="113.224609375,242 123.224609375,254.36 133.224609375,242" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="137.224609375,242 147.224609375,254.36 157.224609375,242" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="125.224609375,242 135.224609375,254.36 145.224609375,242" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="a1326939-d3cb-4925-aa68-bd54e62fc44c" class="node default">
+      <title>Turn Options</title>
+      <rect x="-386.9384765625" y="314" width="98.9375" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="-288.0009765625" y1="314" x2="-386.9384765625" y2="342" class="deadIndicator"></line>
+      <text x="-337.4697265625" y="328" class="nameLabel">▼  Turn Options</text>
+      <polygon points="-359.4697265625,342 -349.4697265625,354.36 -339.4697265625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-335.4697265625,342 -325.4697265625,354.36 -315.4697265625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-347.4697265625,342 -337.4697265625,354.36 -327.4697265625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cb23a404-dc8b-4457-96dd-2dc4529bf756" class="node default optional">
+      <title>Max Turn Count</title>
+      <rect x="-495.8173828125" y="414" width="97.953125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-397.8642578125" y1="414" x2="-495.8173828125" y2="442" class="deadIndicator"></line>
+      <text x="-446.8408203125" y="428" class="nameLabel">Max Turn Count</text>
+      <polygon points="-468.8408203125,442 -458.8408203125,454.36 -448.8408203125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-444.8408203125,442 -434.8408203125,454.36 -424.8408203125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-456.8408203125,442 -446.8408203125,454.36 -436.8408203125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="9a395f9e-6468-4550-836c-28ccc9baf8d5" class="node default">
+      <title>Player Order</title>
+      <rect x="-382.8642578125" y="414" width="96.265625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="-286.5986328125" y1="414" x2="-382.8642578125" y2="442" class="deadIndicator"></line>
+      <text x="-334.7314453125" y="428" class="nameLabel">▼  Player Order</text>
+      <polygon points="-356.7314453125,442 -346.7314453125,454.36 -336.7314453125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-332.7314453125,442 -322.7314453125,454.36 -312.7314453125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-344.7314453125,442 -334.7314453125,454.36 -324.7314453125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqphvgzv0000395jgi2bgyuc" class="node default optional">
+      <title>Static Order</title>
+      <rect x="-424.3056640625" y="514" width="78.109375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-346.1962890625" y1="514" x2="-424.3056640625" y2="542" class="deadIndicator"></line>
+      <text x="-385.2509765625" y="528" class="nameLabel">Static Order</text>
+      <polygon points="-407.2509765625,542 -397.2509765625,554.36 -387.2509765625,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-383.2509765625,542 -373.2509765625,554.36 -363.2509765625,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-395.2509765625,542 -385.2509765625,554.36 -375.2509765625,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqphvrca0001395jpwbiaqvm" class="node default optional">
+      <title>Dynamic Order</title>
+      <rect x="-331.1962890625" y="514" width="93.96875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-237.2275390625" y1="514" x2="-331.1962890625" y2="542" class="deadIndicator"></line>
+      <text x="-284.2119140625" y="528" class="nameLabel">Dynamic Order</text>
+      <polygon points="-306.2119140625,542 -296.2119140625,554.36 -286.2119140625,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-282.2119140625,542 -272.2119140625,554.36 -262.2119140625,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-294.2119140625,542 -284.2119140625,554.36 -274.2119140625,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqptcdeh000l395jg3csvffe" class="node default">
+      <title>Action Queue</title>
+      <rect x="-271.5986328125" y="414" width="87" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-184.5986328125" y1="414" x2="-271.5986328125" y2="442" class="deadIndicator"></line>
+      <text x="-228.0986328125" y="428" class="nameLabel">Action Queue</text>
+      <polygon points="-250.0986328125,442 -240.0986328125,454.36 -230.0986328125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-226.0986328125,442 -216.0986328125,454.36 -206.0986328125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-238.0986328125,442 -228.0986328125,454.36 -218.0986328125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="99cdfc17-1a51-47bc-bf2a-a03fed027983" class="node default">
+      <title>Movement</title>
+      <rect x="-56.0986328125" y="314" width="86.03125" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="29.9326171875" y1="314" x2="-56.0986328125" y2="342" class="deadIndicator"></line>
+      <text x="-13.0830078125" y="328" class="nameLabel">▼  Movement</text>
+      <polygon points="-35.0830078125,342 -25.0830078125,354.36 -15.0830078125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-11.0830078125,342 -1.0830078125,354.36 8.9169921875,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-23.0830078125,342 -13.0830078125,354.36 -3.0830078125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjr14h7sz0001395julpuzkyg" class="node default optional">
+      <title>Path Selection Rule</title>
+      <rect x="-154.5986328125" y="414" width="132.90625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="-21.6923828125" y1="414" x2="-154.5986328125" y2="442" class="deadIndicator"></line>
+      <text x="-88.1455078125" y="428" class="nameLabel">▼  Path Selection Rule</text>
+      <polygon points="-110.1455078125,442 -100.1455078125,454.36 -90.1455078125,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-86.1455078125,442 -76.1455078125,454.36 -66.1455078125,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-98.1455078125,442 -88.1455078125,454.36 -78.1455078125,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjr14hti30002395jlobbv0in" class="node default optional">
+      <title>Manual</title>
+      <rect x="-153.5048828125" y="514" width="53.96875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-99.5361328125" y1="514" x2="-153.5048828125" y2="542" class="deadIndicator"></line>
+      <text x="-126.5205078125" y="528" class="nameLabel">Manual</text>
+      <polygon points="-148.5205078125,542 -138.5205078125,554.36 -128.5205078125,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-124.5205078125,542 -114.5205078125,554.36 -104.5205078125,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-136.5205078125,542 -126.5205078125,554.36 -116.5205078125,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjr14i45v0003395jpyfbv5t3" class="node default optional">
+      <title>Automatic</title>
+      <rect x="-84.5361328125" y="514" width="69.53125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="-15.0048828125" y1="514" x2="-84.5361328125" y2="542" class="deadIndicator"></line>
+      <text x="-49.7705078125" y="528" class="nameLabel">Automatic</text>
+      <polygon points="-71.7705078125,542 -61.7705078125,554.36 -51.7705078125,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="-47.7705078125,542 -37.7705078125,554.36 -27.7705078125,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="-59.7705078125,542 -49.7705078125,554.36 -39.7705078125,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="fb17fef4-a969-41a8-b5ea-888ca7916f15" class="node default optional">
+      <title>Position Selection Rule</title>
+      <rect x="-6.6923828125" y="414" width="137.34375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="130.6513671875" y1="414" x2="-6.6923828125" y2="442" class="deadIndicator"></line>
+      <text x="61.9794921875" y="428" class="nameLabel">Position Selection Rule</text>
+      <polygon points="39.9794921875,442 49.9794921875,454.36 59.9794921875,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="63.9794921875,442 73.9794921875,454.36 83.9794921875,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="51.9794921875,442 61.9794921875,454.36 71.9794921875,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqpie6dk0002395j67syie77" class="node default">
+      <title>Condition to Win</title>
+      <rect x="548.7314453125" y="314" width="118.375" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="667.1064453125" y1="314" x2="548.7314453125" y2="342" class="deadIndicator"></line>
+      <text x="607.9189453125" y="328" class="nameLabel">▼  Condition to Win</text>
+      <polygon points="585.9189453125,342 595.9189453125,354.36 605.9189453125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="609.9189453125,342 619.9189453125,354.36 629.9189453125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="597.9189453125,342 607.9189453125,354.36 617.9189453125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb3g0h0000f395j427s1dd1" class="node default">
+      <title>Condition</title>
+      <rect x="222.1357421875" y="414" width="80.90625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="303.0419921875" y1="414" x2="222.1357421875" y2="442" class="deadIndicator"></line>
+      <text x="262.5888671875" y="428" class="nameLabel">▼  Condition</text>
+      <polygon points="240.5888671875,442 250.5888671875,454.36 260.5888671875,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="264.5888671875,442 274.5888671875,454.36 284.5888671875,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="252.5888671875,442 262.5888671875,454.36 272.5888671875,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqpiirls0004395j4u0bmpa7" class="node default">
+      <title>Player Attribute Value</title>
+      <rect x="14.9951171875" y="514" width="144.90625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="159.9013671875" y1="514" x2="14.9951171875" y2="542" class="deadIndicator"></line>
+      <text x="87.4482421875" y="528" class="nameLabel">▼  Player Attribute Value</text>
+      <polygon points="65.4482421875,542 75.4482421875,554.36 85.4482421875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="89.4482421875,542 99.4482421875,554.36 109.4482421875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="77.4482421875,542 87.4482421875,554.36 97.4482421875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb0eogg0000395jwironerk" class="node default">
+      <title>Attribute Name</title>
+      <rect x="39.1826171875" y="614" width="96.53125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="135.7138671875" y1="614" x2="39.1826171875" y2="642" class="deadIndicator"></line>
+      <text x="87.4482421875" y="628" class="nameLabel">Attribute Name</text>
+      <polygon points="65.4482421875,642 75.4482421875,654.36 85.4482421875,642" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="89.4482421875,642 99.4482421875,654.36 109.4482421875,642" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="77.4482421875,642 87.4482421875,654.36 97.4482421875,642" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb0m69y0003395j70fi0oa4" class="node default">
+      <title>Number of Remaining Tokens</title>
+      <rect x="174.9013671875" y="514" width="187" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="361.9013671875" y1="514" x2="174.9013671875" y2="542" class="deadIndicator"></line>
+      <text x="268.4013671875" y="528" class="nameLabel">▼  Number of Remaining Tokens</text>
+      <polygon points="246.4013671875,542 256.4013671875,554.36 266.4013671875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="270.4013671875,542 280.4013671875,554.36 290.4013671875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="258.4013671875,542 268.4013671875,554.36 278.4013671875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb1593v0004395j2bphowtf" class="node default optional">
+      <title>Token Type</title>
+      <rect x="231.3076171875" y="614" width="74.1875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="305.4951171875" y1="614" x2="231.3076171875" y2="642" class="deadIndicator"></line>
+      <text x="268.4013671875" y="628" class="nameLabel">Token Type</text>
+      <polygon points="246.4013671875,642 256.4013671875,654.36 266.4013671875,642" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="270.4013671875,642 280.4013671875,654.36 290.4013671875,642" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="258.4013671875,642 268.4013671875,654.36 278.4013671875,642" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb16m560006395j3fujhkbi" class="node default">
+      <title>Reached Position</title>
+      <rect x="376.9013671875" y="514" width="121.65625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="498.5576171875" y1="514" x2="376.9013671875" y2="542" class="deadIndicator"></line>
+      <text x="437.7294921875" y="528" class="nameLabel">▼  Reached Position</text>
+      <polygon points="415.7294921875,542 425.7294921875,554.36 435.7294921875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="439.7294921875,542 449.7294921875,554.36 459.7294921875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="427.7294921875,542 437.7294921875,554.36 447.7294921875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrionq7i0000395j6v1rqb52" class="node default">
+      <title>Position Type</title>
+      <rect x="395.1357421875" y="614" width="85.1875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="480.3232421875" y1="614" x2="395.1357421875" y2="642" class="deadIndicator"></line>
+      <text x="437.7294921875" y="628" class="nameLabel">Position Type</text>
+      <polygon points="415.7294921875,642 425.7294921875,654.36 435.7294921875,642" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="439.7294921875,642 449.7294921875,654.36 459.7294921875,642" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="427.7294921875,642 437.7294921875,654.36 447.7294921875,642" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb6kw3h000d395jpabcvbqr" class="node default">
+      <title>Evaluation Event</title>
+      <rect x="624.9482421875" y="414" width="118.21875" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="743.1669921875" y1="414" x2="624.9482421875" y2="442" class="deadIndicator"></line>
+      <text x="684.0576171875" y="428" class="nameLabel">▼  Evaluation Event</text>
+      <polygon points="662.0576171875,442 672.0576171875,454.36 682.0576171875,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="686.0576171875,442 696.0576171875,454.36 706.0576171875,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="674.0576171875,442 684.0576171875,454.36 694.0576171875,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb6l4r0000e395juvr0mll5" class="node default optional">
+      <title>On Game Update</title>
+      <rect x="528.5576171875" y="514" width="105.15625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="633.7138671875" y1="514" x2="528.5576171875" y2="542" class="deadIndicator"></line>
+      <text x="581.1357421875" y="528" class="nameLabel">On Game Update</text>
+      <polygon points="559.1357421875,542 569.1357421875,554.36 579.1357421875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="583.1357421875,542 593.1357421875,554.36 603.1357421875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="571.1357421875,542 581.1357421875,554.36 591.1357421875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb6lc9h000f395jv93cbkcw" class="node default optional">
+      <title>On Turn End</title>
+      <rect x="648.7138671875" y="514" width="79.96875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="728.6826171875" y1="514" x2="648.7138671875" y2="542" class="deadIndicator"></line>
+      <text x="688.6982421875" y="528" class="nameLabel">On Turn End</text>
+      <polygon points="666.6982421875,542 676.6982421875,554.36 686.6982421875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="690.6982421875,542 700.6982421875,554.36 710.6982421875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="678.6982421875,542 688.6982421875,554.36 698.6982421875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrbc3ahy000l395juxj16so6" class="node default optional">
+      <title>On Game End</title>
+      <rect x="743.6826171875" y="514" width="86.59375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="830.2763671875" y1="514" x2="743.6826171875" y2="542" class="deadIndicator"></line>
+      <text x="786.9794921875" y="528" class="nameLabel">On Game End</text>
+      <polygon points="764.9794921875,542 774.9794921875,554.36 784.9794921875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="788.9794921875,542 798.9794921875,554.36 808.9794921875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="776.9794921875,542 786.9794921875,554.36 796.9794921875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb5i10i0006395j32atbqrf" class="node default">
+      <title>Evaluation Option</title>
+      <rect x="890.8896484375" y="414" width="124.71875" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1015.6083984375" y1="414" x2="890.8896484375" y2="442" class="deadIndicator"></line>
+      <text x="953.2490234375" y="428" class="nameLabel">▼  Evaluation Option</text>
+      <polygon points="931.2490234375,442 941.2490234375,454.36 951.2490234375,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="955.2490234375,442 965.2490234375,454.36 975.2490234375,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="943.2490234375,442 953.2490234375,454.36 963.2490234375,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb6a391000a395jb5z89fl7" class="node default optional">
+      <title>Highest</title>
+      <rect x="860.2763671875" y="514" width="55.34375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="915.6201171875" y1="514" x2="860.2763671875" y2="542" class="deadIndicator"></line>
+      <text x="887.9482421875" y="528" class="nameLabel">Highest</text>
+      <polygon points="865.9482421875,542 875.9482421875,554.36 885.9482421875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="889.9482421875,542 899.9482421875,554.36 909.9482421875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="877.9482421875,542 887.9482421875,554.36 897.9482421875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb6aeek000b395jeqakbsww" class="node default optional">
+      <title>Lowest</title>
+      <rect x="930.6201171875" y="514" width="51.65625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="982.2763671875" y1="514" x2="930.6201171875" y2="542" class="deadIndicator"></line>
+      <text x="956.4482421875" y="528" class="nameLabel">Lowest</text>
+      <polygon points="934.4482421875,542 944.4482421875,554.36 954.4482421875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="958.4482421875,542 968.4482421875,554.36 978.4482421875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="946.4482421875,542 956.4482421875,554.36 966.4482421875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrb6ajp0000c395jznmlkp8a" class="node default optional">
+      <title>Exact</title>
+      <rect x="997.2763671875" y="514" width="42.546875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1039.8232421875" y1="514" x2="997.2763671875" y2="542" class="deadIndicator"></line>
+      <text x="1018.5498046875" y="528" class="nameLabel">Exact</text>
+      <polygon points="996.5498046875,542 1006.5498046875,554.36 1016.5498046875,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1020.5498046875,542 1030.5498046875,554.36 1040.5498046875,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1008.5498046875,542 1018.5498046875,554.36 1028.5498046875,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="82caea7c-2278-4416-8b76-1fe874261cd0" class="node default">
+      <title>Game Events</title>
+      <rect x="978.3017578125" y="214" width="98.15625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1076.4580078125" y1="214" x2="978.3017578125" y2="242" class="deadIndicator"></line>
+      <text x="1027.3798828125" y="228" class="nameLabel">▼  Game Events</text>
+      <polygon points="1005.3798828125,242 1015.3798828125,254.36 1025.3798828125,242" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1029.3798828125,242 1039.3798828125,254.36 1049.3798828125,242" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1017.3798828125,242 1027.3798828125,254.36 1037.3798828125,242" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="2bcda806-39b2-4211-b3e2-759ae4195c71" class="node default">
+      <title>Dice Event</title>
+      <rect x="697.1064453125" y="314" width="70" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="767.1064453125" y1="314" x2="697.1064453125" y2="342" class="deadIndicator"></line>
+      <text x="732.1064453125" y="328" class="nameLabel">Dice Event</text>
+      <polygon points="710.1064453125,342 720.1064453125,354.36 730.1064453125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="734.1064453125,342 744.1064453125,354.36 754.1064453125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="722.1064453125,342 732.1064453125,354.36 742.1064453125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="11ddfb97-c766-47ca-8771-168638fb5e4d" class="node default">
+      <title>Passing Event</title>
+      <rect x="782.1064453125" y="314" width="87.03125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="869.1376953125" y1="314" x2="782.1064453125" y2="342" class="deadIndicator"></line>
+      <text x="825.6220703125" y="328" class="nameLabel">Passing Event</text>
+      <polygon points="803.6220703125,342 813.6220703125,354.36 823.6220703125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="827.6220703125,342 837.6220703125,354.36 847.6220703125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="815.6220703125,342 825.6220703125,354.36 835.6220703125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="4f3a2aaa-8b25-4b9b-8e16-e2e8f45d7e5b" class="node default">
+      <title>Stopping Event</title>
+      <rect x="884.1376953125" y="314" width="94.8125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="978.9501953125" y1="314" x2="884.1376953125" y2="342" class="deadIndicator"></line>
+      <text x="931.5439453125" y="328" class="nameLabel">Stopping Event</text>
+      <polygon points="909.5439453125,342 919.5439453125,354.36 929.5439453125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="933.5439453125,342 943.5439453125,354.36 953.5439453125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="921.5439453125,342 931.5439453125,354.36 941.5439453125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqprn8d8000f395j1udzn3ve" class="node default">
+      <title>End Turn</title>
+      <rect x="993.9501953125" y="314" width="61.3125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1055.2626953125" y1="314" x2="993.9501953125" y2="342" class="deadIndicator"></line>
+      <text x="1024.6064453125" y="328" class="nameLabel">End Turn</text>
+      <polygon points="1002.6064453125,342 1012.6064453125,354.36 1022.6064453125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1026.6064453125,342 1036.6064453125,354.36 1046.6064453125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1014.6064453125,342 1024.6064453125,354.36 1034.6064453125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqpro2vh000g395jeln6loov" class="node default">
+      <title>End Game</title>
+      <rect x="1070.2626953125" y="314" width="67.9375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1138.2001953125" y1="314" x2="1070.2626953125" y2="342" class="deadIndicator"></line>
+      <text x="1104.2314453125" y="328" class="nameLabel">End Game</text>
+      <polygon points="1082.2314453125,342 1092.2314453125,354.36 1102.2314453125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1106.2314453125,342 1116.2314453125,354.36 1126.2314453125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1094.2314453125,342 1104.2314453125,354.36 1114.2314453125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqps397n000k395jeovkxsqz" class="node default">
+      <title>Token Eliminated</title>
+      <rect x="1153.2001953125" y="314" width="106.75" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1259.9501953125" y1="314" x2="1153.2001953125" y2="342" class="deadIndicator"></line>
+      <text x="1206.5751953125" y="328" class="nameLabel">Token Eliminated</text>
+      <polygon points="1184.5751953125,342 1194.5751953125,354.36 1204.5751953125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1208.5751953125,342 1218.5751953125,354.36 1228.5751953125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1196.5751953125,342 1206.5751953125,354.36 1216.5751953125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjrebsrcr0008395jb17nany0" class="node default">
+      <title>Token Selected</title>
+      <rect x="1274.9501953125" y="314" width="95.40625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1370.3564453125" y1="314" x2="1274.9501953125" y2="342" class="deadIndicator"></line>
+      <text x="1322.6533203125" y="328" class="nameLabel">Token Selected</text>
+      <polygon points="1300.6533203125,342 1310.6533203125,354.36 1320.6533203125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1324.6533203125,342 1334.6533203125,354.36 1344.6533203125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1312.6533203125,342 1322.6533203125,354.36 1332.6533203125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cdaddc7f-f686-4fdf-8ac7-81e5fe7def73" class="node default">
+      <title>Game Data</title>
+      <rect x="2355.31640625" y="114" width="87.4375" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="2442.75390625" y1="114" x2="2355.31640625" y2="142" class="deadIndicator"></line>
+      <text x="2399.03515625" y="128" class="nameLabel">▼  Game Data</text>
+      <polygon points="2377.03515625,142 2387.03515625,154.36 2397.03515625,142" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2401.03515625,142 2411.03515625,154.36 2421.03515625,142" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2389.03515625,142 2399.03515625,154.36 2409.03515625,142" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="f460e76e-1698-4102-9fba-5d0b2941f731" class="node default">
+      <title>Component Options</title>
+      <rect x="1664.3779296875" y="214" width="136.859375" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1801.2373046875" y1="214" x2="1664.3779296875" y2="242" class="deadIndicator"></line>
+      <text x="1732.8076171875" y="228" class="nameLabel">▼  Component Options</text>
+      <polygon points="1710.8076171875,242 1720.8076171875,254.36 1730.8076171875,242" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1734.8076171875,242 1744.8076171875,254.36 1754.8076171875,242" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1722.8076171875,242 1732.8076171875,254.36 1742.8076171875,242" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="386ddc6d-e954-4b69-982c-ed4d1ee93b18" class="node default optional">
+      <title>Dice</title>
+      <rect x="1400.3564453125" y="314" width="51.90625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1452.2626953125" y1="314" x2="1400.3564453125" y2="342" class="deadIndicator"></line>
+      <text x="1426.3095703125" y="328" class="nameLabel">▼  Dice</text>
+      <polygon points="1404.3095703125,342 1414.3095703125,354.36 1424.3095703125,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1428.3095703125,342 1438.3095703125,354.36 1448.3095703125,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1416.3095703125,342 1426.3095703125,354.36 1436.3095703125,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="c82e036f-a0dd-442c-8e3b-2787ca3ad6c7" class="node default">
+      <title>Die Type</title>
+      <rect x="1282.5712890625" y="414" width="74.3125" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1356.8837890625" y1="414" x2="1282.5712890625" y2="442" class="deadIndicator"></line>
+      <text x="1319.7275390625" y="428" class="nameLabel">▼  Die Type</text>
+      <polygon points="1297.7275390625,442 1307.7275390625,454.36 1317.7275390625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1321.7275390625,442 1331.7275390625,454.36 1341.7275390625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1309.7275390625,442 1319.7275390625,454.36 1329.7275390625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="9eace6db-2136-42fe-a234-6d8e2de9d1c0" class="node default optional">
+      <title>N-sided Die</title>
+      <rect x="1236.3681640625" y="514" width="76.78125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1313.1494140625" y1="514" x2="1236.3681640625" y2="542" class="deadIndicator"></line>
+      <text x="1274.7587890625" y="528" class="nameLabel">N-sided Die</text>
+      <polygon points="1252.7587890625,542 1262.7587890625,554.36 1272.7587890625,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1276.7587890625,542 1286.7587890625,554.36 1296.7587890625,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1264.7587890625,542 1274.7587890625,554.36 1284.7587890625,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="7618c20d-651d-43f6-a128-4902558268df" class="node default optional">
+      <title>Special Die</title>
+      <rect x="1328.1494140625" y="514" width="73.09375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1401.2431640625" y1="514" x2="1328.1494140625" y2="542" class="deadIndicator"></line>
+      <text x="1364.6962890625" y="528" class="nameLabel">Special Die</text>
+      <polygon points="1342.6962890625,542 1352.6962890625,554.36 1362.6962890625,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1366.6962890625,542 1376.6962890625,554.36 1386.6962890625,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1354.6962890625,542 1364.6962890625,554.36 1374.6962890625,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjzqwzw000h395j8yu1a1cs" class="node default">
+      <title>Die Options</title>
+      <rect x="1486.7431640625" y="414" width="92.296875" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1579.0400390625" y1="414" x2="1486.7431640625" y2="442" class="deadIndicator"></line>
+      <text x="1532.8916015625" y="428" class="nameLabel">▼  Die Options</text>
+      <polygon points="1510.8916015625,442 1520.8916015625,454.36 1530.8916015625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1534.8916015625,442 1544.8916015625,454.36 1554.8916015625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1522.8916015625,442 1532.8916015625,454.36 1542.8916015625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjztwes000i395j344pyj4z" class="node default optional">
+      <title>Number of Sides</title>
+      <rect x="1431.2431640625" y="514" width="103.71875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1534.9619140625" y1="514" x2="1431.2431640625" y2="542" class="deadIndicator"></line>
+      <text x="1483.1025390625" y="528" class="nameLabel">Number of Sides</text>
+      <polygon points="1461.1025390625,542 1471.1025390625,554.36 1481.1025390625,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1485.1025390625,542 1495.1025390625,554.36 1505.1025390625,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1473.1025390625,542 1483.1025390625,554.36 1493.1025390625,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjzu8kj000j395ja74j7h1c" class="node default optional">
+      <title>Value Set</title>
+      <rect x="1549.9619140625" y="514" width="65.4375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1615.3994140625" y1="514" x2="1549.9619140625" y2="542" class="deadIndicator"></line>
+      <text x="1582.6806640625" y="528" class="nameLabel">Value Set</text>
+      <polygon points="1560.6806640625,542 1570.6806640625,554.36 1580.6806640625,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1584.6806640625,542 1594.6806640625,554.36 1604.6806640625,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1572.6806640625,542 1582.6806640625,554.36 1592.6806640625,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="bee64705-043c-4531-a82e-3d6f5c36f8df" class="node default">
+      <title>Tokens</title>
+      <rect x="1696.1884765625" y="314" width="66.59375" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1762.7822265625" y1="314" x2="1696.1884765625" y2="342" class="deadIndicator"></line>
+      <text x="1729.4853515625" y="328" class="nameLabel">▼  Tokens</text>
+      <polygon points="1707.4853515625,342 1717.4853515625,354.36 1727.4853515625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1731.4853515625,342 1741.4853515625,354.36 1751.4853515625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1719.4853515625,342 1729.4853515625,354.36 1739.4853515625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="78fe0497-8c8f-4837-9c4d-a7603e3d6f8e" class="node default">
+      <title>Position Id</title>
+      <rect x="1609.0400390625" y="414" width="71.09375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1680.1337890625" y1="414" x2="1609.0400390625" y2="442" class="deadIndicator"></line>
+      <text x="1644.5869140625" y="428" class="nameLabel">Position Id</text>
+      <polygon points="1622.5869140625,442 1632.5869140625,454.36 1642.5869140625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1646.5869140625,442 1656.5869140625,454.36 1666.5869140625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1634.5869140625,442 1644.5869140625,454.36 1654.5869140625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjz0grr000d395j6k6ms0wo" class="node default">
+      <title>Token Type</title>
+      <rect x="1695.1337890625" y="414" width="74.1875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1769.3212890625" y1="414" x2="1695.1337890625" y2="442" class="deadIndicator"></line>
+      <text x="1732.2275390625" y="428" class="nameLabel">Token Type</text>
+      <polygon points="1710.2275390625,442 1720.2275390625,454.36 1730.2275390625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1734.2275390625,442 1744.2275390625,454.36 1754.2275390625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1722.2275390625,442 1732.2275390625,454.36 1742.2275390625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwff95t200033a5jfzwmzgdv" class="node default">
+      <title>Token Id</title>
+      <rect x="1784.3212890625" y="414" width="60.125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1844.4462890625" y1="414" x2="1784.3212890625" y2="442" class="deadIndicator"></line>
+      <text x="1814.3837890625" y="428" class="nameLabel">Token Id</text>
+      <polygon points="1792.3837890625,442 1802.3837890625,454.36 1812.3837890625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1816.3837890625,442 1826.3837890625,454.36 1836.3837890625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1804.3837890625,442 1814.3837890625,454.36 1824.3837890625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="6d072d6e-da07-4e91-b0d1-18565c20ef04" class="node default">
+      <title>Token Types</title>
+      <rect x="1898.7275390625" y="314" width="94.40625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="1993.1337890625" y1="314" x2="1898.7275390625" y2="342" class="deadIndicator"></line>
+      <text x="1945.9306640625" y="328" class="nameLabel">▼  Token Types</text>
+      <polygon points="1923.9306640625,342 1933.9306640625,354.36 1943.9306640625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1947.9306640625,342 1957.9306640625,354.36 1967.9306640625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1935.9306640625,342 1945.9306640625,354.36 1955.9306640625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwffkrq800043a5jnisyggi1" class="node default">
+      <title>Type Id</title>
+      <rect x="1874.4462890625" y="414" width="53.25" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1927.6962890625" y1="414" x2="1874.4462890625" y2="442" class="deadIndicator"></line>
+      <text x="1901.0712890625" y="428" class="nameLabel">Type Id</text>
+      <polygon points="1879.0712890625,442 1889.0712890625,454.36 1899.0712890625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1903.0712890625,442 1913.0712890625,454.36 1923.0712890625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1891.0712890625,442 1901.0712890625,454.36 1911.0712890625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwffpm2e00053a5jvmow248w" class="node default">
+      <title>Token Image</title>
+      <rect x="1942.6962890625" y="414" width="96.1875" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="2038.8837890625" y1="414" x2="1942.6962890625" y2="442" class="deadIndicator"></line>
+      <text x="1990.7900390625" y="428" class="nameLabel">▼  Token Image</text>
+      <polygon points="1968.7900390625,442 1978.7900390625,454.36 1988.7900390625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1992.7900390625,442 2002.7900390625,454.36 2012.7900390625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1980.7900390625,442 1990.7900390625,454.36 2000.7900390625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwffr3se00063a5jwvph1i5n" class="node default">
+      <title>Player Id</title>
+      <rect x="1920.8525390625" y="514" width="60.59375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="1981.4462890625" y1="514" x2="1920.8525390625" y2="542" class="deadIndicator"></line>
+      <text x="1951.1494140625" y="528" class="nameLabel">Player Id</text>
+      <polygon points="1929.1494140625,542 1939.1494140625,554.36 1949.1494140625,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="1953.1494140625,542 1963.1494140625,554.36 1973.1494140625,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="1941.1494140625,542 1951.1494140625,554.36 1961.1494140625,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwffrn1b00073a5jdnuenime" class="node default">
+      <title>Image File</title>
+      <rect x="1996.4462890625" y="514" width="67.96875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2064.4150390625" y1="514" x2="1996.4462890625" y2="542" class="deadIndicator"></line>
+      <text x="2030.4306640625" y="528" class="nameLabel">Image File</text>
+      <polygon points="2008.4306640625,542 2018.4306640625,554.36 2028.4306640625,542" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2032.4306640625,542 2042.4306640625,554.36 2052.4306640625,542" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2020.4306640625,542 2030.4306640625,554.36 2040.4306640625,542" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwff8agx00023a5jnm6jmo3u" class="node default optional">
+      <title>Owner Id</title>
+      <rect x="2008.1337890625" y="314" width="62.34375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2070.4775390625" y1="314" x2="2008.1337890625" y2="342" class="deadIndicator"></line>
+      <text x="2039.3056640625" y="328" class="nameLabel">Owner Id</text>
+      <polygon points="2017.3056640625,342 2027.3056640625,354.36 2037.3056640625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2041.3056640625,342 2051.3056640625,354.36 2061.3056640625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2029.3056640625,342 2039.3056640625,354.36 2049.3056640625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="bc2bee1b-78eb-4967-aeaa-47e53561c1e6" class="node default">
+      <title>Board Options</title>
+      <rect x="2525.6494140625" y="214" width="106.515625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="2632.1650390625" y1="214" x2="2525.6494140625" y2="242" class="deadIndicator"></line>
+      <text x="2578.9072265625" y="228" class="nameLabel">▼  Board Options</text>
+      <polygon points="2556.9072265625,242 2566.9072265625,254.36 2576.9072265625,242" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2580.9072265625,242 2590.9072265625,254.36 2600.9072265625,242" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2568.9072265625,242 2578.9072265625,254.36 2588.9072265625,242" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="6d940952-bc3b-4751-a842-3694c168789d" class="node default">
+      <title>Background Image</title>
+      <rect x="2241.7353515625" y="314" width="112.59375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2354.3291015625" y1="314" x2="2241.7353515625" y2="342" class="deadIndicator"></line>
+      <text x="2298.0322265625" y="328" class="nameLabel">Background Image</text>
+      <polygon points="2276.0322265625,342 2286.0322265625,354.36 2296.0322265625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2300.0322265625,342 2310.0322265625,354.36 2320.0322265625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2288.0322265625,342 2298.0322265625,354.36 2308.0322265625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="01750bcd-5841-4161-bbd1-53d677f61540" class="node default">
+      <title>Positions</title>
+      <rect x="2369.3291015625" y="314" width="78.5625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="2447.8916015625" y1="314" x2="2369.3291015625" y2="342" class="deadIndicator"></line>
+      <text x="2408.6103515625" y="328" class="nameLabel">▼  Positions</text>
+      <polygon points="2386.6103515625,342 2396.6103515625,354.36 2406.6103515625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2410.6103515625,342 2420.6103515625,354.36 2430.6103515625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2398.6103515625,342 2408.6103515625,354.36 2418.6103515625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="8510a049-e619-4490-adb5-e0a0245f76e9" class="node default">
+      <title>Position Id</title>
+      <rect x="2068.8837890625" y="414" width="71.09375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2139.9775390625" y1="414" x2="2068.8837890625" y2="442" class="deadIndicator"></line>
+      <text x="2104.4306640625" y="428" class="nameLabel">Position Id</text>
+      <polygon points="2082.4306640625,442 2092.4306640625,454.36 2102.4306640625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2106.4306640625,442 2116.4306640625,454.36 2126.4306640625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2094.4306640625,442 2104.4306640625,454.36 2114.4306640625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="463b99f6-ada1-46e1-830c-5946d621a135" class="node default">
+      <title>Capacity</title>
+      <rect x="2154.9775390625" y="414" width="59.109375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2214.0869140625" y1="414" x2="2154.9775390625" y2="442" class="deadIndicator"></line>
+      <text x="2184.5322265625" y="428" class="nameLabel">Capacity</text>
+      <polygon points="2162.5322265625,442 2172.5322265625,454.36 2182.5322265625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2186.5322265625,442 2196.5322265625,454.36 2206.5322265625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2174.5322265625,442 2184.5322265625,454.36 2194.5322265625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="37ebd5de-e8bc-422c-a8ed-f252cab2d15e" class="node default">
+      <title>Location</title>
+      <rect x="2229.0869140625" y="414" width="59.4375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2288.5244140625" y1="414" x2="2229.0869140625" y2="442" class="deadIndicator"></line>
+      <text x="2258.8056640625" y="428" class="nameLabel">Location</text>
+      <polygon points="2236.8056640625,442 2246.8056640625,454.36 2256.8056640625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2260.8056640625,442 2270.8056640625,454.36 2280.8056640625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2248.8056640625,442 2258.8056640625,454.36 2268.8056640625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwmjra2000033a5jq1p803xe" class="node default">
+      <title>Area</title>
+      <rect x="2303.5244140625" y="414" width="38.65625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2342.1806640625" y1="414" x2="2303.5244140625" y2="442" class="deadIndicator"></line>
+      <text x="2322.8525390625" y="428" class="nameLabel">Area</text>
+      <polygon points="2300.8525390625,442 2310.8525390625,454.36 2320.8525390625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2324.8525390625,442 2334.8525390625,454.36 2344.8525390625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2312.8525390625,442 2322.8525390625,454.36 2332.8525390625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqff1dbr0000395jv60g6itr" class="node default optional">
+      <title>Position Type</title>
+      <rect x="2357.1806640625" y="414" width="85.1875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2442.3681640625" y1="414" x2="2357.1806640625" y2="442" class="deadIndicator"></line>
+      <text x="2399.7744140625" y="428" class="nameLabel">Position Type</text>
+      <polygon points="2377.7744140625,442 2387.7744140625,454.36 2397.7744140625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2401.7744140625,442 2411.7744140625,454.36 2421.7744140625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2389.7744140625,442 2399.7744140625,454.36 2409.7744140625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjr5f0yif0004395jriulf6eo" class="node default optional">
+      <title>Previous Position</title>
+      <rect x="2457.3681640625" y="414" width="106.0625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2563.4306640625" y1="414" x2="2457.3681640625" y2="442" class="deadIndicator"></line>
+      <text x="2510.3994140625" y="428" class="nameLabel">Previous Position</text>
+      <polygon points="2488.3994140625,442 2498.3994140625,454.36 2508.3994140625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2512.3994140625,442 2522.3994140625,454.36 2532.3994140625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2500.3994140625,442 2510.3994140625,454.36 2520.3994140625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjr5f170v0005395jbf6qvzgc" class="node default optional">
+      <title>Next Position</title>
+      <rect x="2578.4306640625" y="414" width="84.71875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2663.1494140625" y1="414" x2="2578.4306640625" y2="442" class="deadIndicator"></line>
+      <text x="2620.7900390625" y="428" class="nameLabel">Next Position</text>
+      <polygon points="2598.7900390625,442 2608.7900390625,454.36 2618.7900390625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2622.7900390625,442 2632.7900390625,454.36 2642.7900390625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2610.7900390625,442 2620.7900390625,454.36 2630.7900390625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwmjrptw00043a5j9g99rb8z" class="node default optional">
+      <title>Grid Index</title>
+      <rect x="2678.1494140625" y="414" width="69.28125" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2747.4306640625" y1="414" x2="2678.1494140625" y2="442" class="deadIndicator"></line>
+      <text x="2712.7900390625" y="428" class="nameLabel">Grid Index</text>
+      <polygon points="2690.7900390625,442 2700.7900390625,454.36 2710.7900390625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2714.7900390625,442 2724.7900390625,454.36 2734.7900390625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2702.7900390625,442 2712.7900390625,454.36 2722.7900390625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwmjkcl300003a5jfaq9a5oh" class="node default">
+      <title>Board Type</title>
+      <rect x="2815.5166015625" y="314" width="88.53125" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="2904.0478515625" y1="314" x2="2815.5166015625" y2="342" class="deadIndicator"></line>
+      <text x="2859.7822265625" y="328" class="nameLabel">▼  Board Type</text>
+      <polygon points="2837.7822265625,342 2847.7822265625,354.36 2857.7822265625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2861.7822265625,342 2871.7822265625,354.36 2881.7822265625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2849.7822265625,342 2859.7822265625,354.36 2869.7822265625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwmjkt4400013a5jh1kzcz23" class="node default optional">
+      <title>Point to Point</title>
+      <rect x="2777.4306640625" y="414" width="87.75" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2865.1806640625" y1="414" x2="2777.4306640625" y2="442" class="deadIndicator"></line>
+      <text x="2821.3056640625" y="428" class="nameLabel">Point to Point</text>
+      <polygon points="2799.3056640625,442 2809.3056640625,454.36 2819.3056640625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2823.3056640625,442 2833.3056640625,454.36 2843.3056640625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2811.3056640625,442 2821.3056640625,454.36 2831.3056640625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjwmjl0i400023a5jmtoarhn2" class="node default optional">
+      <title>Grid</title>
+      <rect x="2880.1806640625" y="414" width="36.15625" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2916.3369140625" y1="414" x2="2880.1806640625" y2="442" class="deadIndicator"></line>
+      <text x="2898.2587890625" y="428" class="nameLabel">Grid</text>
+      <polygon points="2876.2587890625,442 2886.2587890625,454.36 2896.2587890625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2900.2587890625,442 2910.2587890625,454.36 2920.2587890625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2888.2587890625,442 2898.2587890625,454.36 2908.2587890625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="019d26ad-5ecf-4b5d-bb18-6d5f9906bfad" class="node default">
+      <title>Player Options</title>
+      <rect x="3011.3330078125" y="214" width="107.859375" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="3119.1923828125" y1="214" x2="3011.3330078125" y2="242" class="deadIndicator"></line>
+      <text x="3065.2626953125" y="228" class="nameLabel">▼  Player Options</text>
+      <polygon points="3043.2626953125,242 3053.2626953125,254.36 3063.2626953125,242" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="3067.2626953125,242 3077.2626953125,254.36 3087.2626953125,242" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="3055.2626953125,242 3065.2626953125,254.36 3075.2626953125,242" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="efbbeb53-fd72-4f30-aa6e-2f57249cf0fe" class="node default">
+      <title>Player Id</title>
+      <rect x="2934.0478515625" y="314" width="60.59375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="2994.6416015625" y1="314" x2="2934.0478515625" y2="342" class="deadIndicator"></line>
+      <text x="2964.3447265625" y="328" class="nameLabel">Player Id</text>
+      <polygon points="2942.3447265625,342 2952.3447265625,354.36 2962.3447265625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="2966.3447265625,342 2976.3447265625,354.36 2986.3447265625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="2954.3447265625,342 2964.3447265625,354.36 2974.3447265625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="a25b7087-544d-4724-8bc9-1319cf34a1ff" class="node default">
+      <title>Player Count</title>
+      <rect x="3009.6416015625" y="314" width="82.34375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="3091.9853515625" y1="314" x2="3009.6416015625" y2="342" class="deadIndicator"></line>
+      <text x="3050.8134765625" y="328" class="nameLabel">Player Count</text>
+      <polygon points="3028.8134765625,342 3038.8134765625,354.36 3048.8134765625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="3052.8134765625,342 3062.8134765625,354.36 3072.8134765625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="3040.8134765625,342 3050.8134765625,354.36 3060.8134765625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjxzev00007395jaj825r9d" class="node default optional">
+      <title>Player Attributes</title>
+      <rect x="3106.9853515625" y="314" width="118.390625" height="28" rx="5" ry="5" class="background"></rect>
+      <line x1="3225.3759765625" y1="314" x2="3106.9853515625" y2="342" class="deadIndicator"></line>
+      <text x="3166.1806640625" y="328" class="nameLabel">▼  Player Attributes</text>
+      <polygon points="3144.1806640625,342 3154.1806640625,354.36 3164.1806640625,342" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="3168.1806640625,342 3178.1806640625,354.36 3188.1806640625,342" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="3156.1806640625,342 3166.1806640625,354.36 3176.1806640625,342" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjxzovr0008395jqub2bz95" class="node default">
+      <title>Name</title>
+      <rect x="3038.5869140625" y="414" width="45.1875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="3083.7744140625" y1="414" x2="3038.5869140625" y2="442" class="deadIndicator"></line>
+      <text x="3061.1806640625" y="428" class="nameLabel">Name</text>
+      <polygon points="3039.1806640625,442 3049.1806640625,454.36 3059.1806640625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="3063.1806640625,442 3073.1806640625,454.36 3083.1806640625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="3051.1806640625,442 3061.1806640625,454.36 3071.1806640625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjxzzrf0009395j0wjg4dcs" class="node default">
+      <title>Value</title>
+      <rect x="3098.7744140625" y="414" width="44.1875" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="3142.9619140625" y1="414" x2="3098.7744140625" y2="442" class="deadIndicator"></line>
+      <text x="3120.8681640625" y="428" class="nameLabel">Value</text>
+      <polygon points="3098.8681640625,442 3108.8681640625,454.36 3118.8681640625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="3122.8681640625,442 3132.8681640625,454.36 3142.8681640625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="3110.8681640625,442 3120.8681640625,454.36 3130.8681640625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjy0asz000a395jpn35sbfe" class="node default optional">
+      <title>Description</title>
+      <rect x="3157.9619140625" y="414" width="75.09375" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="3233.0556640625" y1="414" x2="3157.9619140625" y2="442" class="deadIndicator"></line>
+      <text x="3195.5087890625" y="428" class="nameLabel">Description</text>
+      <polygon points="3173.5087890625,442 3183.5087890625,454.36 3193.5087890625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="3197.5087890625,442 3207.5087890625,454.36 3217.5087890625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="3185.5087890625,442 3195.5087890625,454.36 3205.5087890625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+    <g id="cjqjy0l7n000b395j3j3voizs" class="node default optional">
+      <title>Image</title>
+      <rect x="3248.0556640625" y="414" width="46.25" height="28" rx="0" ry="0" class="background"></rect>
+      <line x1="3294.3056640625" y1="414" x2="3248.0556640625" y2="442" class="deadIndicator"></line>
+      <text x="3271.1806640625" y="428" class="nameLabel">Image</text>
+      <polygon points="3249.1806640625,442 3259.1806640625,454.36 3269.1806640625,442" class="subtreeIndicator excludes" style="display: none;"></polygon>
+      <polygon points="3273.1806640625,442 3283.1806640625,454.36 3293.1806640625,442" class="subtreeIndicator implies" style="display: none;"></polygon>
+      <polygon points="3261.1806640625,442 3271.1806640625,454.36 3281.1806640625,442" class="subtreeIndicator closure" style="display: none;"></polygon>
+    </g>
+  </g>
+</svg>

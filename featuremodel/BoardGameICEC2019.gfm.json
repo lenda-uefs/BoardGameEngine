@@ -1,0 +1,780 @@
+{
+  "id": "cjz78g6a500003a5j3wtw4u3k",
+  "name": "Board Game ICEC 2019",
+  "timestamp": "2019-08-11T19:43:54.612Z",
+  "features": {
+    "510ff22f-4c6b-42cb-9235-0bb4c7134f3c": {
+      "name": "Board Game",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjql6h8m20000395jk7cuuk41": {
+      "name": "Id",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "7514895f-73b5-4da3-8d73-5632150ecc8f": {
+      "name": "Game Flow",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cdaddc7f-f686-4fdf-8ac7-81e5fe7def73": {
+      "name": "Game Data",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "ee596a98-7ff8-4a35-8f9b-58f99a9a0fc4": {
+      "name": "Actions",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "536f51d2-7a7c-4c3c-9e73-002912f53359": {
+      "name": "Rules",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "82caea7c-2278-4416-8b76-1fe874261cd0": {
+      "name": "Game Events",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "f460e76e-1698-4102-9fba-5d0b2941f731": {
+      "name": "Component Options",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "bc2bee1b-78eb-4967-aeaa-47e53561c1e6": {
+      "name": "Board Options",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "019d26ad-5ecf-4b5d-bb18-6d5f9906bfad": {
+      "name": "Player Options",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqv7hos60000395j19v7rm13": {
+      "name": "Action Type",
+      "optional": false,
+      "type": "OR"
+    },
+    "cjqv7i1rq0001395j3pgrt733": {
+      "name": "Action Label",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "a1326939-d3cb-4925-aa68-bd54e62fc44c": {
+      "name": "Turn Options",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "99cdfc17-1a51-47bc-bf2a-a03fed027983": {
+      "name": "Movement",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqpie6dk0002395j67syie77": {
+      "name": "Condition to Win",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "2bcda806-39b2-4211-b3e2-759ae4195c71": {
+      "name": "Dice Event",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "11ddfb97-c766-47ca-8771-168638fb5e4d": {
+      "name": "Passing Event",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "4f3a2aaa-8b25-4b9b-8e16-e2e8f45d7e5b": {
+      "name": "Stopping Event",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqprn8d8000f395j1udzn3ve": {
+      "name": "End Turn",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqpro2vh000g395jeln6loov": {
+      "name": "End Game",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqps397n000k395jeovkxsqz": {
+      "name": "Token Eliminated",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjrebsrcr0008395jb17nany0": {
+      "name": "Token Selected",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "386ddc6d-e954-4b69-982c-ed4d1ee93b18": {
+      "name": "Dice",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "bee64705-043c-4531-a82e-3d6f5c36f8df": {
+      "name": "Tokens",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "6d072d6e-da07-4e91-b0d1-18565c20ef04": {
+      "name": "Token Types",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjwff8agx00023a5jnm6jmo3u": {
+      "name": "Owner Id",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "6d940952-bc3b-4751-a842-3694c168789d": {
+      "name": "Background Image",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjwmjkcl300003a5jfaq9a5oh": {
+      "name": "Board Type",
+      "optional": false,
+      "type": "XOR"
+    },
+    "efbbeb53-fd72-4f30-aa6e-2f57249cf0fe": {
+      "name": "Player Id",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "a25b7087-544d-4724-8bc9-1319cf34a1ff": {
+      "name": "Player Count",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqjxzev00007395jaj825r9d": {
+      "name": "Player Attributes",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "43ca70ef-7368-4035-aabe-1da6d4abd7c9": {
+      "name": "Roll Dice",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "d71a0978-085c-4252-aded-756fda29f214": {
+      "name": "Select Token",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cfb211e8-5783-440a-99ae-42000655bff7": {
+      "name": "Select Position",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjqprk2bp000e395jycwy9xw8": {
+      "name": "End Turn",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjr0w329d0000395j6b54988p": {
+      "name": "Move Token",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cb23a404-dc8b-4457-96dd-2dc4529bf756": {
+      "name": "Max Turn Count",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "9a395f9e-6468-4550-836c-28ccc9baf8d5": {
+      "name": "Player Order",
+      "optional": false,
+      "type": "XOR"
+    },
+    "cjqptcdeh000l395jg3csvffe": {
+      "name": "Action Queue",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjr14h7sz0001395julpuzkyg": {
+      "name": "Path Selection Rule",
+      "optional": true,
+      "type": "XOR"
+    },
+    "fb17fef4-a969-41a8-b5ea-888ca7916f15": {
+      "name": "Position Selection Rule",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjrb3g0h0000f395j427s1dd1": {
+      "name": "Condition",
+      "optional": false,
+      "type": "OR"
+    },
+    "cjrb5i10i0006395j32atbqrf": {
+      "name": "Evaluation Option",
+      "optional": false,
+      "type": "XOR"
+    },
+    "c82e036f-a0dd-442c-8e3b-2787ca3ad6c7": {
+      "name": "Die Type",
+      "optional": false,
+      "type": "XOR"
+    },
+    "cjqjzqwzw000h395j8yu1a1cs": {
+      "name": "Die Options",
+      "optional": false,
+      "type": "XOR"
+    },
+    "78fe0497-8c8f-4837-9c4d-a7603e3d6f8e": {
+      "name": "Position Id",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqjz0grr000d395j6k6ms0wo": {
+      "name": "Token Type",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjwff95t200033a5jfzwmzgdv": {
+      "name": "Token Id",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjwffkrq800043a5jnisyggi1": {
+      "name": "Type Id",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjwffpm2e00053a5jvmow248w": {
+      "name": "Token Image",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "01750bcd-5841-4161-bbd1-53d677f61540": {
+      "name": "Positions",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjwmjkt4400013a5jh1kzcz23": {
+      "name": "Point to Point",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjwmjl0i400023a5jmtoarhn2": {
+      "name": "Grid",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjqjxzovr0008395jqub2bz95": {
+      "name": "Name",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqjxzzrf0009395j0wjg4dcs": {
+      "name": "Value",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqjy0asz000a395jpn35sbfe": {
+      "name": "Description",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjqjy0l7n000b395j3j3voizs": {
+      "name": "Image",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjqphvgzv0000395jgi2bgyuc": {
+      "name": "Static Order",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjqphvrca0001395jpwbiaqvm": {
+      "name": "Dynamic Order",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjr14hti30002395jlobbv0in": {
+      "name": "Manual",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjr14i45v0003395jpyfbv5t3": {
+      "name": "Automatic",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjqpiirls0004395j4u0bmpa7": {
+      "name": "Player Attribute Value",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjrb0m69y0003395j70fi0oa4": {
+      "name": "Number of Remaining Tokens",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjrb16m560006395j3fujhkbi": {
+      "name": "Reached Position",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjrb6a391000a395jb5z89fl7": {
+      "name": "Highest",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjrb6aeek000b395jeqakbsww": {
+      "name": "Lowest",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjrb6ajp0000c395jznmlkp8a": {
+      "name": "Exact",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "9eace6db-2136-42fe-a234-6d8e2de9d1c0": {
+      "name": "N-sided Die",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "7618c20d-651d-43f6-a128-4902558268df": {
+      "name": "Special Die",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjqjztwes000i395j344pyj4z": {
+      "name": "Number of Sides",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjqjzu8kj000j395ja74j7h1c": {
+      "name": "Value Set",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjwffr3se00063a5jwvph1i5n": {
+      "name": "Player Id",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjwffrn1b00073a5jdnuenime": {
+      "name": "Image File",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "8510a049-e619-4490-adb5-e0a0245f76e9": {
+      "name": "Position Id",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "463b99f6-ada1-46e1-830c-5946d621a135": {
+      "name": "Capacity",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "37ebd5de-e8bc-422c-a8ed-f252cab2d15e": {
+      "name": "Location",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjwmjra2000033a5jq1p803xe": {
+      "name": "Area",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjqff1dbr0000395jv60g6itr": {
+      "name": "Position Type",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjr5f0yif0004395jriulf6eo": {
+      "name": "Previous Position",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjr5f170v0005395jbf6qvzgc": {
+      "name": "Next Position",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjwmjrptw00043a5j9g99rb8z": {
+      "name": "Grid Index",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjrb0eogg0000395jwironerk": {
+      "name": "Attribute Name",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjrb1593v0004395j2bphowtf": {
+      "name": "Token Type",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjrionq7i0000395j6v1rqb52": {
+      "name": "Position Type",
+      "optional": false,
+      "type": "FEATURE"
+    },
+    "cjrb6kw3h000d395jpabcvbqr": {
+      "name": "Evaluation Event",
+      "optional": false,
+      "type": "XOR"
+    },
+    "cjrb6l4r0000e395juvr0mll5": {
+      "name": "On Game Update",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjrb6lc9h000f395jv93cbkcw": {
+      "name": "On Turn End",
+      "optional": true,
+      "type": "FEATURE"
+    },
+    "cjrbc3ahy000l395juxj16so6": {
+      "name": "On Game End",
+      "optional": true,
+      "type": "FEATURE"
+    }
+  },
+  "tree": {
+    "id": "510ff22f-4c6b-42cb-9235-0bb4c7134f3c",
+    "children": [
+      {
+        "id": "cjql6h8m20000395jk7cuuk41"
+      },
+      {
+        "id": "7514895f-73b5-4da3-8d73-5632150ecc8f",
+        "children": [
+          {
+            "id": "ee596a98-7ff8-4a35-8f9b-58f99a9a0fc4",
+            "children": [
+              {
+                "id": "cjqv7hos60000395j19v7rm13",
+                "children": [
+                  {
+                    "id": "43ca70ef-7368-4035-aabe-1da6d4abd7c9"
+                  },
+                  {
+                    "id": "d71a0978-085c-4252-aded-756fda29f214"
+                  },
+                  {
+                    "id": "cfb211e8-5783-440a-99ae-42000655bff7"
+                  },
+                  {
+                    "id": "cjqprk2bp000e395jycwy9xw8"
+                  },
+                  {
+                    "id": "cjr0w329d0000395j6b54988p"
+                  }
+                ]
+              },
+              {
+                "id": "cjqv7i1rq0001395j3pgrt733"
+              }
+            ]
+          },
+          {
+            "id": "536f51d2-7a7c-4c3c-9e73-002912f53359",
+            "children": [
+              {
+                "id": "a1326939-d3cb-4925-aa68-bd54e62fc44c",
+                "children": [
+                  {
+                    "id": "cb23a404-dc8b-4457-96dd-2dc4529bf756"
+                  },
+                  {
+                    "id": "9a395f9e-6468-4550-836c-28ccc9baf8d5",
+                    "children": [
+                      {
+                        "id": "cjqphvgzv0000395jgi2bgyuc"
+                      },
+                      {
+                        "id": "cjqphvrca0001395jpwbiaqvm"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cjqptcdeh000l395jg3csvffe"
+                  }
+                ]
+              },
+              {
+                "id": "99cdfc17-1a51-47bc-bf2a-a03fed027983",
+                "children": [
+                  {
+                    "id": "cjr14h7sz0001395julpuzkyg",
+                    "children": [
+                      {
+                        "id": "cjr14hti30002395jlobbv0in"
+                      },
+                      {
+                        "id": "cjr14i45v0003395jpyfbv5t3"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "fb17fef4-a969-41a8-b5ea-888ca7916f15"
+                  }
+                ]
+              },
+              {
+                "id": "cjqpie6dk0002395j67syie77",
+                "children": [
+                  {
+                    "id": "cjrb3g0h0000f395j427s1dd1",
+                    "children": [
+                      {
+                        "id": "cjqpiirls0004395j4u0bmpa7",
+                        "children": [
+                          {
+                            "id": "cjrb0eogg0000395jwironerk"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "cjrb0m69y0003395j70fi0oa4",
+                        "children": [
+                          {
+                            "id": "cjrb1593v0004395j2bphowtf"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "cjrb16m560006395j3fujhkbi",
+                        "children": [
+                          {
+                            "id": "cjrionq7i0000395j6v1rqb52"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cjrb6kw3h000d395jpabcvbqr",
+                            "children": [
+                              {
+                                "id": "cjrb6l4r0000e395juvr0mll5"
+                              },
+                              {
+                                "id": "cjrb6lc9h000f395jv93cbkcw"
+                              },
+                              {
+                                "id": "cjrbc3ahy000l395juxj16so6"
+                              }
+                            ]
+                  },
+                  {
+                    "id": "cjrb5i10i0006395j32atbqrf",
+                    "children": [
+                      {
+                        "id": "cjrb6a391000a395jb5z89fl7"
+                      },
+                      {
+                        "id": "cjrb6aeek000b395jeqakbsww"
+                      },
+                      {
+                        "id": "cjrb6ajp0000c395jznmlkp8a"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "82caea7c-2278-4416-8b76-1fe874261cd0",
+            "children": [
+              {
+                "id": "2bcda806-39b2-4211-b3e2-759ae4195c71"
+              },
+              {
+                "id": "11ddfb97-c766-47ca-8771-168638fb5e4d"
+              },
+              {
+                "id": "4f3a2aaa-8b25-4b9b-8e16-e2e8f45d7e5b"
+              },
+              {
+                "id": "cjqprn8d8000f395j1udzn3ve"
+              },
+              {
+                "id": "cjqpro2vh000g395jeln6loov"
+              },
+              {
+                "id": "cjqps397n000k395jeovkxsqz"
+              },
+              {
+                "id": "cjrebsrcr0008395jb17nany0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cdaddc7f-f686-4fdf-8ac7-81e5fe7def73",
+        "children": [
+          {
+            "id": "f460e76e-1698-4102-9fba-5d0b2941f731",
+            "children": [
+              {
+                "id": "386ddc6d-e954-4b69-982c-ed4d1ee93b18",
+                "children": [
+                  {
+                    "id": "c82e036f-a0dd-442c-8e3b-2787ca3ad6c7",
+                    "children": [
+                      {
+                        "id": "9eace6db-2136-42fe-a234-6d8e2de9d1c0"
+                      },
+                      {
+                        "id": "7618c20d-651d-43f6-a128-4902558268df"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "cjqjzqwzw000h395j8yu1a1cs",
+                    "children": [
+                      {
+                        "id": "cjqjztwes000i395j344pyj4z"
+                      },
+                      {
+                        "id": "cjqjzu8kj000j395ja74j7h1c"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "bee64705-043c-4531-a82e-3d6f5c36f8df",
+                "children": [
+                  {
+                    "id": "78fe0497-8c8f-4837-9c4d-a7603e3d6f8e"
+                  },
+                  {
+                    "id": "cjqjz0grr000d395j6k6ms0wo"
+                  },
+                  {
+                    "id": "cjwff95t200033a5jfzwmzgdv"
+                  }
+                ]
+              },
+              {
+                "id": "6d072d6e-da07-4e91-b0d1-18565c20ef04",
+                "children": [
+                  {
+                    "id": "cjwffkrq800043a5jnisyggi1"
+                  },
+                  {
+                    "id": "cjwffpm2e00053a5jvmow248w",
+                    "children": [
+                      {
+                        "id": "cjwffr3se00063a5jwvph1i5n"
+                      },
+                      {
+                        "id": "cjwffrn1b00073a5jdnuenime"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "cjwff8agx00023a5jnm6jmo3u"
+              }
+            ]
+          },
+          {
+            "id": "bc2bee1b-78eb-4967-aeaa-47e53561c1e6",
+            "children": [
+              {
+                "id": "6d940952-bc3b-4751-a842-3694c168789d"
+              },
+              {
+                "id": "01750bcd-5841-4161-bbd1-53d677f61540",
+                    "children": [
+                      {
+                        "id": "8510a049-e619-4490-adb5-e0a0245f76e9"
+                      },
+                      {
+                        "id": "463b99f6-ada1-46e1-830c-5946d621a135"
+                      },
+                      {
+                        "id": "37ebd5de-e8bc-422c-a8ed-f252cab2d15e"
+                      },
+                      {
+                        "id": "cjwmjra2000033a5jq1p803xe"
+                      },
+                      {
+                        "id": "cjqff1dbr0000395jv60g6itr"
+                      },
+                      {
+                        "id": "cjr5f0yif0004395jriulf6eo"
+                      },
+                      {
+                        "id": "cjr5f170v0005395jbf6qvzgc"
+                      },
+                      {
+                        "id": "cjwmjrptw00043a5j9g99rb8z"
+                      }
+                    ]
+              },
+              {
+                "id": "cjwmjkcl300003a5jfaq9a5oh",
+                "children": [
+                  {
+                    "id": "cjwmjkt4400013a5jh1kzcz23"
+                  },
+                  {
+                    "id": "cjwmjl0i400023a5jmtoarhn2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "019d26ad-5ecf-4b5d-bb18-6d5f9906bfad",
+            "children": [
+              {
+                "id": "efbbeb53-fd72-4f30-aa6e-2f57249cf0fe"
+              },
+              {
+                "id": "a25b7087-544d-4724-8bc9-1319cf34a1ff"
+              },
+              {
+                "id": "cjqjxzev00007395jaj825r9d",
+                "children": [
+                  {
+                    "id": "cjqjxzovr0008395jqub2bz95"
+                  },
+                  {
+                    "id": "cjqjxzzrf0009395j0wjg4dcs"
+                  },
+                  {
+                    "id": "cjqjy0asz000a395jpn35sbfe"
+                  },
+                  {
+                    "id": "cjqjy0l7n000b395j3j3voizs"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "constraints": {},
+  "conjectures": {},
+  "checks": {
+    "CONSISTENCY": null,
+    "CONJECTURES": {},
+    "COMMONFEATURES": null,
+    "DEADFEATURES": null,
+    "POSSIBLECONFIGURATIONS": null
+  }
+}
